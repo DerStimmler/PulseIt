@@ -6,19 +6,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.InfoFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/info_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_alignParentTop="true"
+            android:text="@string/info_header"
+            android:textColor="@color/grey"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/info_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_header"
+            android:text="@string/info_formulaDescription"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_formulaMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_description"
+            android:layout_marginTop="20dp"
+            android:text="@string/info_formulaMale"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_formulaFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_formulaMale"
+            android:layout_marginTop="15dp"
+            android:text="@string/info_formulaFemale"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_parameter_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_formulaFemale"
+            android:layout_marginTop="15dp"
+            android:text="@string/info_parameter_age"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_parameter_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_parameter_age"
+            android:layout_marginTop="2dp"
+            android:text="@string/info_parameter_weight"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_parameter_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_parameter_weight"
+            android:layout_marginTop="2dp"
+            android:text="@string/info_parameter_gender"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_interpretation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_parameter_gender"
+            android:layout_marginTop="20dp"
+            android:text="@string/info_interpretation"
+            android:textSize="13dp" />
+    </RelativeLayout>
 
 </FrameLayout>
