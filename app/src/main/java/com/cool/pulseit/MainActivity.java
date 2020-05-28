@@ -2,6 +2,7 @@ package com.cool.pulseit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
+
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        openFragment(AnalyticsFragment.newInstance("", ""));
     }
 
     public void openFragment(Fragment fragment) {
@@ -31,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void openDialogFragment(DialogFragment fragment) {
+        fragment.show(getSupportFragmentManager(), "dialog");
     }
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
