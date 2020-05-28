@@ -7,8 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.NumberPicker;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cool.pulseit.R;
+import com.cool.pulseit.database.DatabaseManager;
+import com.cool.pulseit.entities.Settings;
+import com.cool.pulseit.utils.Gender;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +31,12 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View _mainActivity;
+    private NumberPicker _weightNumberPicker;
+    private NumberPicker _ageNumberPicker;
+    private Spinner _genderSpinner;
+    private Button _saveButton;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -59,7 +72,59 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        _mainActivity = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        getViewElements();
+
+        initializeWeightNumberPicker();
+        initializeAgeNumberPicker();
+
+        initializeEventListeners();
+
+        return _mainActivity;
     }
+
+    private void initializeEventListeners() {
+        _saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                saveSettings();
+            }
+        });
+    }
+
+    private void getViewElements() {
+        _weightNumberPicker = _mainActivity.findViewById(R.id.settings_input_weight);
+        _ageNumberPicker = _mainActivity.findViewById(R.id.settings_input_age);
+        _genderSpinner = _mainActivity.findViewById(R.id.settings_spinner_gender);
+        _saveButton = _mainActivity.findViewById(R.id.settings_button_save);
+    }
+
+    private void initializeWeightNumberPicker() {
+        _weightNumberPicker.setMinValue(0);
+        _weightNumberPicker.setMaxValue(500);
+        _weightNumberPicker.setValue(60);
+    }
+
+    private void initializeAgeNumberPicker() {
+        _ageNumberPicker.setMinValue(0);
+        _ageNumberPicker.setMaxValue(150);
+        _ageNumberPicker.setValue(30);
+    }
+
+    public void saveSettings(){
+        int age = _ageNumberPicker.getValue();
+        int weight = _weightNumberPicker.getValue();
+        Gender gender = Gender.toEnum(_genderSpinner.getSelectedItem().toString());
+
+        Settings settings = new Settings(gender,weight,age);
+
+        DatabaseManager dbm = new DatabaseManager(this.getContext());
+
+        dbm.saveSettings(settings);
+
+        Toast.makeText(this.getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
+    }
+
+
 }
