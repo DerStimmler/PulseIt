@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.fragments.AddPulseFragment;
 import com.cool.pulseit.fragments.AnalyticsFragment;
 import com.cool.pulseit.fragments.HistoryFragment;
@@ -27,14 +31,33 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        openFragment(AnalyticsFragment.newInstance("", ""));
+
+        //InitialFragment
+        if(savedInstanceState == null){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, AnalyticsFragment.newInstance("",""));
+            transaction.commit();
+        }
     }
 
-    public void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    public void openFragment(final Fragment fragment) {
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);
+        final int count = fragmentManager.getBackStackEntryCount();
         transaction.addToBackStack(null);
         transaction.commit();
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if( fragmentManager.getBackStackEntryCount() <= count){
+                    fragmentManager.popBackStack();
+                    fragmentManager.removeOnBackStackChangedListener(this);
+                    bottomNavigation.getMenu().getItem((0)).setChecked(true);
+                    Toast.makeText(MainActivity.this, "Press Back again to close the application", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     public void openDialogFragment(DialogFragment fragment) {

@@ -14,8 +14,4 @@ public enum Gender {
                 throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum",genderString));
         }
     }
-
-    public String toSqlValue(){
-        return String.format("\"%s\"",this);
-    }
 }

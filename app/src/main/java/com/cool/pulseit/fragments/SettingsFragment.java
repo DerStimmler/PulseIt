@@ -17,6 +17,8 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SettingsFragment#newInstance} factory method to
@@ -116,8 +118,9 @@ public class SettingsFragment extends Fragment {
         int age = _ageNumberPicker.getValue();
         int weight = _weightNumberPicker.getValue();
         Gender gender = Gender.toEnum(_genderSpinner.getSelectedItem().toString());
+        Date date = new Date();
 
-        Settings settings = new Settings(gender,weight,age);
+        Settings settings = new Settings(gender,weight,age,date);
 
         DatabaseManager dbm = new DatabaseManager(this.getContext());
 

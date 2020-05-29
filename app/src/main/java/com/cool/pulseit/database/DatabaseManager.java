@@ -15,7 +15,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try{
-            db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL);");
+            db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL, date TEXT NOT NULL);");
         }catch(Exception ex){
             Log.e("DatabaseManager", "Error while creating database tables");
         }
@@ -23,8 +23,11 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public void saveSettings(Settings settings) {
         SQLiteDatabase db = getReadableDatabase();
-
-        db.execSQL(String.format("INSERT INTO settings (weight,age,gender) VALUES(%s,%s,%s)",settings.weight, settings.age, settings.gender.toSqlValue()));
+        try {
+            db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\")", settings.weight, settings.age, settings.gender, settings.date));
+        }catch (Exception ex){
+            Log.e("DatabaseManager", "Error while saving settings");
+        }
     }
 
     @Override
