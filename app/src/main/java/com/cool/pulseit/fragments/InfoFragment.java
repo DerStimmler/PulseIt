@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.cool.pulseit.R;
 
+import io.github.kexanie.library.MathView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link InfoFragment#newInstance} factory method to
@@ -20,7 +22,10 @@ public class InfoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    MathView info_formula_one;
+    MathView info_formula_two;
+    String formulaMale= "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
+    String formulaFemale= "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -60,6 +65,13 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false);
+        View root = inflater.inflate(R.layout.fragment_info, container, false);
+        info_formula_one = (MathView) root.findViewById(R.id.info_formula_one);
+        info_formula_one.setText(formulaMale);
+
+        info_formula_two = (MathView) root.findViewById(R.id.info_formula_two);
+        info_formula_two.setText(formulaFemale);
+        return root;
     }
+
 }

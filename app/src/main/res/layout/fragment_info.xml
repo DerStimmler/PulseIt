@@ -12,7 +12,7 @@
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="16dp">
+        android:paddingTop="0dp">
 
         <TextView
             android:id="@+id/info_header"
@@ -32,29 +32,55 @@
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/info_formulaMale"
+            android:id="@+id/info_legend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/info_description"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="7dp"
+            android:text="@string/info_legend"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/info_formulaMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info_legend"
+            android:layout_marginTop="3dp"
             android:text="@string/info_formulaMale"
             android:textSize="13dp" />
+
+        <io.github.kexanie.library.MathView
+            android:id="@+id/info_formula_one"
+            android:layout_below="@+id/info_formulaMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </io.github.kexanie.library.MathView>
+
 
         <TextView
             android:id="@+id/info_formulaFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/info_formulaMale"
-            android:layout_marginTop="15dp"
+            android:layout_below="@+id/info_formula_one"
+            android:layout_marginTop="6dp"
             android:text="@string/info_formulaFemale"
             android:textSize="13dp" />
+
+        <io.github.kexanie.library.MathView
+            android:id="@+id/info_formula_two"
+            android:layout_below="@+id/info_formulaFemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </io.github.kexanie.library.MathView>
 
         <TextView
             android:id="@+id/info_parameter_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/info_formulaFemale"
-            android:layout_marginTop="15dp"
+            android:layout_below="@+id/info_formula_two"
+            android:layout_marginTop="7dp"
             android:text="@string/info_parameter_age"
             android:textSize="13dp" />
 
@@ -81,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/info_parameter_gender"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="7dp"
             android:text="@string/info_interpretation"
             android:textSize="13dp" />
     </RelativeLayout>

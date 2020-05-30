@@ -9,12 +9,13 @@
     <!-- fragment_info -->
     <string name="info_header">About</string>
     <string name="info_formulaDescription">Die maximale Herzschlagfrequenz ist die Anzahl der Herzschläge pro Minute, die ein Mensch bei größtmöglicher körperlicher Anstrenung erreichen kann. In der vorliegenden App wird der Maximalpuls nach der Formel von Sally Edwards berechnet.</string>
-    <string name="info_formulaMale">Männer: Maximalpuls= 214 - 0,5 x Lebensalter (in Jahren) - 0,11 x Körpergewicht (in Kilogramm)</string>
-    <string name="info_formulaFemale">Frauen: Maximalpuls= 226 - 0,5 x Lebensalter (in Jahren) - 0,11 x Körpergewicht (in Kilogramm)</string>
+    <string name="info_legend">x= Maximalpuls; a = Lebensalter; g = Körpergewicht</string>
+    <string name="info_formulaMale">Männlich:</string>
+    <string name="info_formulaFemale">Weiblich:</string>
     <string name="info_parameter_age">Das Lebensalter muss GRÖßER 0 und in ganzzahligen Jahren angegeben sein.</string>
     <string name="info_parameter_weight">Das Körpergewicht muss GRÖßER 0 und in Kilogramm angegeben sein.</string>
-    <string name="info_parameter_gender">Als Geschlecht muss ein verfügbarer Button ausgewählt werden.</string>
-    <string name="info_interpretation">Die Bestimmung anhand von Formeln ist nur annähernd. Eine Interpretation des Ergebnis kann anhand den zusätzlich angezeigten Tabellen ermittelt werden. Der Prozentuale Anteil des Maximalpuls: 60-65 % Regeneration, 65-76 % Fettverbrennungszone, 75-85 % aerobes Training, 85-90% anaerobes Training, >90% maximales Training</string>
+    <string name="info_parameter_gender">Als Geschlecht muss Männlich oder Weiblich gewählt werden.</string>
+    <string name="info_interpretation">Eine Interpretation des Ergebnis kann anhand den zusätzlich angezeigten Tabellen ermittelt werden. Der Prozentuale Anteil des Maximalpuls: 60-65 % Regeneration, 65-76 % Fettverbrennungszone, 75-85 % aerobes Training, 85-90% anaerobes Training, >90% maximales Training</string>
     <!--settings-->
     <string name="settings_heading">Settings</string>
     <string name="settings_label_age">Alter:</string>
