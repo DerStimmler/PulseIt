@@ -9,8 +9,8 @@
     <ScrollView
         android:id="@+id/info_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
         <RelativeLayout
             android:id="@+id/info_relativeLayout"
             android:layout_width="match_parent"
@@ -141,15 +141,6 @@
                 android:layout_below="@+id/info_header_interpretation"
                 android:layout_marginTop="3dp"
                 android:text="@string/info_interpretation"
-                android:textSize="13dp" />
-
-            <TextView
-                android:id="@+id/info_blank"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_interpretation"
-                android:layout_marginTop="22dp"
-                android:text="@string/info_blank"
                 android:textSize="13dp" />
 
         </RelativeLayout>

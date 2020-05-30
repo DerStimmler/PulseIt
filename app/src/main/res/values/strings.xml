@@ -19,7 +19,6 @@
     <string name="info_parameter_gender">Als Geschlecht muss Männlich oder Weiblich gewählt werden.</string>
     <string name="info_header_interpretation">Interpretation</string>
     <string name="info_interpretation">Eine Interpretation des Ergebnis kann anhand den zusätzlich angezeigten Tabellen ermittelt werden. Der Prozentuale Anteil des Maximalpuls: 60-65 % Regeneration, 65-76 % Fettverbrennungszone, 75-85 % aerobes Training, 85-90% anaerobes Training, >90% maximales Training.</string>
-    <string name="info_blank">-</string>
     <!--settings-->
     <string name="settings_heading">Settings</string>
     <string name="settings_label_age">Alter:</string>
