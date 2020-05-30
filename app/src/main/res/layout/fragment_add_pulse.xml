@@ -11,14 +11,71 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/settings_heading"
+            android:id="@+id/addPulse_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AddPulse"
+            android:text="@string/add_pulse_heading"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/addPulse_label_pulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_pulse_label_pulse" />
+
+            <NumberPicker
+                android:id="@+id/addPulse_input_pulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/add_pulse_button_tap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="139dp"
+            android:layout_marginEnd="163dp"
+            android:layout_marginBottom="264dp"
+            android:text="@string/add_pulse_button_tap"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+
+        <Button
+            android:id="@+id/add_pulse_button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="158dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="165dp"
+            android:layout_marginBottom="112dp"
+            android:text="@string/add_pulse_button_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_pulse_button_tap" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

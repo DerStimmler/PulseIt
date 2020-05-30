@@ -25,4 +25,9 @@
     <string name="settings_label_weight">Gewicht:</string>
     <string name="settings_label_gender">Geschlecht:</string>
     <string name="settings_button_save">Speichern</string>
+    <!--add_pulse-->
+    <string name="add_pulse_heading">Add Pulse</string>
+    <string name="add_pulse_label_pulse">Puls:</string>
+    <string name="add_pulse_button_tap">Tap</string>
+    <string name="add_pulse_button_save">Speichern</string>
 </resources>
