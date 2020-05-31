@@ -1,5 +1,6 @@
 package com.cool.pulseit.fragments;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -105,13 +107,26 @@ public class SettingsFragment extends Fragment {
     private void initializeWeightNumberPicker() {
         _weightNumberPicker.setMinValue(0);
         _weightNumberPicker.setMaxValue(500);
-        _weightNumberPicker.setValue(60);
+        DatabaseManager dbm = new DatabaseManager(this.getContext());
+        Settings lastSetting = dbm.getLatestSettings();
+        if (lastSetting==null){
+            _weightNumberPicker.setValue(60); // TODO: DB Prüfen ob bereits einträge vorhanden, JA = als setValue, NEIN = auf 60
+        } else {
+            _weightNumberPicker.setValue(lastSetting.weight);
+        }
+
     }
 
     private void initializeAgeNumberPicker() {
         _ageNumberPicker.setMinValue(0);
         _ageNumberPicker.setMaxValue(150);
-        _ageNumberPicker.setValue(30);
+        DatabaseManager dbm = new DatabaseManager(this.getContext());
+        Settings lastSetting = dbm.getLatestSettings();
+        if (lastSetting==null){
+        _ageNumberPicker.setValue(30); // TODO: DB Prüfen ob bereits einträge vorhanden, JA = als setValue, NEIN = auf 30
+        } else {
+            _weightNumberPicker.setValue(lastSetting.age);
+        }
     }
 
     public void saveSettings(){
@@ -128,6 +143,5 @@ public class SettingsFragment extends Fragment {
 
         Toast.makeText(this.getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
     }
-
 
 }
