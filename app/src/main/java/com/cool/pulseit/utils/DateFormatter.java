@@ -24,4 +24,9 @@ public class DateFormatter {
 
         return date;
     }
+
+    public static String forUi(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        return format.format(date);
+    }
 }

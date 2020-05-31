@@ -3,6 +3,7 @@ package com.cool.pulseit.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cool.pulseit.PulsesAdapter;
+import com.cool.pulseit.PulsesSwipeToDeleteCallback;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
@@ -71,16 +73,18 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         _mainActivity = inflater.inflate(R.layout.fragment_history, container, false);
 
-        _recyclerView = _mainActivity.findViewById(R.id.history_recyclerview);
-
         DatabaseManager dbm = new DatabaseManager(_mainActivity.getContext());
         _pulses = dbm.getPulses();
 
         PulsesAdapter adapter = new PulsesAdapter(_pulses);
 
+        _recyclerView = _mainActivity.findViewById(R.id.history_recyclerview);
         _recyclerView.setAdapter(adapter);
-
         _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(adapter,getContext());
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(pulsesSwipeToDeleteCallback);
+        itemTouchHelper.attachToRecyclerView(_recyclerView);
 
         return _mainActivity;
     }

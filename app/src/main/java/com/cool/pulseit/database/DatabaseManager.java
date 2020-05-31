@@ -52,7 +52,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         List<Pulse> pulses = new ArrayList<Pulse>();
 
         try{
-            Cursor cursor = db.rawQuery("SELECT * FROM pulses INNER JOIN settings ON pulses.settings_id = settings.id;", null);
+            Cursor cursor = db.rawQuery("SELECT pulses.id AS pulses_id, pulses.date AS pulses_date, pulses.pulse AS pulses_pulse, settings.date AS settings_date, settings.id AS settings_id, settings.age AS settings_age, settings.weight AS settings_weight, settings.gender AS settings_gender FROM pulses INNER JOIN settings ON pulses.settings_id = settings.id;", null);
 
             int resultRows = cursor.getCount();
             if(resultRows == 0){
@@ -61,14 +61,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
             while(cursor.moveToNext()) {
 
-                int pulseId = cursor.getInt(cursor.getColumnIndex("pulses.id"));
-                Date pulseDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("pulses.date")));
-                int pulsePulse = cursor.getInt(cursor.getColumnIndex("pulses.pulse"));
-                Date settingsDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("settings.date")));
-                int settingsId = cursor.getInt(cursor.getColumnIndex("settings.id"));
-                int settingsAge = cursor.getInt(cursor.getColumnIndex("settings.age"));
-                int settingsWeight = cursor.getInt(cursor.getColumnIndex("settings.weight"));
-                Gender settingsGender = Gender.toEnum(cursor.getString(cursor.getColumnIndex("settings.gender")));
+                int pulseId = cursor.getInt(cursor.getColumnIndex("pulses_id"));
+                Date pulseDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("pulses_date")));
+                int pulsePulse = cursor.getInt(cursor.getColumnIndex("pulses_pulse"));
+                Date settingsDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("settings_date")));
+                int settingsId = cursor.getInt(cursor.getColumnIndex("settings_id"));
+                int settingsAge = cursor.getInt(cursor.getColumnIndex("settings_age"));
+                int settingsWeight = cursor.getInt(cursor.getColumnIndex("settings_weight"));
+                Gender settingsGender = Gender.toEnum(cursor.getString(cursor.getColumnIndex("settings_gender")));
 
                 Settings settings = new Settings(settingsGender, settingsWeight, settingsAge, settingsDate, settingsId);
                 Pulse pulse = new Pulse(pulseId, pulseDate, pulsePulse, settings);
@@ -121,5 +121,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
 
         return settings;
+    }
+
+    public void deletePulse(Pulse pulse) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        try{
+            db.execSQL(String.format("DELETE FROM pulses WHERE id=\'%s\';",String.valueOf(pulse.getId())));
+        }catch(Exception ex){
+            Log.e(this.getClass().getName(), "Error while deleting pulse");
+        }
     }
 }
