@@ -22,8 +22,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try{
+            db.execSQL("PRAGMA foreign_keys = ON;");
             db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL, date TEXT NOT NULL);");
-            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings INTEGER, FOREIGN KEY(settings) REFERENCES settings(id));");
+            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings) REFERENCES settings(id));");
+
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while creating database tables");
         }
@@ -32,7 +34,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public void saveSettings(Settings settings) {
         SQLiteDatabase db = getReadableDatabase();
         try {
-            db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\")", settings.weight, settings.age, settings.gender, DateFormatter.toDb(settings.date)));
+            db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\");", settings.weight, settings.age, settings.gender, DateFormatter.toDb(settings.date)));
         }catch (Exception ex){
             Log.e(this.getClass().getName(), "Error while saving settings");
         }
@@ -47,7 +49,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
 
         try{
-            db.execSQL(String.format("INSERT INTO pulses (pulse, date, settings) VALUES (%s,%s,%s)",pulse.pulse, DateFormatter.toDb(pulse.date),pulse.settings.getId()));
+            db.execSQL(String.format("INSERT INTO pulses (pulse, date, settings_id) VALUES (%s,\"%s\",%s);",pulse.pulse, DateFormatter.toDb(pulse.date),pulse.settings.getId()));
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while saving pulse");
         }
@@ -59,7 +61,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Settings settings = null;
 
         try{
-            Cursor cursor = db.rawQuery("SELECT * FROM settings ORDER BY date DESC LIMIT 1", null);
+            Cursor cursor = db.rawQuery("SELECT * FROM settings ORDER BY date DESC LIMIT 1;", null);
             int resultRows = cursor.getCount();
             if(resultRows == 0){
                 throw new Resources.NotFoundException();
