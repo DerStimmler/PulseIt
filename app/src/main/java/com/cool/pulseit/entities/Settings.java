@@ -10,6 +10,7 @@ public class Settings {
     public int weight;
     public int age;
     public Date date;
+    private int id;
 
     public Settings(Gender gender, int weight, int age, Date date){
         this.gender = gender;
@@ -18,35 +19,15 @@ public class Settings {
         this.date = date;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
+    public Settings(Gender gender, int weight, int age, Date date, int id){
         this.gender = gender;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
         this.weight = weight;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
         this.age = age;
+        this.date = date;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

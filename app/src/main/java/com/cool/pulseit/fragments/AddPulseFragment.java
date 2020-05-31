@@ -9,9 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import com.cool.pulseit.HeartRateCalculator;
 import com.cool.pulseit.R;
+import com.cool.pulseit.database.DatabaseManager;
+import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.entities.Settings;
+
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,7 +105,22 @@ public class AddPulseFragment extends Fragment {
     }
 
     private void savePulse() {
+        DatabaseManager dbm = new DatabaseManager(this.getContext());
 
+        int pulseValue = _pulseNumberPicker.getValue();
+        Date date = new Date();
+        Settings settings = dbm.getLatestSettings();
+
+        if(settings == null){
+            Toast.makeText(this.getContext(), "Couldn't retrieve Settings from Database", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Pulse pulse = new Pulse(date,pulseValue,settings);
+
+        dbm.savePulse(pulse);
+
+        Toast.makeText(this.getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
     }
 
     private void initializePulseNumberPicker() {
