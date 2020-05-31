@@ -1,48 +1,67 @@
 package com.cool.pulseit;
 
+import android.content.Context;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HeartRateCalculator {
-    List<Long> deltas;
-    Timestamp previousTime;
+    List<Long> _deltas;
+    Timestamp _previousTime;
+    Context _context;
 
-    public HeartRateCalculator(){
-        deltas = new ArrayList<Long>();
-        previousTime = new Timestamp(System.currentTimeMillis());
+    public HeartRateCalculator(Context context){
+        _deltas = new ArrayList<Long>();
+        _previousTime = new Timestamp(System.currentTimeMillis());
+        _context = context;
     }
 
     public void tap() {
         Timestamp now = new Timestamp(System.currentTimeMillis());
+        
+        vibrate();
 
-        if((now.getTime() - previousTime.getTime()) > 3000){
+        if((now.getTime() - _previousTime.getTime()) > 3000){
             restart();
             return;
         }
 
-        deltas.add(now.getTime() - previousTime.getTime());
+        _deltas.add(now.getTime() - _previousTime.getTime());
 
-        previousTime = now;
+        _previousTime = now;
+    }
+
+    private void vibrate() {
+        Vibrator v = (Vibrator) _context.getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(80, VibrationEffect.EFFECT_TICK));
+        } else {
+            //deprecated in API 26
+            v.vibrate(80);
+        }
     }
 
     public void restart(){
-        deltas.clear();
-        previousTime = new Timestamp(System.currentTimeMillis());
+        _deltas.clear();
+        _previousTime = new Timestamp(System.currentTimeMillis());
     }
 
     public int calculate(){
-        if(deltas.isEmpty()){
+        if(_deltas.isEmpty()){
             return 0;
         }
 
         Long sum = 0L;
 
-        for(Long delta : deltas){
+        for(Long delta : _deltas){
             sum += delta;
         }
 
-        Long avg = sum / deltas.size();
+        Long avg = sum / _deltas.size();
 
         int x = (int) (60 / (avg / 1000.0));
         return x;

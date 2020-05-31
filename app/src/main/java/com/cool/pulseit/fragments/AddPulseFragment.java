@@ -68,7 +68,7 @@ public class AddPulseFragment extends Fragment {
         // Inflate the layout for this fragment
         _mainActivity =  inflater.inflate(R.layout.fragment_add_pulse, container, false);
 
-        _heartRateCalculator = new HeartRateCalculator();
+        _heartRateCalculator = new HeartRateCalculator(getActivity());
 
         getViewElements();
         initializePulseNumberPicker();
