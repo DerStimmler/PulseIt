@@ -114,7 +114,6 @@ public class SettingsFragment extends Fragment {
         } else {
             _weightNumberPicker.setValue(lastSetting.weight);
         }
-
     }
 
     private void initializeAgeNumberPicker() {
@@ -125,7 +124,7 @@ public class SettingsFragment extends Fragment {
         if (lastSetting==null){
         _ageNumberPicker.setValue(30); // TODO: DB Prüfen ob bereits einträge vorhanden, JA = als setValue, NEIN = auf 30
         } else {
-            _weightNumberPicker.setValue(lastSetting.age);
+            _ageNumberPicker.setValue(lastSetting.age);
         }
     }
 
