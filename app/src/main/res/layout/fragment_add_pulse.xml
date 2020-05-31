@@ -40,13 +40,26 @@
                 android:id="@+id/addPulse_label_pulse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
                 android:text="@string/add_pulse_label_pulse" />
 
             <NumberPicker
                 android:id="@+id/addPulse_input_pulse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
                 android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/addPulse_label_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:text="@string/addPulse_label_unit"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </TableRow>
 
         <Button

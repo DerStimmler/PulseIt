@@ -30,4 +30,5 @@
     <string name="add_pulse_label_pulse">Puls:</string>
     <string name="add_pulse_button_tap">Tap</string>
     <string name="add_pulse_button_save">Speichern</string>
+    <string name="addPulse_label_unit">BPM</string>
 </resources>
