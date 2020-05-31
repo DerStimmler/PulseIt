@@ -31,4 +31,7 @@
     <string name="add_pulse_button_tap">Tap</string>
     <string name="add_pulse_button_save">Speichern</string>
     <string name="addPulse_label_unit">BPM</string>
+    <!--history-->
+    <string name="history_heading">History</string>
+
 </resources>

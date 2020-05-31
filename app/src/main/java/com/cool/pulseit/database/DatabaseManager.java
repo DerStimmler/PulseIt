@@ -12,7 +12,9 @@ import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Gender;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     public DatabaseManager(Context context){
@@ -24,8 +26,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         try{
             db.execSQL("PRAGMA foreign_keys = ON;");
             db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL, date TEXT NOT NULL);");
-            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings) REFERENCES settings(id));");
-
+            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings_id) REFERENCES settings(id));");
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while creating database tables");
         }
@@ -43,6 +44,44 @@ public class DatabaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public List<Pulse> getPulses(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        List<Pulse> pulses = new ArrayList<Pulse>();
+
+        try{
+            Cursor cursor = db.rawQuery("SELECT * FROM pulses INNER JOIN settings ON pulses.settings_id = settings.id;", null);
+
+            int resultRows = cursor.getCount();
+            if(resultRows == 0){
+                throw new Resources.NotFoundException();
+            }
+
+            while(cursor.moveToNext()) {
+
+                int pulseId = cursor.getInt(cursor.getColumnIndex("pulses.id"));
+                Date pulseDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("pulses.date")));
+                int pulsePulse = cursor.getInt(cursor.getColumnIndex("pulses.pulse"));
+                Date settingsDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("settings.date")));
+                int settingsId = cursor.getInt(cursor.getColumnIndex("settings.id"));
+                int settingsAge = cursor.getInt(cursor.getColumnIndex("settings.age"));
+                int settingsWeight = cursor.getInt(cursor.getColumnIndex("settings.weight"));
+                Gender settingsGender = Gender.toEnum(cursor.getString(cursor.getColumnIndex("settings.gender")));
+
+                Settings settings = new Settings(settingsGender, settingsWeight, settingsAge, settingsDate, settingsId);
+                Pulse pulse = new Pulse(pulseId, pulseDate, pulsePulse, settings);
+
+                pulses.add(pulse);
+            }
+
+            return pulses;
+
+        }catch(Exception ex){
+            Log.e(this.getClass().getName(), "Error while getting pulses");
+            return pulses;
+        }
     }
 
     public void savePulse(Pulse pulse) {
