@@ -66,15 +66,20 @@
             android:id="@+id/add_pulse_button_tap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="139dp"
-            android:layout_marginEnd="163dp"
-            android:layout_marginBottom="264dp"
+            android:layout_gravity="center"
+            android:background="@drawable/add_pulse_tap_button"
+            android:drawableStart="@drawable/ic_touch_app"
+            android:drawableEnd="@drawable/ic_favorite"
+            android:drawablePadding="5dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:text="@string/add_pulse_button_tap"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow" />
+            app:layout_constraintTop_toBottomOf="@+id/tableRow"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"/>
 
         <Button
             android:id="@+id/add_pulse_button_save"
