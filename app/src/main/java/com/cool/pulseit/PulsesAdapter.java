@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cool.pulseit.database.DatabaseManager;
@@ -28,6 +31,9 @@ import com.github.mikephil.charting.charts.BarChart;
 import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
@@ -113,15 +119,28 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         layout.layout(0,0, layout.getMeasuredWidth(), layout.getMeasuredHeight());
         layout.draw(canvas);
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        bitmap.recycle();
-        
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("image/*");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, byteArray);
-        myDialog.getContext().startActivity(Intent.createChooser(shareIntent,"Share via..."));
+        try {
+            File cachePath = new File(_context.getCacheDir(), "images");
+            cachePath.mkdirs();
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image.jpg");
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            stream.close();
+        }catch (IOException e){
+            Log.e(getClass().getName(), e.getMessage());
+        }
+
+        File imagePath = new File(_context.getCacheDir(), "images");
+        File newFile = new File(imagePath, "image.jpg");
+        Uri contentUri = FileProvider.getUriForFile(_context, "com.cool.pulseit.fileprovider", newFile);
+
+        if(contentUri != null){
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.setDataAndType(contentUri, _context.getContentResolver().getType(contentUri));
+            shareIntent.setType("image/*");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            _context.startActivity(Intent.createChooser(shareIntent,"Share via..."));
+        }
     }
 
     @Override
