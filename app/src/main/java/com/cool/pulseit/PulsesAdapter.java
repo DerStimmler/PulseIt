@@ -3,6 +3,8 @@ package com.cool.pulseit;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,10 +51,13 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         // Dialog ini
         myDialog = new Dialog(_context);
         myDialog.setContentView(R.layout.dialog_history);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Darstellung erster Card ->Puls+Datum+Zone
                 TextView dialog_pulse_tv = (TextView) myDialog.findViewById(R.id.dialog_pulse_id);
                 TextView dialog_date_tv = (TextView) myDialog.findViewById(R.id.dialog_date_id);
                 TextView dialog_zones_tv = myDialog.findViewById(R.id.dialog_zones_id);
@@ -64,6 +69,15 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
                 ZoneCalculator zoneCalculator = new ZoneCalculator(pulse.pulse,pulse.settings.age,pulse.settings.weight, pulse.settings.gender);
                 String zone = zoneCalculator.calculateZone();
                 dialog_zones_tv.setText(zone);
+
+                //Dastellung zweiter Card -> Settings
+                TextView dialog_gender_tv = myDialog.findViewById(R.id.dialog_settings_gender);
+                TextView dialog_age_tv = myDialog.findViewById(R.id.dialog_settings_age);
+                TextView dialog_weight_tv = myDialog.findViewById(R.id.dialog_settings_weight);
+
+                dialog_gender_tv.setText(String.valueOf(pulse.settings.gender));
+                dialog_age_tv.setText(String.valueOf(pulse.settings.age));
+                dialog_weight_tv.setText(String.valueOf(pulse.settings.weight));
 
                 Toast.makeText(_context, "Test Click" + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show(); //Todo: raus löschen am ende
                 myDialog.show();
