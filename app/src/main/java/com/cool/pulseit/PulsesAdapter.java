@@ -3,6 +3,9 @@ package com.cool.pulseit;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -24,6 +27,7 @@ import com.github.mikephil.charting.charts.BarChart;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
@@ -92,10 +96,32 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
 
                 Toast.makeText(_context, "Test Click" + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show(); //Todo: raus löschen am ende
                 myDialog.show();
+
+                share(myDialog);
             }
         });
 
         return viewHolder;
+    }
+
+    private void share(Dialog dialog) {
+        LinearLayout layout = dialog.findViewById(R.id.history_row_linear_layout);
+
+        layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        Bitmap bitmap = Bitmap.createBitmap(layout.getMeasuredWidth(), layout.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        layout.layout(0,0, layout.getMeasuredWidth(), layout.getMeasuredHeight());
+        layout.draw(canvas);
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        bitmap.recycle();
+        
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, byteArray);
+        myDialog.getContext().startActivity(Intent.createChooser(shareIntent,"Share via..."));
     }
 
     @Override
