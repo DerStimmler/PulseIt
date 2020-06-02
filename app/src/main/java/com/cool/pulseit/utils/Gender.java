@@ -5,7 +5,7 @@ public enum Gender {
     FEMALE;
 
     public static Gender toEnum(String genderString) {
-        switch (genderString){
+        switch (genderString) {
             case "männlich":
             case "MALE":
                 return Gender.MALE;
@@ -13,7 +13,7 @@ public enum Gender {
             case "FEMALE":
                 return Gender.FEMALE;
             default:
-                throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum",genderString));
+                throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum", genderString));
         }
     }
 }

@@ -14,7 +14,7 @@ public class HeartRateCalculator {
     Timestamp _previousTime;
     Context _context;
 
-    public HeartRateCalculator(Context context){
+    public HeartRateCalculator(Context context) {
         _deltas = new ArrayList<Long>();
         _previousTime = new Timestamp(System.currentTimeMillis());
         _context = context;
@@ -22,10 +22,10 @@ public class HeartRateCalculator {
 
     public void tap() {
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        
+
         vibrate();
 
-        if((now.getTime() - _previousTime.getTime()) > 3000){
+        if ((now.getTime() - _previousTime.getTime()) > 3000) {
             restart();
             return;
         }
@@ -45,19 +45,19 @@ public class HeartRateCalculator {
         }
     }
 
-    public void restart(){
+    public void restart() {
         _deltas.clear();
         _previousTime = new Timestamp(System.currentTimeMillis());
     }
 
-    public int calculate(){
-        if(_deltas.isEmpty()){
+    public int calculate() {
+        if (_deltas.isEmpty()) {
             return 0;
         }
 
         Long sum = 0L;
 
-        for(Long delta : _deltas){
+        for (Long delta : _deltas) {
             sum += delta;
         }
 

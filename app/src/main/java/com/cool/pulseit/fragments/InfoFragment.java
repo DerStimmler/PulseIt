@@ -1,12 +1,11 @@
 package com.cool.pulseit.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.R;
 
@@ -21,13 +20,12 @@ public class InfoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private final String formulaMale = "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
+    private final String formulaFemale = "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
     private String mParam1;
     private String mParam2;
     private View _mainActivity;
     private MathView _info_formula_one;
-    private final String formulaMale= "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
-    private final String formulaFemale= "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
     private MathView _info_formula_two;
 
     public InfoFragment() {

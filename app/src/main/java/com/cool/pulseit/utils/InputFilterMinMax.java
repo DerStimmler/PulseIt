@@ -9,7 +9,7 @@ public class InputFilterMinMax implements InputFilter {
     private int _min;
     private int _max;
 
-    public InputFilterMinMax(int min, int max){
+    public InputFilterMinMax(int min, int max) {
         this._min = min;
         this._max = max;
     }

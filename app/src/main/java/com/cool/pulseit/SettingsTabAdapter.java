@@ -13,7 +13,7 @@ public class SettingsTabAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> _tabFragments = new ArrayList<>();
     private List<String> _tabFragmentsTitles = new ArrayList<>();
 
-    public SettingsTabAdapter(FragmentManager fm){
+    public SettingsTabAdapter(FragmentManager fm) {
         super(fm);
     }
 

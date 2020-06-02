@@ -18,12 +18,13 @@ public class PulsesSwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback 
     private Drawable _deleteIcon;
     private PulsesAdapter _adapter;
 
-    public PulsesSwipeToDeleteCallback(PulsesAdapter adapter, Context context){
-        super(0,ItemTouchHelper.LEFT);
+    public PulsesSwipeToDeleteCallback(PulsesAdapter adapter, Context context) {
+        super(0, ItemTouchHelper.LEFT);
         _adapter = adapter;
-        _deleteIcon = ContextCompat.getDrawable(context,R.drawable.ic_delete);
+        _deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete);
         _background = new ColorDrawable(Color.RED);
     }
+
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
         return false;
@@ -63,7 +64,7 @@ public class PulsesSwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback 
                     itemView.getTop(), itemView.getRight(), itemView.getBottom());
         } else { // view is unSwiped
             _background.setBounds(0, 0, 0, 0);
-            _deleteIcon.setBounds(0,0,0,0);
+            _deleteIcon.setBounds(0, 0, 0, 0);
         }
 
         _background.draw(c);

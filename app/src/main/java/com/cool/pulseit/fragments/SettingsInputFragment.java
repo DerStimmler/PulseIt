@@ -1,15 +1,14 @@
 package com.cool.pulseit.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+
+import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
@@ -87,7 +86,7 @@ public class SettingsInputFragment extends Fragment {
     }
 
     private void initializeEventListeners() {
-        _saveButton.setOnClickListener(new View.OnClickListener(){
+        _saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveSettings();
@@ -109,7 +108,7 @@ public class SettingsInputFragment extends Fragment {
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
 
-        if (!result.isOk()){
+        if (!result.isOk()) {
             _weightNumberPicker.setValue(60);
         } else {
             _weightNumberPicker.setValue(result.getValue().weight);
@@ -123,29 +122,29 @@ public class SettingsInputFragment extends Fragment {
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
 
-        if (!result.isOk()){
+        if (!result.isOk()) {
             _ageNumberPicker.setValue(30);
         } else {
             _ageNumberPicker.setValue(result.getValue().age);
         }
     }
 
-    public void saveSettings(){
+    public void saveSettings() {
         int age = _ageNumberPicker.getValue();
         int weight = _weightNumberPicker.getValue();
         Gender gender = Gender.toEnum(_genderSpinner.getSelectedItem().toString());
         Date date = new Date();
 
-        Settings settings = new Settings(gender,weight,age,date);
+        Settings settings = new Settings(gender, weight, age, date);
 
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result result = dbm.saveSettings(settings);
 
-        if(!result.isOk()){
-            StatusSnackbar.show(getActivity(),result.getMessage());
+        if (!result.isOk()) {
+            StatusSnackbar.show(getActivity(), result.getMessage());
             return;
         }
 
-        StatusSnackbar.show(getActivity(),result.getMessage());
+        StatusSnackbar.show(getActivity(), result.getMessage());
     }
 }

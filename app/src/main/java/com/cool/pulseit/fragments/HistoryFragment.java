@@ -1,15 +1,14 @@
 package com.cool.pulseit.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.cool.pulseit.PulsesAdapter;
 import com.cool.pulseit.PulsesSwipeToDeleteCallback;
@@ -18,7 +17,6 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -80,9 +78,9 @@ public class HistoryFragment extends Fragment {
 
         Result<List<Pulse>> result = dbm.getPulses();
 
-        if(!result.isOk()){
-            StatusSnackbar.show(getActivity(),result.getMessage());
-        }else{
+        if (!result.isOk()) {
+            StatusSnackbar.show(getActivity(), result.getMessage());
+        } else {
             _pulses = result.getValue();
 
             PulsesAdapter adapter = new PulsesAdapter(_pulses);
@@ -91,7 +89,7 @@ public class HistoryFragment extends Fragment {
             _recyclerView.setAdapter(adapter);
             _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-            PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(adapter,getContext());
+            PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(adapter, getContext());
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(pulsesSwipeToDeleteCallback);
             itemTouchHelper.attachToRecyclerView(_recyclerView);
         }

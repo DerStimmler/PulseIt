@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,17 +15,16 @@ import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
+public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
 
     private List<Pulse> _pulses;
     private Context _context;
     private View _mainActivity;
 
-    public PulsesAdapter(List<Pulse> pulses){
+    public PulsesAdapter(List<Pulse> pulses) {
         _pulses = pulses;
     }
 
@@ -59,21 +57,21 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
         return _pulses.size();
     }
 
-    public void deleteItem(int position){
+    public void deleteItem(int position) {
 
         Pulse pulse = _pulses.get(position);
 
         DatabaseManager dbm = new DatabaseManager(_context);
         Result result = dbm.deletePulse(pulse);
 
-        if(!result.isOk()){
-            StatusSnackbar.show((Activity)_context,result.getMessage());
+        if (!result.isOk()) {
+            StatusSnackbar.show((Activity) _context, result.getMessage());
             return;
         }
 
         _pulses.remove(position);
         notifyItemRemoved(position);
 
-        StatusSnackbar.show((Activity)_context,result.getMessage());
+        StatusSnackbar.show((Activity) _context, result.getMessage());
     }
 }
