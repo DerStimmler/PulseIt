@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
+import com.cool.pulseit.utils.Result;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
 
     private List<Pulse> _pulses;
     private Context _context;
+    private View _mainActivity;
 
     public PulsesAdapter(List<Pulse> pulses){
         _pulses = pulses;
@@ -29,6 +32,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
     @Override
     public PulsesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         _context = parent.getContext();
+        _mainActivity = parent.getRootView();
         LayoutInflater inflater = LayoutInflater.from(_context);
 
         View historyView = inflater.inflate(R.layout.history_row, parent, false);
@@ -54,13 +58,20 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
     }
 
     public void deleteItem(int position){
-        DatabaseManager dbm = new DatabaseManager(_context);
 
         Pulse pulse = _pulses.get(position);
-        dbm.deletePulse(pulse);
+
+        DatabaseManager dbm = new DatabaseManager(_context);
+        Result result = dbm.deletePulse(pulse);
+
+        if(!result.isOk()){
+            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            return;
+        }
+
         _pulses.remove(position);
         notifyItemRemoved(position);
 
-        Toast.makeText(_context, "Gelöscht", Toast.LENGTH_SHORT).show();
+        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
     }
 }

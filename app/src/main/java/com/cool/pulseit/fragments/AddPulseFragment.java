@@ -16,6 +16,8 @@ import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
+import com.cool.pulseit.utils.Result;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
 
@@ -109,18 +111,24 @@ public class AddPulseFragment extends Fragment {
 
         int pulseValue = _pulseNumberPicker.getValue();
         Date date = new Date();
-        Settings settings = dbm.getLatestSettings();
 
-        if(settings == null){
-            Toast.makeText(this.getContext(), "Couldn't retrieve Settings from Database", Toast.LENGTH_SHORT).show();
+        Result<Settings> result = dbm.getLatestSettings();
+
+        if(!result.isOk()){
+            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
             return;
         }
 
-        Pulse pulse = new Pulse(date,pulseValue,settings);
+        Pulse pulse = new Pulse(date,pulseValue,result.getValue());
 
-        dbm.savePulse(pulse);
+        result = dbm.savePulse(pulse);
 
-        Toast.makeText(this.getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
+        if(!result.isOk()){
+            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            return;
+        }
+
+        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
     }
 
     private void initializePulseNumberPicker() {

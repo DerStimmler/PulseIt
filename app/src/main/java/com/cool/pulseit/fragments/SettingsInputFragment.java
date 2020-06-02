@@ -16,6 +16,8 @@ import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.utils.Result;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
 
@@ -104,24 +106,28 @@ public class SettingsInputFragment extends Fragment {
     private void initializeWeightNumberPicker() {
         _weightNumberPicker.setMinValue(0);
         _weightNumberPicker.setMaxValue(500);
+
         DatabaseManager dbm = new DatabaseManager(this.getContext());
-        Settings lastSetting = dbm.getLatestSettings();
-        if (lastSetting==null){
-            _weightNumberPicker.setValue(60); // TODO: DB Prüfen ob bereits einträge vorhanden, JA = als setValue, NEIN = auf 60
+        Result<Settings> result = dbm.getLatestSettings();
+
+        if (!result.isOk()){
+            _weightNumberPicker.setValue(60);
         } else {
-            _weightNumberPicker.setValue(lastSetting.weight);
+            _weightNumberPicker.setValue(result.getValue().weight);
         }
     }
 
     private void initializeAgeNumberPicker() {
         _ageNumberPicker.setMinValue(0);
         _ageNumberPicker.setMaxValue(150);
+
         DatabaseManager dbm = new DatabaseManager(this.getContext());
-        Settings lastSetting = dbm.getLatestSettings();
-        if (lastSetting==null){
-            _ageNumberPicker.setValue(30); // TODO: DB Prüfen ob bereits einträge vorhanden, JA = als setValue, NEIN = auf 30
+        Result<Settings> result = dbm.getLatestSettings();
+
+        if (!result.isOk()){
+            _ageNumberPicker.setValue(30);
         } else {
-            _ageNumberPicker.setValue(lastSetting.age);
+            _ageNumberPicker.setValue(result.getValue().age);
         }
     }
 
@@ -134,9 +140,13 @@ public class SettingsInputFragment extends Fragment {
         Settings settings = new Settings(gender,weight,age,date);
 
         DatabaseManager dbm = new DatabaseManager(this.getContext());
+        Result result = dbm.saveSettings(settings);
 
-        dbm.saveSettings(settings);
+        if(!result.isOk()){
+            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            return;
+        }
 
-        Toast.makeText(this.getContext(), "Gespeichert", Toast.LENGTH_SHORT).show();
+        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
     }
 }

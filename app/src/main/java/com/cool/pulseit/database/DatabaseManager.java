@@ -11,6 +11,7 @@ import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.utils.Result;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,12 +33,24 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
     }
 
-    public void saveSettings(Settings settings) {
+    public Result saveSettings(Settings settings) {
         SQLiteDatabase db = getReadableDatabase();
+
+        Result result = new Result();
+
         try {
             db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\");", settings.weight, settings.age, settings.gender, DateFormatter.toDb(settings.date)));
+
+            result.setOk(true);
+            result.setMessage("Gespeichert");
+            return result;
+
         }catch (Exception ex){
             Log.e(this.getClass().getName(), "Error while saving settings");
+
+            result.setOk(false);
+            result.setMessage("Fehler beim Speichern der Settings");
+            return result;
         }
     }
 
@@ -46,9 +59,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public List<Pulse> getPulses(){
+    public Result<List<Pulse>> getPulses(){
         SQLiteDatabase db = getReadableDatabase();
 
+        Result result = new Result();
         List<Pulse> pulses = new ArrayList<Pulse>();
 
         try{
@@ -56,7 +70,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
             int resultRows = cursor.getCount();
             if(resultRows == 0){
-                throw new Resources.NotFoundException();
+                result.setOk(false);
+                result.setMessage("Keine Pulses gefunden");
+                return result;
             }
 
             while(cursor.moveToNext()) {
@@ -76,34 +92,55 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 pulses.add(pulse);
             }
 
-            return pulses;
+            result.setOk(true);
+            result.setValue(pulses);
+
+            return result;
 
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while getting pulses");
-            return pulses;
+
+            result.setOk(false);
+            result.setMessage("Fehler beim Abrufen der Pulses");
+            return result;
         }
     }
 
-    public void savePulse(Pulse pulse) {
+    public Result savePulse(Pulse pulse) {
         SQLiteDatabase db = getReadableDatabase();
+
+        Result result = new Result();
 
         try{
             db.execSQL(String.format("INSERT INTO pulses (pulse, date, settings_id) VALUES (%s,\"%s\",%s);",pulse.pulse, DateFormatter.toDb(pulse.date),pulse.settings.getId()));
+
+            result.setOk(true);
+            result.setMessage("Gespeichert");
+            return result;
+
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while saving pulse");
+
+            result.setOk(false);
+            result.setMessage("Fehler beim Speichern des Pulses");
+            return result;
         }
     }
 
-    public Settings getLatestSettings() {
+    public Result<Settings> getLatestSettings() {
         SQLiteDatabase db = getReadableDatabase();
 
-        Settings settings = null;
+        Result<Settings>  result = new Result<Settings>();
+
+        Settings settings;
 
         try{
             Cursor cursor = db.rawQuery("SELECT * FROM settings ORDER BY date DESC LIMIT 1;", null);
             int resultRows = cursor.getCount();
             if(resultRows == 0){
-                throw new Resources.NotFoundException();
+                result.setOk(false);
+                result.setMessage("Keine Settings Einträge gefunden");
+                return result;
             }
 
             cursor.moveToFirst();
@@ -116,20 +153,37 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
             settings = new Settings(gender,weight,age,date,id);
 
+            result.setOk(true);
+            result.setValue(settings);
+            return result;
+
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while retrieving Settings");
-        }
 
-        return settings;
+            result.setOk(false);
+            result.setMessage("Fehler beim Abruf der Settings");
+            return result;
+        }
     }
 
-    public void deletePulse(Pulse pulse) {
+    public Result deletePulse(Pulse pulse) {
         SQLiteDatabase db = getReadableDatabase();
+
+        Result result = new Result();
 
         try{
             db.execSQL(String.format("DELETE FROM pulses WHERE id=\'%s\';",String.valueOf(pulse.getId())));
+
+            result.setOk(true);
+            result.setMessage("Gelöscht");
+            return result;
+
         }catch(Exception ex){
             Log.e(this.getClass().getName(), "Error while deleting pulse");
+
+            result.setOk(false);
+            result.setMessage("Fehler beim Löschen des Pulses");
+            return result;
         }
     }
 }

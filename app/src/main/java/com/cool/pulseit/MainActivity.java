@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.fragments.AddPulseFragment;
 import com.cool.pulseit.fragments.AnalyticsFragment;
 import com.cool.pulseit.fragments.HistoryFragment;

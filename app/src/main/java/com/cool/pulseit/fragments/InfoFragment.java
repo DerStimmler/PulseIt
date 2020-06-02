@@ -18,17 +18,17 @@ import io.github.kexanie.library.MathView;
  * create an instance of this fragment.
  */
 public class InfoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    MathView info_formula_one;
-    MathView info_formula_two;
-    String formulaMale= "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
-    String formulaFemale= "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
+    private View _mainActivity;
+    private MathView _info_formula_one;
+    private final String formulaMale= "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
+    private final String formulaFemale= "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
+    private MathView _info_formula_two;
 
     public InfoFragment() {
         // Required empty public constructor
@@ -64,14 +64,14 @@ public class InfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_info, container, false);
-        info_formula_one = (MathView) root.findViewById(R.id.info_formula_one);
-        info_formula_one.setText(formulaMale);
+        _mainActivity = inflater.inflate(R.layout.fragment_info, container, false);
+        _info_formula_one = _mainActivity.findViewById(R.id.info_formula_one);
+        _info_formula_one.setText(formulaMale);
 
-        info_formula_two = (MathView) root.findViewById(R.id.info_formula_two);
-        info_formula_two.setText(formulaFemale);
-        return root;
+        _info_formula_two = _mainActivity.findViewById(R.id.info_formula_two);
+        _info_formula_two.setText(formulaFemale);
+
+        return _mainActivity;
     }
 
 }

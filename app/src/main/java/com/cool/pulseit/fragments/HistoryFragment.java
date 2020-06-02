@@ -16,6 +16,8 @@ import com.cool.pulseit.PulsesSwipeToDeleteCallback;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.utils.Result;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -74,17 +76,24 @@ public class HistoryFragment extends Fragment {
         _mainActivity = inflater.inflate(R.layout.fragment_history, container, false);
 
         DatabaseManager dbm = new DatabaseManager(_mainActivity.getContext());
-        _pulses = dbm.getPulses();
 
-        PulsesAdapter adapter = new PulsesAdapter(_pulses);
+        Result<List<Pulse>> result = dbm.getPulses();
 
-        _recyclerView = _mainActivity.findViewById(R.id.history_recyclerview);
-        _recyclerView.setAdapter(adapter);
-        _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        if(!result.isOk()){
+            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+        }else{
+            _pulses = result.getValue();
 
-        PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(adapter,getContext());
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(pulsesSwipeToDeleteCallback);
-        itemTouchHelper.attachToRecyclerView(_recyclerView);
+            PulsesAdapter adapter = new PulsesAdapter(_pulses);
+
+            _recyclerView = _mainActivity.findViewById(R.id.history_recyclerview);
+            _recyclerView.setAdapter(adapter);
+            _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(adapter,getContext());
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(pulsesSwipeToDeleteCallback);
+            itemTouchHelper.attachToRecyclerView(_recyclerView);
+        }
 
         return _mainActivity;
     }
