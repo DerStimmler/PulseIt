@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.R;
+import com.github.mikephil.charting.charts.BarChart;
 
 import io.github.kexanie.library.MathView;
 
@@ -25,6 +27,7 @@ public class InfoFragment extends Fragment {
     private View _mainActivity;
     private MathView _info_formula_one;
     private MathView _info_formula_two;
+    private BarChart _chart;
 
     public InfoFragment() {
         // Required empty public constructor
@@ -67,7 +70,19 @@ public class InfoFragment extends Fragment {
         _info_formula_two = _mainActivity.findViewById(R.id.info_formula_two);
         _info_formula_two.setText(getString(R.string.info_formula_female));
 
+        _chart = _mainActivity.findViewById(R.id.info_chart);
+
+        initChart();
+
         return _mainActivity;
+    }
+
+    private void initChart() {
+
+        ChartGenerator cg = new ChartGenerator(getContext());
+        _chart = cg.generateInfoChart(_chart);
+
+        _chart.invalidate();
     }
 
 }

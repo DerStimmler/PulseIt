@@ -25,10 +25,9 @@
         <ScrollView
             android:id="@+id/info_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:scrollbarStyle="insideOverlay"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/info_header">
@@ -40,7 +39,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="vertical"
-                android:paddingTop="0dp">
+                android:paddingBottom="150dp">
 
                 <TextView
                     android:id="@+id/info_description"
@@ -142,6 +141,12 @@
                     android:layout_marginTop="3dp"
                     android:text="@string/info_interpretation"
                     android:textSize="13sp" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/info_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_weight="1" />
 
             </LinearLayout>
         </ScrollView>
