@@ -6,143 +6,145 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.InfoFragment">
 
-    <ScrollView
-        android:id="@+id/info_scrollview"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp">
-        <RelativeLayout
-            android:id="@+id/info_relativeLayout"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/info_header"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_header"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/info_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="16dp"
-            android:paddingTop="0dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:scrollbarStyle="insideOverlay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_header">
 
-            <TextView
-                android:id="@+id/info_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:text="@string/info_header"
-                android:textColor="@color/grey"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/info_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_header"
-                android:text="@string/info_formulaDescription"
-                android:textSize="13dp" />
-
-            <TextView
-                android:id="@+id/info_header_formula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_description"
-                android:layout_marginTop="7dp"
-                android:text="@string/info_header_formula"
-                android:textColor="@color/grey"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/info_legend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_header_formula"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_legend"
-                android:textSize="13dp" />
-
-            <TextView
-                android:id="@+id/info_formulaMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_legend"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_formulaMale"
-                android:textSize="13dp" />
-
-            <io.github.kexanie.library.MathView
-                android:id="@+id/info_formula_one"
+            <LinearLayout
+                android:id="@+id/info_relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/info_formulaMale"></io.github.kexanie.library.MathView>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                android:paddingTop="0dp">
+
+                <TextView
+                    android:id="@+id/info_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_formulaDescription"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/info_header_formula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="@string/info_header_formula"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/info_legend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_legend"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/info_formulaMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_formulaMale"
+                    android:textSize="13sp" />
+
+                <io.github.kexanie.library.MathView
+                    android:id="@+id/info_formula_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
 
 
-            <TextView
-                android:id="@+id/info_formulaFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_formula_one"
-                android:layout_marginTop="6dp"
-                android:text="@string/info_formulaFemale"
-                android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/info_formulaFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/info_formulaFemale"
+                    android:textSize="13sp" />
 
-            <io.github.kexanie.library.MathView
-                android:id="@+id/info_formula_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_formulaFemale"></io.github.kexanie.library.MathView>
+                <io.github.kexanie.library.MathView
+                    android:id="@+id/info_formula_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
 
-            <TextView
-                android:id="@+id/info_header_range"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_formula_two"
-                android:layout_marginTop="7dp"
-                android:text="@string/info_header_range"
-                android:textColor="@color/grey"
-                android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/info_header_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="@string/info_header_range"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/info_parameter_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_header_range"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_parameter_age"
-                android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/info_parameter_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_parameter_age"
+                    android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/info_parameter_weight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_parameter_age"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_parameter_weight"
-                android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/info_parameter_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_parameter_weight"
+                    android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/info_parameter_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_parameter_weight"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_parameter_gender"
-                android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/info_parameter_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_parameter_gender"
+                    android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/info_header_interpretation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_parameter_gender"
-                android:layout_marginTop="7dp"
-                android:text="@string/info_header_interpretation"
-                android:textColor="@color/grey"
-                android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/info_header_interpretation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="@string/info_header_interpretation"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/info_interpretation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_header_interpretation"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_interpretation"
-                android:textSize="13dp" />
+                <TextView
+                    android:id="@+id/info_interpretation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation"
+                    android:textSize="13sp" />
 
-        </RelativeLayout>
-    </ScrollView>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
