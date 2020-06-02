@@ -20,6 +20,7 @@ import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
+import com.github.mikephil.charting.charts.BarChart;
 
 import org.w3c.dom.Text;
 
@@ -58,8 +59,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
             public void onClick(View v) {
 
                 // Darstellung erster Card ->Puls+Datum+Zone
-                TextView dialog_pulse_tv = (TextView) myDialog.findViewById(R.id.dialog_pulse_id);
-                TextView dialog_date_tv = (TextView) myDialog.findViewById(R.id.dialog_date_id);
+                TextView dialog_pulse_tv = myDialog.findViewById(R.id.dialog_pulse_id);
+                TextView dialog_date_tv = myDialog.findViewById(R.id.dialog_date_id);
                 TextView dialog_zones_tv = myDialog.findViewById(R.id.dialog_zones_id);
 
                 Pulse pulse = _pulses.get(viewHolder.getAdapterPosition());
@@ -78,6 +79,16 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
                 dialog_gender_tv.setText(String.valueOf(pulse.settings.gender));
                 dialog_age_tv.setText(String.valueOf(pulse.settings.age));
                 dialog_weight_tv.setText(String.valueOf(pulse.settings.weight));
+
+
+                BarChart chart = myDialog.findViewById(R.id.detail_chart);
+                MaximumHeartRateCalculator mhrCalculator = new MaximumHeartRateCalculator(pulse.settings.age, pulse.settings.weight, pulse.settings.gender);
+                int mhr = mhrCalculator.calculateMaximumHeartRate();
+                ChartGenerator cg = new ChartGenerator(_context);
+
+                chart = cg.classifyPulseChart(chart, pulse, mhr);
+
+                chart.invalidate();
 
                 Toast.makeText(_context, "Test Click" + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show(); //Todo: raus löschen am ende
                 myDialog.show();

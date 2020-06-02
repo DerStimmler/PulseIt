@@ -48,16 +48,6 @@ public class ChartGenerator {
         dataSet.setValueTextColor(Color.TRANSPARENT);
 
         BarData bardata = new BarData(dataSet);
-        chart.getXAxis().setAxisMaximum(1f);
-        chart.getXAxis().setAxisMinimum(1f);
-        chart.getXAxis().setLabelCount(0,true);
-        chart.getAxisLeft().setAxisMinimum(0f);
-        chart.getAxisLeft().setAxisMaximum(110f);
-        chart.getAxisRight().setEnabled(false);
-        chart.getXAxis().setGranularityEnabled(true);
-        chart.getXAxis().setGranularity(1f);
-        chart.getXAxis().setDrawLabels(false);
-        chart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
         bardata.setBarWidth(0.5f);
 
         LimitLine ll;
@@ -81,6 +71,15 @@ public class ChartGenerator {
         chart.getAxisLeft().addLimitLine(ll);
 
         chart.setData(bardata);
+        chart.getXAxis().setAxisMaximum(1f);
+        chart.getXAxis().setAxisMinimum(1f);
+        chart.getXAxis().setLabelCount(0,true);
+        chart.getAxisLeft().setAxisMinimum(0f);
+        chart.getAxisRight().setEnabled(false);
+        chart.getXAxis().setGranularityEnabled(true);
+        chart.getXAxis().setGranularity(1f);
+        chart.getXAxis().setDrawLabels(false);
+        chart.getXAxis().setPosition(XAxis.XAxisPosition.TOP_INSIDE);
         chart.setHighlightFullBarEnabled(false);
         chart.getData().setHighlightEnabled(false);
         chart.setFitBars(true);
@@ -116,16 +115,6 @@ public class ChartGenerator {
         dataSet.setValueTextColor(Color.TRANSPARENT);
 
         BarData bardata = new BarData(dataSet);
-        chart.getXAxis().setAxisMaximum(1f);
-        chart.getXAxis().setAxisMinimum(1f);
-        chart.getXAxis().setLabelCount(0,true);
-        chart.getAxisLeft().setAxisMinimum(0f);
-        chart.getAxisLeft().setAxisMaximum(110f);
-        chart.getAxisRight().setEnabled(false);
-        chart.getXAxis().setGranularityEnabled(true);
-        chart.getXAxis().setGranularity(1f);
-        chart.getXAxis().setDrawLabels(false);
-        chart.getAxisLeft().setValueFormatter(new PercentFormatter());
         bardata.setBarWidth(0.5f);
 
         LimitLine ll;
@@ -141,6 +130,16 @@ public class ChartGenerator {
         chart.getAxisLeft().addLimitLine(ll);
 
         chart.setData(bardata);
+        chart.getXAxis().setAxisMaximum(1f);
+        chart.getXAxis().setAxisMinimum(1f);
+        chart.getXAxis().setLabelCount(0,true);
+        chart.getAxisLeft().setAxisMinimum(0f);
+        chart.getAxisLeft().setAxisMaximum(110f);
+        chart.getAxisRight().setEnabled(false);
+        chart.getXAxis().setGranularityEnabled(true);
+        chart.getXAxis().setGranularity(1f);
+        chart.getXAxis().setDrawLabels(false);
+        chart.getAxisLeft().setValueFormatter(new PercentFormatter());
         chart.setHighlightFullBarEnabled(false);
         chart.getData().setHighlightEnabled(false);
         chart.setFitBars(true);
