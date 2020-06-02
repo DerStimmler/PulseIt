@@ -1,6 +1,7 @@
 package com.cool.pulseit.utils;
 
 public enum Zones {
+    NONE ("keine Zone"),
     VERYLIGHT ("Gesundheitszone"),
     LIGHT ("Fettverbrennungszone"),
     MODERATE("aerobe Zone"),
@@ -9,6 +10,9 @@ public enum Zones {
 
     public static Zones toEnum(String zonesString) {
         switch (zonesString) {
+            case "keine Zone":
+            case "NONE":
+                return Zones.NONE;
             case "Gesundheitszone":
             case "VERYLIGHT":
                 return Zones.VERYLIGHT;

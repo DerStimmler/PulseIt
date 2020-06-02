@@ -55,10 +55,16 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
             public void onClick(View v) {
                 TextView dialog_pulse_tv = (TextView) myDialog.findViewById(R.id.dialog_pulse_id);
                 TextView dialog_date_tv = (TextView) myDialog.findViewById(R.id.dialog_date_id);
+                TextView dialog_zones_tv = myDialog.findViewById(R.id.dialog_zones_id);
 
                 Pulse pulse = _pulses.get(viewHolder.getAdapterPosition());
                 dialog_pulse_tv.setText(String.valueOf(pulse.pulse));
                 dialog_date_tv.setText(DateFormatter.forUi(pulse.date));
+
+                ZoneCalculator zoneCalculator = new ZoneCalculator(pulse.pulse,pulse.settings.age,pulse.settings.weight, pulse.settings.gender);
+                String zone = zoneCalculator.calculateZone();
+                dialog_zones_tv.setText(zone);
+
                 Toast.makeText(_context, "Test Click" + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show(); //Todo: raus löschen am ende
                 myDialog.show();
             }
