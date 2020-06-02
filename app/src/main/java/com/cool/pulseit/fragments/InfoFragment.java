@@ -20,8 +20,6 @@ public class InfoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private final String formulaMale = "$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$";
-    private final String formulaFemale = "$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$";
     private String mParam1;
     private String mParam2;
     private View _mainActivity;
@@ -64,10 +62,10 @@ public class InfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         _mainActivity = inflater.inflate(R.layout.fragment_info, container, false);
         _info_formula_one = _mainActivity.findViewById(R.id.info_formula_one);
-        _info_formula_one.setText(formulaMale);
+        _info_formula_one.setText(getString(R.string.info_formula_male));
 
         _info_formula_two = _mainActivity.findViewById(R.id.info_formula_two);
-        _info_formula_two.setText(formulaFemale);
+        _info_formula_two.setText(getString(R.string.info_formula_female));
 
         return _mainActivity;
     }

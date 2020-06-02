@@ -1,11 +1,13 @@
 package com.cool.pulseit.database;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.DateFormatter;
@@ -17,8 +19,11 @@ import java.util.Date;
 import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
+    private final Context _context;
+
     public DatabaseManager(Context context) {
         super(context, "pulseit.db", null, 1);
+        _context = context;
     }
 
     @Override
@@ -28,7 +33,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL, date TEXT NOT NULL);");
             db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings_id) REFERENCES settings(id));");
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while creating database tables");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_create_tables));
         }
     }
 
@@ -41,14 +46,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
             db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\");", settings.weight, settings.age, settings.gender, DateFormatter.toDb(settings.date)));
 
             result.setOk(true);
-            result.setMessage("Gespeichert");
+            result.setMessage(_context.getString(R.string.database_message_ui_saved));
             return result;
 
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while saving settings");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_save_settings));
 
             result.setOk(false);
-            result.setMessage("Fehler beim Speichern der Settings");
+            result.setMessage(_context.getString(R.string.database_message_ui_error_save_settings));
             return result;
         }
     }
@@ -70,7 +75,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             int resultRows = cursor.getCount();
             if (resultRows == 0) {
                 result.setOk(false);
-                result.setMessage("Keine Pulses gefunden");
+                result.setMessage(_context.getString(R.string.database_message_ui_error_no_pulses_found));
                 return result;
             }
 
@@ -97,10 +102,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return result;
 
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while getting pulses");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_get_pulses));
 
             result.setOk(false);
-            result.setMessage("Fehler beim Abrufen der Pulses");
+            result.setMessage(_context.getString(R.string.database_message_ui_error_get_pulses));
             return result;
         }
     }
@@ -114,14 +119,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
             db.execSQL(String.format("INSERT INTO pulses (pulse, date, settings_id) VALUES (%s,\"%s\",%s);", pulse.pulse, DateFormatter.toDb(pulse.date), pulse.settings.getId()));
 
             result.setOk(true);
-            result.setMessage("Gespeichert");
+            result.setMessage(_context.getString(R.string.database_message_ui_saved));
             return result;
 
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while saving pulse");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_save_pulse));
 
             result.setOk(false);
-            result.setMessage("Fehler beim Speichern des Pulses");
+            result.setMessage(_context.getString(R.string.database_message_ui_error_save_pulse));
             return result;
         }
     }
@@ -138,7 +143,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             int resultRows = cursor.getCount();
             if (resultRows == 0) {
                 result.setOk(false);
-                result.setMessage("Keine Settings Einträge gefunden");
+                result.setMessage(_context.getString(R.string.database_message_ui_error_no_settings_found));
                 return result;
             }
 
@@ -157,10 +162,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
             return result;
 
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while retrieving Settings");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_get_settings));
 
             result.setOk(false);
-            result.setMessage("Fehler beim Abruf der Settings");
+            result.setMessage(_context.getString(R.string.database_message_ui_error_get_settings));
             return result;
         }
     }
@@ -174,14 +179,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
             db.execSQL(String.format("DELETE FROM pulses WHERE id=\'%s\';", String.valueOf(pulse.getId())));
 
             result.setOk(true);
-            result.setMessage("Gelöscht");
+            result.setMessage(_context.getString(R.string.database_message_ui_deleted));
             return result;
 
         } catch (Exception ex) {
-            Log.e(this.getClass().getName(), "Error while deleting pulse");
+            Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_delete_pulse));
 
             result.setOk(false);
-            result.setMessage("Fehler beim Löschen des Pulses");
+            result.setMessage(_context.getString(R.string.database_message_ui_error_delete_pulse));
             return result;
         }
     }

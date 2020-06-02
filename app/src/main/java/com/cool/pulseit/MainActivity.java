@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.popBackStack();
                     fragmentManager.removeOnBackStackChangedListener(this);
                     bottomNavigation.getMenu().getItem((0)).setChecked(true);
-                    Toast.makeText(MainActivity.this, "Press Back again to close the application", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.main_message_ui_double_back_to_close, Toast.LENGTH_SHORT).show();
                 }
             }
         });

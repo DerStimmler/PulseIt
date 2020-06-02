@@ -12,7 +12,7 @@ public class InputFilterGreaterZero implements InputFilter {
             if (isGreaterZero(input))
                 return null;
         } catch (NumberFormatException nfe) {
-            Log.e("InputFilterGreaterZero", "Could not parse input to Integer");
+            Log.e(this.getClass().getName(), "Could not parse input to Integer");
         }
         return "";
     }

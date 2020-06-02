@@ -19,7 +19,7 @@ public class DateFormatter {
         try {
             date = format.parse(dateString);
         } catch (ParseException e) {
-            Log.e("DateFormatter", "Couldn't parse String " + dateString + " to Date");
+            Log.e(DateFormatter.class.getName(), "Couldn't parse String " + dateString + " to Date");
         }
 
         return date;

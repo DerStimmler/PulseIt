@@ -78,8 +78,8 @@ public class SettingsFragment extends Fragment {
         _viewPager = _mainActivity.findViewById(R.id.settings_viewpager);
 
         SettingsTabAdapter tabAdapter = new SettingsTabAdapter(getFragmentManager());
-        tabAdapter.addFragment(new SettingsInputFragment(), "Input");
-        tabAdapter.addFragment(new SettingsResultFragment(), "Result");
+        tabAdapter.addFragment(new SettingsInputFragment(), getString(R.string.settings_tab_input));
+        tabAdapter.addFragment(new SettingsResultFragment(), getString(R.string.settings_tab_result));
 
         _viewPager.setAdapter(tabAdapter);
         _tabLayout.setupWithViewPager(_viewPager);

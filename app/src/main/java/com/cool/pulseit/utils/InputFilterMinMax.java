@@ -21,7 +21,7 @@ public class InputFilterMinMax implements InputFilter {
             if (isInRange(_min, _max, input))
                 return null;
         } catch (NumberFormatException nfe) {
-            Log.e("InputFilterMinMax", "Could not parse input to Integer");
+            Log.e(this.getClass().getName(), "Could not parse input to Integer");
         }
         return "";
     }

@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">PulseIt</string>
+    <!--main-->
+    <string name="main_message_ui_double_back_to_close">Drücke noch einmal Zurück, um die Anwendung zu beenden</string>
     <!--navigation-->
-    <string name="navigation_settings">Settings</string>
-    <string name="navigation_addPulse">Add Pulse</string>
+    <string name="navigation_settings">Einstellungen</string>
+    <string name="navigation_addPulse">Puls hinzufügen</string>
     <string name="navigation_info">Info</string>
-    <string name="navigation_analytics">Analytics</string>
-    <string name="navigation_history">History</string>
+    <string name="navigation_analytics">Analyse</string>
+    <string name="navigation_history">Verlauf</string>
     <!-- fragment_info -->
-    <string name="info_header">About</string>
+    <string name="info_header">Info</string>
     <string name="info_formulaDescription">Die maximale Herzschlagfrequenz ist die Anzahl der Herzschläge pro Minute, die ein Mensch bei größtmöglicher körperlicher Anstrenung erreichen kann. In der vorliegenden App wird der Maximalpuls nach der Formel von Sally Edwards berechnet.</string>
     <string name="info_header_formula">Formeln</string>
     <string name="info_legend">x= Maximalpuls; a = Lebensalter; g = Körpergewicht</string>
@@ -19,21 +21,40 @@
     <string name="info_parameter_gender">Als Geschlecht muss Männlich oder Weiblich gewählt werden.</string>
     <string name="info_header_interpretation">Interpretation</string>
     <string name="info_interpretation">Eine Interpretation des Ergebnis kann anhand den zusätzlich angezeigten Tabellen ermittelt werden. Der Prozentuale Anteil des Maximalpuls: 60-65 % Regeneration, 65-76 % Fettverbrennungszone, 75-85 % aerobes Training, 85-90% anaerobes Training, >90% maximales Training.</string>
+    <string name="info_formula_male">$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$</string>
+    <string name="info_formula_female">$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$</string>
     <!--settings-->
-    <string name="settings_heading">Settings</string>
+    <string name="settings_heading">Einstellungen</string>
     <string name="settings_label_age">Alter:</string>
     <string name="settings_label_weight">Gewicht:</string>
     <string name="settings_label_gender">Geschlecht:</string>
     <string name="settings_button_save">Speichern</string>
+    <string name="settings_tab_input">Eingabe</string>
+    <string name="settings_tab_result">Ergebnis</string>
     <!--add_pulse-->
-    <string name="add_pulse_heading">Add Pulse</string>
+    <string name="add_pulse_heading">Puls hinzufügen</string>
     <string name="add_pulse_label_pulse">Puls:</string>
     <string name="add_pulse_button_tap">Tap</string>
     <string name="add_pulse_button_save">Speichern</string>
     <string name="addPulse_label_unit">BPM</string>
     <!--history-->
-    <string name="history_heading">History</string>
+    <string name="history_heading">Verlauf</string>
     <!--analytics-->
-    <string name="analytics_heading">Analytics</string>
-
+    <string name="analytics_heading">Analyse</string>
+    <!--database-->
+    <string name="database_message_log_error_delete_pulse">Error while deleting pulse</string>
+    <string name="database_message_ui_error_delete_pulse">Fehler beim Löschen des Pulses</string>
+    <string name="database_message_ui_deleted">Gelöscht</string>
+    <string name="database_message_ui_error_get_settings">Fehler beim Abruf der Settings</string>
+    <string name="database_message_log_error_get_settings">Error while retrieving Settings</string>
+    <string name="database_message_ui_error_no_settings_found">Keine Settings Einträge gefunden</string>
+    <string name="database_message_ui_error_save_pulse">Fehler beim Speichern des Pulses</string>
+    <string name="database_message_log_error_save_pulse">Error while saving pulse</string>
+    <string name="database_message_ui_saved">Gespeichert</string>
+    <string name="database_message_ui_error_get_pulses">Fehler beim Abrufen der Pulses</string>
+    <string name="database_message_log_error_get_pulses">Error while getting pulses</string>
+    <string name="database_message_ui_error_no_pulses_found">Keine Pulses gefunden</string>
+    <string name="database_message_ui_error_save_settings">Fehler beim Speichern der Settings</string>
+    <string name="database_message_log_error_save_settings">Error while saving settings</string>
+    <string name="database_message_log_error_create_tables">Error while creating database tables</string>
 </resources>
