@@ -17,6 +17,7 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Result;
+import com.cool.pulseit.utils.StatusSnackbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Date;
@@ -115,7 +116,7 @@ public class AddPulseFragment extends Fragment {
         Result<Settings> result = dbm.getLatestSettings();
 
         if(!result.isOk()){
-            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            StatusSnackbar.show(getActivity(),result.getMessage());
             return;
         }
 
@@ -124,11 +125,11 @@ public class AddPulseFragment extends Fragment {
         result = dbm.savePulse(pulse);
 
         if(!result.isOk()){
-            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            StatusSnackbar.show(getActivity(),result.getMessage());
             return;
         }
 
-        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+        StatusSnackbar.show(getActivity(),result.getMessage());
     }
 
     private void initializePulseNumberPicker() {

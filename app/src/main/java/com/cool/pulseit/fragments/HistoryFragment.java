@@ -17,6 +17,7 @@ import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.Result;
+import com.cool.pulseit.utils.StatusSnackbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -80,7 +81,7 @@ public class HistoryFragment extends Fragment {
         Result<List<Pulse>> result = dbm.getPulses();
 
         if(!result.isOk()){
-            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            StatusSnackbar.show(getActivity(),result.getMessage());
         }else{
             _pulses = result.getValue();
 

@@ -1,5 +1,6 @@
 package com.cool.pulseit;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
+import com.cool.pulseit.utils.StatusSnackbar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -65,13 +67,13 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder>{
         Result result = dbm.deletePulse(pulse);
 
         if(!result.isOk()){
-            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            StatusSnackbar.show((Activity)_context,result.getMessage());
             return;
         }
 
         _pulses.remove(position);
         notifyItemRemoved(position);
 
-        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+        StatusSnackbar.show((Activity)_context,result.getMessage());
     }
 }

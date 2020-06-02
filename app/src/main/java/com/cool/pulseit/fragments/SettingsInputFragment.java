@@ -10,14 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
-import com.google.android.material.snackbar.Snackbar;
+import com.cool.pulseit.utils.StatusSnackbar;
 
 import java.util.Date;
 
@@ -143,10 +142,10 @@ public class SettingsInputFragment extends Fragment {
         Result result = dbm.saveSettings(settings);
 
         if(!result.isOk()){
-            Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+            StatusSnackbar.show(getActivity(),result.getMessage());
             return;
         }
 
-        Snackbar.make(_mainActivity,result.getMessage(),Snackbar.LENGTH_SHORT).show();
+        StatusSnackbar.show(getActivity(),result.getMessage());
     }
 }
