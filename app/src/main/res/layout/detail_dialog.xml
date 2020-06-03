@@ -19,7 +19,7 @@
 
 
             <ImageView
-                android:id="@+id/dialog_history_share"
+                android:id="@+id/detail_dialog_share_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_share" />
@@ -50,7 +50,7 @@
                         app:srcCompat="@drawable/ic_favorite" />
 
                     <TextView
-                        android:id="@+id/dialog_pulse_id"
+                        android:id="@+id/detail_dialog_pulse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="10dp"
@@ -67,7 +67,7 @@
                         app:srcCompat="@drawable/ic_calendar_today" />
 
                     <TextView
-                        android:id="@+id/dialog_date_id"
+                        android:id="@+id/detail_dialog_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="10dp"
@@ -90,7 +90,7 @@
                         app:srcCompat="@drawable/ic_fitness_center_black_24dp" />
 
                     <TextView
-                        android:id="@+id/dialog_zones_id"
+                        android:id="@+id/detail_dialog_zone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="10dp"
@@ -136,7 +136,7 @@
                             app:srcCompat="@drawable/ic_wc_black_24dp" />
 
                         <TextView
-                            android:id="@+id/dialog_settings_gender"
+                            android:id="@+id/detail_dialog_settings_gender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="10dp"
@@ -161,7 +161,7 @@
                             app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
                         <TextView
-                            android:id="@+id/dialog_settings_age"
+                            android:id="@+id/detail_dialog_settings_age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="10dp"
@@ -186,7 +186,7 @@
                             app:srcCompat="@drawable/ic_business" />
 
                         <TextView
-                            android:id="@+id/dialog_settings_weight"
+                            android:id="@+id/detail_dialog_settings_weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="10dp"
@@ -215,7 +215,7 @@
                 app:contentPadding="7dp">
 
                 <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/detail_chart"
+                    android:id="@+id/detail_dialog_chart"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:layout_weight="1" />

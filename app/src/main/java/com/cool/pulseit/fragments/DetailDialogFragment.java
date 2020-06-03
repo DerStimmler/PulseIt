@@ -42,7 +42,7 @@ public class DetailDialogFragment extends DialogFragment {
     }
 
     private void setEventListener() {
-        ImageView shareIcon = _view.findViewById(R.id.dialog_history_share);
+        ImageView shareIcon = _view.findViewById(R.id.detail_dialog_share_icon);
         shareIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,9 +53,9 @@ public class DetailDialogFragment extends DialogFragment {
 
     private void init() {
         // Darstellung erster Card ->Puls+Datum+Zone
-        TextView dialog_pulse_tv = _view.findViewById(R.id.dialog_pulse_id);
-        TextView dialog_date_tv = _view.findViewById(R.id.dialog_date_id);
-        TextView dialog_zones_tv = _view.findViewById(R.id.dialog_zones_id);
+        TextView dialog_pulse_tv = _view.findViewById(R.id.detail_dialog_pulse);
+        TextView dialog_date_tv = _view.findViewById(R.id.detail_dialog_date);
+        TextView dialog_zones_tv = _view.findViewById(R.id.detail_dialog_zone);
 
 
         dialog_pulse_tv.setText(String.valueOf(_pulse.pulse));
@@ -66,16 +66,16 @@ public class DetailDialogFragment extends DialogFragment {
         dialog_zones_tv.setText(zone);
 
         //Dastellung zweiter Card -> Settings
-        TextView dialog_gender_tv = _view.findViewById(R.id.dialog_settings_gender);
-        TextView dialog_age_tv = _view.findViewById(R.id.dialog_settings_age);
-        TextView dialog_weight_tv = _view.findViewById(R.id.dialog_settings_weight);
+        TextView dialog_gender_tv = _view.findViewById(R.id.detail_dialog_settings_gender);
+        TextView dialog_age_tv = _view.findViewById(R.id.detail_dialog_settings_age);
+        TextView dialog_weight_tv = _view.findViewById(R.id.detail_dialog_settings_weight);
 
         dialog_gender_tv.setText(String.valueOf(_pulse.settings.gender));
         dialog_age_tv.setText(String.valueOf(_pulse.settings.age));
         dialog_weight_tv.setText(String.valueOf(_pulse.settings.weight));
 
 
-        BarChart chart = _view.findViewById(R.id.detail_chart);
+        BarChart chart = _view.findViewById(R.id.detail_dialog_chart);
         MaximumHeartRateCalculator mhrCalculator = new MaximumHeartRateCalculator(_pulse.settings.age, _pulse.settings.weight, _pulse.settings.gender);
         int mhr = mhrCalculator.calculateMaximumHeartRate();
         ChartGenerator cg = new ChartGenerator(getContext());
