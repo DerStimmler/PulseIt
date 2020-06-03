@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
+import com.cool.pulseit.Share;
 import com.cool.pulseit.ZoneCalculator;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
@@ -34,8 +36,19 @@ public class DetailDialogFragment extends DialogFragment {
         getDialog().setTitle("Details");
 
         init();
+        setEventListener();
 
         return _view;
+    }
+
+    private void setEventListener() {
+        ImageView shareIcon = _view.findViewById(R.id.dialog_history_share);
+        shareIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Share.shareView(_view.getContext(), _view.findViewById(R.id.detail_dialog_framelayout));
+            }
+        });
     }
 
     private void init() {
@@ -71,6 +84,8 @@ public class DetailDialogFragment extends DialogFragment {
 
         chart.invalidate();
     }
+
+
 
 
 }
