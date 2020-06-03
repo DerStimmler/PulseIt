@@ -1,8 +1,14 @@
 package com.cool.pulseit.utils;
 
 public enum Gender {
-    MALE,
-    FEMALE;
+    MALE("männlich"),
+    FEMALE("weiblich");
+
+    private String value;
+
+    Gender(final String value) {
+        this.value = value;
+    }
 
     public static Gender toEnum(String genderString) {
         switch (genderString) {
@@ -15,5 +21,14 @@ public enum Gender {
             default:
                 throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum", genderString));
         }
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return this.getValue();
     }
 }
