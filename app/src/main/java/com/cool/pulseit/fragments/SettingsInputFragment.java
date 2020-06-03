@@ -93,11 +93,11 @@ public class SettingsInputFragment extends Fragment {
 
         initializeEventListeners();
 
-        /*TODO: Hab sie mal in die oncreate hochgezogen anstatt unten*/
+        /*TODO: Hab sie mal in die oncreate hochgezogen anstatt unten
         TabLayout tl = getActivity().findViewById(R.id.settings_tablayout);
         View tab2 = ( (ViewGroup) tl.getChildAt(0)).getChildAt(1);
-        _weightNumberView = tab3.findViewById(R.id.settings_result_weight);
-
+        _weightNumberView = tab2.findViewById(R.id.settings_result_weight);
+        */
         return _mainActivity;
     }
 
