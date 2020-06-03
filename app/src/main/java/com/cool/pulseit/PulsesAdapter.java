@@ -3,22 +3,15 @@ package com.cool.pulseit;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cool.pulseit.database.DatabaseManager;
@@ -28,12 +21,6 @@ import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.github.mikephil.charting.charts.BarChart;
 
-import org.w3c.dom.Text;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
@@ -67,7 +54,6 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // Darstellung erster Card ->Puls+Datum+Zone
                 TextView dialog_pulse_tv = myDialog.findViewById(R.id.dialog_pulse_id);
                 TextView dialog_date_tv = myDialog.findViewById(R.id.dialog_date_id);
@@ -102,45 +88,10 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
 
                 Toast.makeText(_context, "Test Click" + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show(); //Todo: raus löschen am ende
                 myDialog.show();
-
-                share(myDialog);
             }
         });
 
         return viewHolder;
-    }
-
-    private void share(Dialog dialog) {
-        LinearLayout layout = dialog.findViewById(R.id.history_row_linear_layout);
-
-        layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        Bitmap bitmap = Bitmap.createBitmap(layout.getMeasuredWidth(), layout.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        layout.layout(0,0, layout.getMeasuredWidth(), layout.getMeasuredHeight());
-        layout.draw(canvas);
-
-        try {
-            File cachePath = new File(_context.getCacheDir(), "images");
-            cachePath.mkdirs();
-            FileOutputStream stream = new FileOutputStream(cachePath + "/image.jpg");
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            stream.close();
-        }catch (IOException e){
-            Log.e(getClass().getName(), e.getMessage());
-        }
-
-        File imagePath = new File(_context.getCacheDir(), "images");
-        File newFile = new File(imagePath, "image.jpg");
-        Uri contentUri = FileProvider.getUriForFile(_context, "com.cool.pulseit.fileprovider", newFile);
-
-        if(contentUri != null){
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntent.setDataAndType(contentUri, _context.getContentResolver().getType(contentUri));
-            shareIntent.setType("image/*");
-            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            _context.startActivity(Intent.createChooser(shareIntent,"Share via..."));
-        }
     }
 
     @Override
