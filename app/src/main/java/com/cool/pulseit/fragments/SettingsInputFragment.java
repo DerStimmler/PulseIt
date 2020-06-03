@@ -1,5 +1,6 @@
 package com.cool.pulseit.fragments;
 
+import android.app.assist.AssistStructure;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +8,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.cool.pulseit.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
+import com.cool.pulseit.SettingsTabAdapter;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Date;
 
@@ -38,6 +44,11 @@ public class SettingsInputFragment extends Fragment {
     private NumberPicker _ageNumberPicker;
     private Spinner _genderSpinner;
     private Button _saveButton;
+    private TextView _weightNumberView;
+    private TextView _ageNumberView;
+    private TextView _genderView;
+    private TextView _resultView;
+    private View _resultActivity;
 
     public SettingsInputFragment() {
         // Required empty public constructor
@@ -81,6 +92,11 @@ public class SettingsInputFragment extends Fragment {
         initializeAgeNumberPicker();
 
         initializeEventListeners();
+
+        /*TODO: Hab sie mal in die oncreate hochgezogen anstatt unten*/
+        TabLayout tl = getActivity().findViewById(R.id.settings_tablayout);
+        View tab2 = ( (ViewGroup) tl.getChildAt(0)).getChildAt(1);
+        _weightNumberView = tab3.findViewById(R.id.settings_result_weight);
 
         return _mainActivity;
     }
@@ -144,7 +160,17 @@ public class SettingsInputFragment extends Fragment {
             StatusSnackbar.show(getActivity(), result.getMessage());
             return;
         }
-
         StatusSnackbar.show(getActivity(), result.getMessage());
+
+        /*TODO: Hier sollen die Werte in der fragment_settings_result neu gesetzt werden
+        Result<Settings> resultTab = dbm.getLatestSettings();
+        _weightNumberView.setText(String.valueOf(resultTab.getValue().weight));
+        _ageNumberView.setText(String.valueOf(resultTab.getValue().age));
+        _genderView.setText(String.valueOf(resultTab.getValue().gender));
+
+        MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(resultTab.getValue().age,resultTab.getValue().weight, resultTab.getValue().gender);
+        int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
+        _resultView.setText(String.valueOf(maximumHeartRate));
+        */
     }
 }
