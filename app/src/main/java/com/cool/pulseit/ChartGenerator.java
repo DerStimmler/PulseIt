@@ -35,7 +35,7 @@ public class ChartGenerator {
     }
 
     private int[] getColours() {
-        return new int[]{Color.TRANSPARENT,Color.GRAY, ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null),Color.GREEN,ResourcesCompat.getColor(_context.getResources(), R.color.orange, null),Color.RED};
+        return new int[]{Color.TRANSPARENT,ResourcesCompat.getColor(_context.getResources(), R.color.grey, null), ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null),ResourcesCompat.getColor(_context.getResources(), R.color.green, null),ResourcesCompat.getColor(_context.getResources(), R.color.orange, null),ResourcesCompat.getColor(_context.getResources(), R.color.red, null)};
     }
 
     public BarChart classifyPulseChart(BarChart chart, Pulse pulse, int maxPulse){

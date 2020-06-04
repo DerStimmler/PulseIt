@@ -142,6 +142,51 @@
                     android:text="@string/info_interpretation"
                     android:textSize="13sp" />
 
+                <TextView
+                android:id="@+id/info_interpretation_gesundheitszone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/info_interpretation_gesundheitszone"
+                android:textSize="13sp"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                android:id="@+id/info_interpretation_fettverbrennungszone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/info_interpretation_fettverbrennungszone"
+                android:textSize="13sp"
+                    android:textColor="@color/turquoise"/>
+
+                <TextView
+                    android:id="@+id/info_interpretation_aerobe_Zone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation_aerobe_Zone"
+                    android:textSize="13sp"
+                    android:textColor="@color/green"/>
+
+                <TextView
+                    android:id="@+id/info_interpretation_anaerobe_Zone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation_anaerobe_Zone"
+                    android:textSize="13sp"
+                    android:textColor="@color/orange"/>
+
+                <TextView
+                    android:id="@+id/info_interpretation_rote_Zone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation_rote_Zone"
+                    android:textSize="13sp"
+                    android:textColor="@color/red"/>
+
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/info_chart"
                     android:layout_width="match_parent"

@@ -7,4 +7,6 @@
     <color name="grey">#C0C0C0</color>
     <color name="turquoise">#3f888f</color>
     <color name="orange">#ffa500</color>
+    <color name="red">#ff0000</color>
+    <color name="green">#a4c639</color>
 </resources>
