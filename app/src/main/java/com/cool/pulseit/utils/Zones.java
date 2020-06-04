@@ -6,7 +6,7 @@ public enum Zones {
     LIGHT("Fettverbrennungszone"),
     MODERATE("aerobe Zone"),
     HARD("anaerobe Zone"),
-    VERYHARD("rote Zone");
+    VERYHARD("Warnzone");
 
     private String value;
 
@@ -31,7 +31,7 @@ public enum Zones {
             case "anaerobe Zone":
             case "HARD":
                 return Zones.HARD;
-            case "rote Zone":
+            case "Warnzone":
             case "VERYHARD":
                 return Zones.VERYHARD;
             default:

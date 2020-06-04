@@ -25,7 +25,7 @@
     <string name="info_interpretation_fettverbrennungszone">60-70 % der maximalen Herzfrequenz ist die Fettverbrennungszone.</string>
     <string name="info_interpretation_aerobe_Zone">70-80 % der maximalen Herzfrequenz ist die aerobe Zone.</string>
     <string name="info_interpretation_anaerobe_Zone">80-90 % der maximalen Herzfrequenz ist die anaerobe Zone.</string>
-    <string name="info_interpretation_rote_Zone">90-100 % der maximalen Herzfrequenz ist die rote Zone.</string>
+    <string name="info_interpretation_rote_Zone">90-100 % der maximalen Herzfrequenz ist die Warnzone.</string>
     <string name="info_formula_male">$$x = 214 - (0,5 \\times a) - (0,11 \\times g) $$</string>
     <string name="info_formula_female">$$x = 226 - (0,5 \\times a) - (0,11 \\times g) $$</string>
     <!--settings-->
