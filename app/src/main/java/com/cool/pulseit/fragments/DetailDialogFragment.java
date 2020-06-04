@@ -56,10 +56,12 @@ public class DetailDialogFragment extends DialogFragment {
         TextView dialog_pulse_tv = _view.findViewById(R.id.detail_dialog_pulse);
         TextView dialog_date_tv = _view.findViewById(R.id.detail_dialog_date);
         TextView dialog_zones_tv = _view.findViewById(R.id.detail_dialog_zone);
+        TextView dialog_description = _view.findViewById(R.id.detail_dialog_description);
 
 
         dialog_pulse_tv.setText(String.valueOf(_pulse.pulse));
         dialog_date_tv.setText(DateFormatter.forUi(_pulse.date));
+        dialog_description.setText(_pulse.description);
 
         ZoneCalculator zoneCalculator = new ZoneCalculator(_pulse.pulse,_pulse.settings.age,_pulse.settings.weight, _pulse.settings.gender);
         String zone = zoneCalculator.calculateZone();

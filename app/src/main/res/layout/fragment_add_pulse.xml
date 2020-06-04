@@ -22,17 +22,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <TableRow
-            android:id="@+id/tableRow"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            android:gravity="center_vertical">
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/addPulse_heading"
+            tools:layout_editor_absoluteX="16dp">
 
             <TextView
                 android:id="@+id/addPulse_label_pulse"
@@ -58,13 +56,44 @@
                 android:text="@string/addPulse_label_unit"
                 android:textSize="30sp"
                 android:textStyle="bold" />
-        </TableRow>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingEnd="20dp"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/add_pulse_label_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_pulse_label_description" />
+
+            <EditText
+                android:id="@+id/add_pulse_input_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/add_pulse_button_tap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="124dp"
             android:background="@drawable/add_pulse_tap_button"
             android:drawableStart="@drawable/ic_touch_app"
             android:drawableEnd="@drawable/ic_favorite"
@@ -72,12 +101,12 @@
             android:paddingLeft="40dp"
             android:paddingRight="40dp"
             android:text="@string/add_pulse_button_tap"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableRow"
             android:textColor="#FFFFFF"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <Button
             android:id="@+id/add_pulse_button_save"
@@ -92,6 +121,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_pulse_button_tap" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

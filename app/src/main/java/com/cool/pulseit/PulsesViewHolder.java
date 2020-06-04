@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PulsesViewHolder extends RecyclerView.ViewHolder {
 
+    public TextView descriptionLabel;
     public TextView pulseLabel;
     public TextView dateLabel;
 
@@ -16,5 +17,6 @@ public class PulsesViewHolder extends RecyclerView.ViewHolder {
 
         pulseLabel = itemView.findViewById(R.id.history_row_pulse);
         dateLabel = itemView.findViewById(R.id.history_row_date);
+        descriptionLabel = itemView.findViewById(R.id.history_row_description);
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import androidx.fragment.app.Fragment;
@@ -37,6 +38,7 @@ public class AddPulseFragment extends Fragment {
     private NumberPicker _pulseNumberPicker;
     private Button _saveButton;
     private HeartRateCalculator _heartRateCalculator;
+    private EditText _descriptionText;
 
     public AddPulseFragment() {
         // Required empty public constructor
@@ -109,6 +111,7 @@ public class AddPulseFragment extends Fragment {
 
         int pulseValue = _pulseNumberPicker.getValue();
         Date date = new Date();
+        String description = _descriptionText.getText().toString();
 
         Result<Settings> result = dbm.getLatestSettings();
 
@@ -117,7 +120,7 @@ public class AddPulseFragment extends Fragment {
             return;
         }
 
-        Pulse pulse = new Pulse(date, pulseValue, result.getValue());
+        Pulse pulse = new Pulse(date, pulseValue, description, result.getValue());
 
         result = dbm.savePulse(pulse);
 
@@ -139,5 +142,6 @@ public class AddPulseFragment extends Fragment {
         _tapButton = _mainActivity.findViewById(R.id.add_pulse_button_tap);
         _pulseNumberPicker = _mainActivity.findViewById(R.id.addPulse_input_pulse);
         _saveButton = _mainActivity.findViewById(R.id.add_pulse_button_save);
+        _descriptionText = _mainActivity.findViewById(R.id.add_pulse_input_description);
     }
 }

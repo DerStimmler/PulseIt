@@ -31,7 +31,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         try {
             db.execSQL("PRAGMA foreign_keys = ON;");
             db.execSQL("CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, weight INTEGER NOT NULL, age INTEGER NOT NULL, gender TEXT NOT NULL, date TEXT NOT NULL);");
-            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings_id) REFERENCES settings(id));");
+            db.execSQL("CREATE TABLE pulses (id INTEGER PRIMARY KEY AUTOINCREMENT, pulse INTEGER NOT NULL, description TEXT, date TEXT NOT NULL, settings_id INTEGER NOT NULL, FOREIGN KEY(settings_id) REFERENCES settings(id));");
         } catch (Exception ex) {
             Log.e(this.getClass().getName(), _context.getString(R.string.database_message_log_error_create_tables));
         }
@@ -70,7 +70,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         List<Pulse> pulses = new ArrayList<Pulse>();
 
         try {
-            Cursor cursor = db.rawQuery("SELECT pulses.id AS pulses_id, pulses.date AS pulses_date, pulses.pulse AS pulses_pulse, settings.date AS settings_date, settings.id AS settings_id, settings.age AS settings_age, settings.weight AS settings_weight, settings.gender AS settings_gender FROM pulses INNER JOIN settings ON pulses.settings_id = settings.id;", null);
+            Cursor cursor = db.rawQuery("SELECT pulses.id AS pulses_id, pulses.date AS pulses_date, pulses.pulse AS pulses_pulse, pulses.description AS pulses_description, settings.date AS settings_date, settings.id AS settings_id, settings.age AS settings_age, settings.weight AS settings_weight, settings.gender AS settings_gender FROM pulses INNER JOIN settings ON pulses.settings_id = settings.id;", null);
 
             int resultRows = cursor.getCount();
             if (resultRows == 0) {
@@ -84,6 +84,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 int pulseId = cursor.getInt(cursor.getColumnIndex("pulses_id"));
                 Date pulseDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("pulses_date")));
                 int pulsePulse = cursor.getInt(cursor.getColumnIndex("pulses_pulse"));
+                String pulseDescription = cursor.getString(cursor.getColumnIndex("pulses_description"));
                 Date settingsDate = DateFormatter.fromDb(cursor.getString(cursor.getColumnIndex("settings_date")));
                 int settingsId = cursor.getInt(cursor.getColumnIndex("settings_id"));
                 int settingsAge = cursor.getInt(cursor.getColumnIndex("settings_age"));
@@ -91,7 +92,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 Gender settingsGender = Gender.toEnum(cursor.getString(cursor.getColumnIndex("settings_gender")));
 
                 Settings settings = new Settings(settingsGender, settingsWeight, settingsAge, settingsDate, settingsId);
-                Pulse pulse = new Pulse(pulseId, pulseDate, pulsePulse, settings);
+                Pulse pulse = new Pulse(pulseId, pulseDate, pulsePulse,pulseDescription, settings);
 
                 pulses.add(pulse);
             }
@@ -116,7 +117,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Result result = new Result();
 
         try {
-            db.execSQL(String.format("INSERT INTO pulses (pulse, date, settings_id) VALUES (%s,\"%s\",%s);", pulse.pulse, DateFormatter.toDb(pulse.date), pulse.settings.getId()));
+            db.execSQL(String.format("INSERT INTO pulses (pulse, date, description, settings_id) VALUES (%s,\"%s\",\"%s\",%s);", pulse.pulse, DateFormatter.toDb(pulse.date), pulse.description, pulse.settings.getId()));
 
             result.setOk(true);
             result.setMessage(_context.getString(R.string.database_message_ui_saved));

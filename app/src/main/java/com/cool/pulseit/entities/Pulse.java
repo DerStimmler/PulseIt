@@ -7,18 +7,21 @@ public class Pulse {
     public int pulse;
     public Settings settings;
     private int id;
+    public String description;
 
-    public Pulse(int id, Date date, int pulse, Settings settings) {
+    public Pulse(int id, Date date, int pulse, String description, Settings settings) {
         this.id = id;
         this.date = date;
         this.pulse = pulse;
         this.settings = settings;
+        this.description = description;
     }
 
-    public Pulse(Date date, int pulse, Settings settings) {
+    public Pulse(Date date, int pulse, String description, Settings settings) {
         this.date = date;
         this.pulse = pulse;
         this.settings = settings;
+        this.description = description;
     }
 
     public int getId() {

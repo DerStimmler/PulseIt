@@ -65,6 +65,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         labelPulse.setText(String.valueOf(pulse.pulse));
         TextView labelDate = holder.dateLabel;
         labelDate.setText(DateFormatter.forUi(pulse.date));
+        TextView labelDescription = holder.descriptionLabel;
+        labelDescription.setText(pulse.description);
     }
 
     @Override

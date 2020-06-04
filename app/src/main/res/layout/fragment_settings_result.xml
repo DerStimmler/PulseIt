@@ -55,15 +55,17 @@
                                 android:id="@+id/settings_result_icon_gender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_wc_black_24dp" />
 
                             <TextView
                                 android:id="@+id/settings_result_gender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
-                                android:text="Geschlecht"
                                 android:textColor="@android:color/white"
                                 android:textSize="24sp"
                                 android:textStyle="bold"></TextView>
@@ -80,15 +82,17 @@
                                 android:id="@+id/settings_result_icon_age"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
                             <TextView
                                 android:id="@+id/settings_result_age"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
-                                android:text="Alter"
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp">
 
@@ -105,15 +109,17 @@
                                 android:id="@+id/settings_result_icon_weight"
                                 android:layout_width="24dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_business" />
 
                             <TextView
                                 android:id="@+id/settings_result_weight"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
-                                android:text="Gewicht"
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"></TextView>
 
@@ -130,15 +136,17 @@
                                 android:id="@+id/settings_result_icon_result"
                                 android:layout_width="24dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_cardiogram" />
 
                             <TextView
                                 android:id="@+id/settings_result_result"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="10dp"
-                                android:text="Gewicht"
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"></TextView>
 

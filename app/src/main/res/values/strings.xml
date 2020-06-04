@@ -62,4 +62,5 @@
     <string name="database_message_ui_error_save_settings">Fehler beim Speichern der Settings</string>
     <string name="database_message_log_error_save_settings">Error while saving settings</string>
     <string name="database_message_log_error_create_tables">Error while creating database tables</string>
+    <string name="add_pulse_label_description">Beschreibung:</string>
 </resources>

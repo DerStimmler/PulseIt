@@ -12,114 +12,104 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="60dp">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_margin="20dp">
 
                 <TextView
                     android:id="@+id/settings_label_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="@string/settings_label_age" />
 
                 <NumberPicker
                     android:id="@+id/settings_input_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_column="1"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:visibility="visible" />
+            </TableRow>
 
-            </LinearLayout>
-
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_margin="20dp">
 
                 <TextView
                     android:id="@+id/settings_label_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="@string/settings_label_weight" />
 
                 <NumberPicker
                     android:id="@+id/settings_input_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_column="1"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:visibility="visible" />
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:layout_margin="20dp">
 
                 <TextView
                     android:id="@+id/settings_label_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_column="0"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="@string/settings_label_gender" />
 
                 <Spinner
                     android:id="@+id/settings_spinner_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:entries="@array/gender_array" />
+                    android:layout_column="1"
+                    android:layout_gravity="center_vertical"
+                    android:entries="@array/gender_array"
+                    android:gravity="center_vertical" />
 
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_margin="20dp"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/settings_button_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="@string/settings_button_save" />
-            </LinearLayout>
-        </LinearLayout>
+            </TableRow>
+        </TableLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

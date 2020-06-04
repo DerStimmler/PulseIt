@@ -14,6 +14,7 @@ import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
+import com.cool.pulseit.utils.StatusSnackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +56,11 @@ public class SettingsResultFragment extends Fragment {
         getViewElements();
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
+
+        if(!result.isOk()){
+            StatusSnackbar.show(getActivity(),result.getMessage());
+            return _mainActivity;
+        }
 
         _weightNumberView.setText(String.valueOf(result.getValue().weight));
         _ageNumberView.setText(String.valueOf(result.getValue().age));
