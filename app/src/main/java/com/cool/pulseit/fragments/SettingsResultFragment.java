@@ -79,5 +79,8 @@ public class SettingsResultFragment extends Fragment {
         _ageNumberView.setText(String.valueOf(age));
         _weightNumberView.setText(String.valueOf(weight));
         _genderView.setText(gender.getValue());
+        MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(age, weight, gender);
+        int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
+        _resultView.setText(String.valueOf(maximumHeartRate));
     }
 }
