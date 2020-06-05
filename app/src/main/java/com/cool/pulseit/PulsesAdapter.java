@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,17 +21,21 @@ import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
+public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implements Filterable {
 
     private List<Pulse> _pulses;
+    private List<Pulse> _filteredPulses;
     private Context _context;
     private View _mainActivity;
 
-    public PulsesAdapter(List<Pulse> pulses){
-
-        _pulses = pulses;
+    public PulsesAdapter(List<Pulse> pulses) {
+        _pulses = new ArrayList<>();
+        _pulses.addAll(pulses);
+        _filteredPulses = new ArrayList<>();
+        _filteredPulses.addAll(pulses);
     }
 
     @NonNull
@@ -46,8 +52,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pulse pulse = _pulses.get(viewHolder.getAdapterPosition());
-                FragmentManager fm = ((FragmentActivity)_context).getSupportFragmentManager();
+                Pulse pulse = _filteredPulses.get(viewHolder.getAdapterPosition());
+                FragmentManager fm = ((FragmentActivity) _context).getSupportFragmentManager();
                 DetailDialogFragment dialog = new DetailDialogFragment(pulse);
                 dialog.show(fm, "");
             }
@@ -58,7 +64,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PulsesViewHolder holder, int position) {
-        Pulse pulse = _pulses.get(position);
+        Pulse pulse = _filteredPulses.get(position);
 
         TextView labelPulse = holder.pulseLabel;
         labelPulse.setText(String.valueOf(pulse.pulse));
@@ -70,12 +76,12 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
 
     @Override
     public int getItemCount() {
-        return _pulses.size();
+        return _filteredPulses.size();
     }
 
     public void deleteItem(int position) {
 
-        Pulse pulse = _pulses.get(position);
+        Pulse pulse = _filteredPulses.get(position);
 
         DatabaseManager dbm = new DatabaseManager(_context);
         Result result = dbm.deletePulse(pulse);
@@ -85,9 +91,40 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
             return;
         }
 
-        _pulses.remove(position);
+        _filteredPulses.remove(position);
         notifyItemRemoved(position);
 
         StatusSnackbar.show((Activity) _context, result.getMessage());
+    }
+
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                List<Pulse> filteredList = new ArrayList<>();
+                if (constraint == null || constraint.length() == 0) {
+                    filteredList.addAll(_pulses);
+                } else {
+                    String filterPattern = constraint.toString().toLowerCase().trim();
+                    for (Pulse pulse : _pulses) {
+                        if (pulse.description.toLowerCase().contains(filterPattern)) {
+                            filteredList.add(pulse);
+                        }
+                    }
+                }
+                FilterResults results = new FilterResults();
+                results.values = filteredList;
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                _filteredPulses.clear();
+                _filteredPulses.addAll((List) results.values);
+                notifyDataSetChanged();
+            }
+        };
     }
 }
