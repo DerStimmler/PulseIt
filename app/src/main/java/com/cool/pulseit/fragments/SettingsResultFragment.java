@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
@@ -15,6 +16,7 @@ import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
+import com.github.mikephil.charting.charts.BarChart;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +30,7 @@ public class SettingsResultFragment extends Fragment {
     private TextView _ageNumberView;
     private TextView _genderView;
     private TextView _resultView;
+    private BarChart _chart;
 
     public SettingsResultFragment() {
         // Required empty public constructor
@@ -62,14 +65,7 @@ public class SettingsResultFragment extends Fragment {
             return _mainActivity;
         }
 
-        _weightNumberView.setText(String.valueOf(result.getValue().weight));
-        _ageNumberView.setText(String.valueOf(result.getValue().age));
-        _genderView.setText(String.valueOf(result.getValue().gender));
-
-        MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(result.getValue().age, result.getValue().weight, result.getValue().gender);
-        int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
-        _resultView.setText(String.valueOf(maximumHeartRate));
-
+        updateValues(result.getValue().age,result.getValue().weight,result.getValue().gender);
 
         return _mainActivity;
     }
@@ -79,6 +75,7 @@ public class SettingsResultFragment extends Fragment {
         _ageNumberView = _mainActivity.findViewById(R.id.settings_result_age);
         _genderView = _mainActivity.findViewById(R.id.settings_result_gender);
         _resultView = _mainActivity.findViewById(R.id.settings_result_result);
+        _chart = _mainActivity.findViewById(R.id.settings_result_chart);
     }
 
     public void updateValues(int age, int weight, Gender gender) {
@@ -88,5 +85,11 @@ public class SettingsResultFragment extends Fragment {
         MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(age, weight, gender);
         int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
         _resultView.setText(String.valueOf(maximumHeartRate));
+
+        ChartGenerator cg = new ChartGenerator(getContext());
+
+        _chart = cg.classifyPulseChart(_chart, null, maximumHeartRate);
+
+        _chart.invalidate();
     }
 }

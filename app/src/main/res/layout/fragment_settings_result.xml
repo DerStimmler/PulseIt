@@ -156,6 +156,13 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/settings_result_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_weight="1" />
+
             </LinearLayout>
         </ScrollView>
 
