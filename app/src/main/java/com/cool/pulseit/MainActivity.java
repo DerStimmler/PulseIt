@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                             openFragment(HistoryFragment.newInstance("", ""));
                             return true;
                         case R.id.navigation_addPulse:
-                            openFragment(AddPulseFragment.newInstance("", ""));
+                            openFragment(AddPulseFragment.newInstance());
                             return true;
                         case R.id.navigation_settings:
                             openFragment(SettingsFragment.newInstance("", ""));

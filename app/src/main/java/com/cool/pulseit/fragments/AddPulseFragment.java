@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
 import androidx.fragment.app.Fragment;
@@ -26,15 +27,9 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class AddPulseFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
     private View _mainActivity;
-    private Button _tapButton;
+    private ImageButton _tapButton;
     private NumberPicker _pulseNumberPicker;
     private Button _saveButton;
     private HeartRateCalculator _heartRateCalculator;
@@ -48,15 +43,11 @@ public class AddPulseFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment AddPulseFragment.
      */
-    public static AddPulseFragment newInstance(String param1, String param2) {
+    public static AddPulseFragment newInstance() {
         AddPulseFragment fragment = new AddPulseFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,10 +55,6 @@ public class AddPulseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
