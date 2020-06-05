@@ -4,10 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.R;
+import com.cool.pulseit.utils.DateFormatter;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+
+import java.lang.reflect.Field;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,14 +23,9 @@ import com.cool.pulseit.R;
  * create an instance of this fragment.
  */
 public class AnalyticsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private View _mainActivity;
+    private EditText _datePicker;
 
     public AnalyticsFragment() {
         // Required empty public constructor
@@ -31,17 +34,13 @@ public class AnalyticsFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+
      * @return A new instance of fragment AnalyticsFragments.
      */
     // TODO: Rename and change types and number of parameters
-    public static AnalyticsFragment newInstance(String param1, String param2) {
+    public static AnalyticsFragment newInstance() {
         AnalyticsFragment fragment = new AnalyticsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,16 +48,68 @@ public class AnalyticsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analytics, container, false);
+        _mainActivity =  inflater.inflate(R.layout.fragment_analytics, container, false);
+
+        getElements();
+        setEventListener();
+        initDatePicker();
+
+        return _mainActivity;
+    }
+
+    private void setEventListener() {
+        _datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.dateRangePicker();
+                MaterialDatePicker picker = builder.build();
+                picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        Field firstField = selection.getClass().getDeclaredFields()[0];
+                        firstField.setAccessible(true);
+
+                        Field secondField = selection.getClass().getDeclaredFields()[1];
+                        secondField.setAccessible(true);
+
+                        Long firstLong = null;
+                        Long secondLong = null;
+                        try {
+                            firstLong = (Long)firstField.get(selection);
+                            secondLong = (Long)secondField.get(selection);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                        Date from = new Date(firstLong);
+                        Date to = new Date(secondLong);
+
+                        setDatePicker(from,to);
+                    }
+                });
+                picker.show(getFragmentManager(),picker.toString());
+            }
+        });
+    }
+
+    private void initDatePicker() {
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MONTH, -1);
+        Date from = new Date(c.getTimeInMillis());
+        Date to = new Date();
+        setDatePicker(from,to);
+    }
+
+    private void setDatePicker(Date from, Date to) {
+        _datePicker.setText(String.format("%s - %s",DateFormatter.forUiWithoutTime(from),DateFormatter.forUiWithoutTime(to)));
+    }
+
+    private void getElements() {
+        _datePicker = _mainActivity.findViewById(R.id.analytics_date);
     }
 }

@@ -25,8 +25,13 @@ public class DateFormatter {
         return date;
     }
 
-    public static String forUi(Date date) {
+    public static String forUiWithTime(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        return format.format(date);
+    }
+
+    public static String forUiWithoutTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         return format.format(date);
     }
 }

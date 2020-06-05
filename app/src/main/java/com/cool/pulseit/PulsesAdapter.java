@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +63,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> {
         TextView labelPulse = holder.pulseLabel;
         labelPulse.setText(String.valueOf(pulse.pulse));
         TextView labelDate = holder.dateLabel;
-        labelDate.setText(DateFormatter.forUi(pulse.date));
+        labelDate.setText(DateFormatter.forUiWithTime(pulse.date));
         TextView labelDescription = holder.descriptionLabel;
         labelDescription.setText(pulse.description);
     }

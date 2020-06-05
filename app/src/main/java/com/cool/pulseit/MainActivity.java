@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_analytics:
-                            openFragment(AnalyticsFragment.newInstance("", ""));
+                            openFragment(AnalyticsFragment.newInstance());
                             return true;
                         case R.id.navigation_history:
                             openFragment(HistoryFragment.newInstance("", ""));
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //InitialFragment
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, AnalyticsFragment.newInstance("", ""));
+            transaction.replace(R.id.container, AnalyticsFragment.newInstance());
             transaction.commit();
         }
     }
