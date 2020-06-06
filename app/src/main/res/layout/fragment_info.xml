@@ -12,12 +12,9 @@
 
         <TextView
             android:id="@+id/info_header"
-            android:layout_marginTop="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+            style="@style/heading"
             android:text="@string/info_header"
-            android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +22,9 @@
         <ScrollView
             android:id="@+id/info_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
             android:scrollbarStyle="insideOverlay"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/info_header">
@@ -38,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:orientation="vertical"
-                android:paddingBottom="150dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/info_description"
@@ -143,22 +139,22 @@
                     android:textSize="13sp" />
 
                 <TextView
-                android:id="@+id/info_interpretation_gesundheitszone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_interpretation_gesundheitszone"
-                android:textSize="13sp"
-                    android:textColor="@color/grey"/>
+                    android:id="@+id/info_interpretation_gesundheitszone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation_gesundheitszone"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp" />
 
                 <TextView
-                android:id="@+id/info_interpretation_fettverbrennungszone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="@string/info_interpretation_fettverbrennungszone"
-                android:textSize="13sp"
-                    android:textColor="@color/turquoise"/>
+                    android:id="@+id/info_interpretation_fettverbrennungszone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_interpretation_fettverbrennungszone"
+                    android:textColor="@color/turquoise"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/info_interpretation_aerobe_Zone"
@@ -166,8 +162,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="@string/info_interpretation_aerobe_Zone"
-                    android:textSize="13sp"
-                    android:textColor="@color/green"/>
+                    android:textColor="@color/green"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/info_interpretation_anaerobe_Zone"
@@ -175,8 +171,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="@string/info_interpretation_anaerobe_Zone"
-                    android:textSize="13sp"
-                    android:textColor="@color/orange"/>
+                    android:textColor="@color/orange"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/info_interpretation_rote_Zone"
@@ -184,8 +180,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:text="@string/info_interpretation_rote_Zone"
-                    android:textSize="13sp"
-                    android:textColor="@color/red"/>
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/info_chart"

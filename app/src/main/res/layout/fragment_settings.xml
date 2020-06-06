@@ -13,12 +13,9 @@
 
             <TextView
                 android:id="@+id/settings_heading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+
+                style="@style/heading"
                 android:text="@string/settings_heading"
-                android:textSize="30sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,8 +46,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/settings_tablayout">
-            </androidx.viewpager.widget.ViewPager>
+                app:layout_constraintTop_toBottomOf="@+id/settings_tablayout"></androidx.viewpager.widget.ViewPager>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
