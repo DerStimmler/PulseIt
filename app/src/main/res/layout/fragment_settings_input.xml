@@ -103,6 +103,7 @@
 
                 <Button
                     android:id="@+id/settings_button_save"
+                    style="@style/AppTheme.SaveButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
