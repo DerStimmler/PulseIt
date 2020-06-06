@@ -32,10 +32,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     private View _mainActivity;
 
     public PulsesAdapter(List<Pulse> pulses) {
-        _pulses = new ArrayList<>();
-        _pulses.addAll(pulses);
-        _filteredPulses = new ArrayList<>();
-        _filteredPulses.addAll(pulses);
+        _pulses = new ArrayList<>(pulses);
+        _filteredPulses = new ArrayList<>(pulses);
     }
 
     @NonNull
@@ -91,7 +89,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
             return;
         }
 
-        _filteredPulses.remove(position);
+        _filteredPulses.remove(pulse);
+        _pulses.remove(pulse);
         notifyItemRemoved(position);
 
         StatusSnackbar.show((Activity) _context, result.getMessage());
