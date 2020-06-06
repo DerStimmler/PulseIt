@@ -6,7 +6,7 @@ import android.graphics.Color;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.entities.Pulse;
-import com.cool.pulseit.utils.Zones;
+import com.cool.pulseit.utils.Zone;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -65,7 +65,7 @@ public class ChartGenerator {
     }
 
     private String[] getStackLabels() {
-        return new String[]{Zones.VERYLIGHT.getValue(), Zones.LIGHT.getValue(), Zones.MODERATE.getValue(), Zones.HARD.getValue(), Zones.VERYHARD.getValue()};
+        return new String[]{Zone.VERYLIGHT.getValue(), Zone.LIGHT.getValue(), Zone.MODERATE.getValue(), Zone.HARD.getValue(), Zone.VERYHARD.getValue()};
     }
 
     private int[] getColours() {
@@ -81,35 +81,35 @@ public class ChartGenerator {
         ll = new LimitLine(entries.get(0).getYVals()[1] + x);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[1] / 2 + x, Zones.VERYLIGHT.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[1] / 2 + x, Zone.VERYLIGHT.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[1];
         ll = new LimitLine(entries.get(0).getYVals()[2] + x);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[2] / 2 + x, Zones.LIGHT.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[2] / 2 + x, Zone.LIGHT.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[2];
         ll = new LimitLine(entries.get(0).getYVals()[3] + x);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[3] / 2 + x, Zones.MODERATE.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[3] / 2 + x, Zone.MODERATE.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[3];
         ll = new LimitLine(entries.get(0).getYVals()[4] + x);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[4] / 2 + x, Zones.HARD.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[4] / 2 + x, Zone.HARD.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[4];
         ll = new LimitLine(entries.get(0).getYVals()[5] + x);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[5] / 2 + x, Zones.VERYHARD.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[5] / 2 + x, Zone.VERYHARD.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[5];

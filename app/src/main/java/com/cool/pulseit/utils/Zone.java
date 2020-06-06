@@ -1,6 +1,6 @@
 package com.cool.pulseit.utils;
 
-public enum Zones {
+public enum Zone {
     NONE("keine Zone"),
     VERYLIGHT("Gesundheitszone"),
     LIGHT("Fettverbrennungszone"),
@@ -10,30 +10,30 @@ public enum Zones {
 
     private String value;
 
-    Zones(final String value) {
+    Zone(final String value) {
         this.value = value;
     }
 
-    public static Zones toEnum(String zonesString) {
+    public static Zone toEnum(String zonesString) {
         switch (zonesString) {
             case "keine Zone":
             case "NONE":
-                return Zones.NONE;
+                return Zone.NONE;
             case "Gesundheitszone":
             case "VERYLIGHT":
-                return Zones.VERYLIGHT;
+                return Zone.VERYLIGHT;
             case "Fettverbrennungszone":
             case "LIGHT":
-                return Zones.LIGHT;
+                return Zone.LIGHT;
             case "aerobe Zone":
             case "MODERATE":
-                return Zones.MODERATE;
+                return Zone.MODERATE;
             case "anaerobe Zone":
             case "HARD":
-                return Zones.HARD;
+                return Zone.HARD;
             case "Warnzone":
             case "VERYHARD":
-                return Zones.VERYHARD;
+                return Zone.VERYHARD;
             default:
                 throw new IllegalArgumentException(String.format("Can't convert %s to ZonesEnum", zonesString));
         }

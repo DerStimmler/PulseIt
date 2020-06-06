@@ -18,6 +18,7 @@ import com.cool.pulseit.Share;
 import com.cool.pulseit.ZoneCalculator;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
+import com.cool.pulseit.utils.Zone;
 import com.github.mikephil.charting.charts.BarChart;
 
 public class DetailDialogFragment extends DialogFragment {
@@ -64,8 +65,8 @@ public class DetailDialogFragment extends DialogFragment {
         dialog_description.setText(_pulse.description);
 
         ZoneCalculator zoneCalculator = new ZoneCalculator(_pulse.pulse,_pulse.settings.age,_pulse.settings.weight, _pulse.settings.gender);
-        String zone = zoneCalculator.calculateZone();
-        dialog_zones_tv.setText(zone);
+        Zone zone = zoneCalculator.calculateZone();
+        dialog_zones_tv.setText(zone.getValue());
 
         //Dastellung zweiter Card -> Settings
         TextView dialog_gender_tv = _view.findViewById(R.id.detail_dialog_settings_gender);
