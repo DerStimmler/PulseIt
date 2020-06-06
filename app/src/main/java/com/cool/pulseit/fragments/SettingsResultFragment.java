@@ -60,12 +60,12 @@ public class SettingsResultFragment extends Fragment {
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
 
-        if(!result.isOk()){
-            StatusSnackbar.show(getActivity(),result.getMessage());
+        if (!result.isOk()) {
+            StatusSnackbar.show(getActivity(), result.getMessage());
             return _mainActivity;
         }
 
-        updateValues(result.getValue().age,result.getValue().weight,result.getValue().gender);
+        updateValues(result.getValue().age, result.getValue().weight, result.getValue().gender);
 
         return _mainActivity;
     }

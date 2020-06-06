@@ -11,19 +11,19 @@ public class ZoneCalculator {
     private int _weight;
     private Gender _gender;
 
-    public ZoneCalculator(int pulse, int age, int weight, Gender gender){
+    public ZoneCalculator(int pulse, int age, int weight, Gender gender) {
         _pulse = pulse;
         _age = age;
-        _weight= weight;
-        _gender=gender;
+        _weight = weight;
+        _gender = gender;
     }
 
-    public ZoneCalculator(Pulse pulse){
-        this(pulse.pulse,pulse.settings.age, pulse.settings.weight, pulse.settings.gender);
+    public ZoneCalculator(Pulse pulse) {
+        this(pulse.pulse, pulse.settings.age, pulse.settings.weight, pulse.settings.gender);
     }
 
     public Zone calculateZone() {
-        MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(_age,_weight,_gender);
+        MaximumHeartRateCalculator maximumHeartRateCalculator = new MaximumHeartRateCalculator(_age, _weight, _gender);
         int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
         int pulseZone = (int) ((100.0 / maximumHeartRate) * _pulse);
 

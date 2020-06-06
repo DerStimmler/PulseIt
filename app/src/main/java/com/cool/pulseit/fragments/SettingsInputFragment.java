@@ -139,7 +139,7 @@ public class SettingsInputFragment extends Fragment {
             return;
         }
         StatusSnackbar.show(getActivity(), result.getMessage());
-        
+
         _settingsResultFragment.updateValues(age, weight, gender);
     }
 }

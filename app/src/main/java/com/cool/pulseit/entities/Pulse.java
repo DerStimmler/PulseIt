@@ -6,8 +6,8 @@ public class Pulse {
     public Date date;
     public int pulse;
     public Settings settings;
-    private int id;
     public String description;
+    private int id;
 
     public Pulse(int id, Date date, int pulse, String description, Settings settings) {
         this.id = id;

@@ -20,13 +20,9 @@ import com.cool.pulseit.utils.Zone;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
-import org.w3c.dom.Text;
-
 import java.lang.reflect.Field;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -49,10 +45,9 @@ public class AnalyticsFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-
+     *
      * @return A new instance of fragment AnalyticsFragments.
      */
-    // TODO: Rename and change types and number of parameters
     public static AnalyticsFragment newInstance() {
         AnalyticsFragment fragment = new AnalyticsFragment();
         Bundle args = new Bundle();
@@ -69,7 +64,7 @@ public class AnalyticsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        _mainActivity =  inflater.inflate(R.layout.fragment_analytics, container, false);
+        _mainActivity = inflater.inflate(R.layout.fragment_analytics, container, false);
 
         getElements();
         setEventListener();
@@ -96,8 +91,8 @@ public class AnalyticsFragment extends Fragment {
                         Long firstLong = null;
                         Long secondLong = null;
                         try {
-                            firstLong = (Long)firstField.get(selection);
-                            secondLong = (Long)secondField.get(selection);
+                            firstLong = (Long) firstField.get(selection);
+                            secondLong = (Long) secondField.get(selection);
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
                         }
@@ -110,21 +105,21 @@ public class AnalyticsFragment extends Fragment {
                         calendar.setTime(from);
                         calendar.set(Calendar.HOUR, 0);
                         calendar.set(Calendar.MINUTE, 0);
-                        calendar.set(Calendar.SECOND,0);
+                        calendar.set(Calendar.SECOND, 0);
 
                         from = calendar.getTime();
 
                         calendar.setTime(to);
                         calendar.set(Calendar.HOUR, 23);
                         calendar.set(Calendar.MINUTE, 59);
-                        calendar.set(Calendar.SECOND,59);
+                        calendar.set(Calendar.SECOND, 59);
 
                         to = calendar.getTime();
 
-                        updateValues(from,to);
+                        updateValues(from, to);
                     }
                 });
-                picker.show(getFragmentManager(),picker.toString());
+                picker.show(getFragmentManager(), picker.toString());
             }
         });
     }
@@ -135,35 +130,35 @@ public class AnalyticsFragment extends Fragment {
 
         Result<List<Pulse>> pulsesResult = dbm.getPulses();
 
-        if(!pulsesResult.isOk()){
-            StatusSnackbar.show(getActivity(),pulsesResult.getMessage());
+        if (!pulsesResult.isOk()) {
+            StatusSnackbar.show(getActivity(), pulsesResult.getMessage());
             return;
         }
 
         AnalyticsCalculator analyticsCalculator = new AnalyticsCalculator(pulsesResult.getValue(), getContext());
 
-        Result<Zone> zoneResult = analyticsCalculator.calculateCommonZone(from,to);
-        if(!zoneResult.isOk()){
+        Result<Zone> zoneResult = analyticsCalculator.calculateCommonZone(from, to);
+        if (!zoneResult.isOk()) {
             StatusSnackbar.show(getActivity(), zoneResult.getMessage());
             return;
         }
         _commonZone.setText(zoneResult.getValue().toString());
 
-        Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse(from,to);
-        if(!minPulseResult.isOk()){
+        Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse(from, to);
+        if (!minPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), minPulseResult.getMessage());
             return;
         }
         _minPulse.setText(String.valueOf(minPulseResult.getValue()));
 
-        Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse(from,to);
-        if(!maxPulseResult.isOk()){
+        Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse(from, to);
+        if (!maxPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), maxPulseResult.getMessage());
             return;
         }
         _maxPulse.setText(String.valueOf(maxPulseResult.getValue()));
 
-        setDatePicker(from,to);
+        setDatePicker(from, to);
     }
 
     private void initDatePicker() {
@@ -172,11 +167,11 @@ public class AnalyticsFragment extends Fragment {
         Date from = new Date(c.getTimeInMillis());
         Date to = new Date();
 
-        updateValues(from,to);
+        updateValues(from, to);
     }
 
     private void setDatePicker(Date from, Date to) {
-        _datePicker.setText(String.format("%s - %s",DateFormatter.forUiWithoutTime(from),DateFormatter.forUiWithoutTime(to)));
+        _datePicker.setText(String.format("%s - %s", DateFormatter.forUiWithoutTime(from), DateFormatter.forUiWithoutTime(to)));
     }
 
     private void getElements() {

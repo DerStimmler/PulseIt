@@ -6,7 +6,8 @@ import java.util.Map;
 
 public final class ListHelper {
 
-    private ListHelper(){};
+    private ListHelper() {
+    }
 
     public static <T> T mostCommon(List<T> list) {
         Map<T, Integer> map = new HashMap<>();

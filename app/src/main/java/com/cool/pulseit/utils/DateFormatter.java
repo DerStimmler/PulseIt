@@ -8,7 +8,8 @@ import java.util.Date;
 
 public final class DateFormatter {
 
-    private DateFormatter(){}
+    private DateFormatter() {
+    }
 
     public static String toDb(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");

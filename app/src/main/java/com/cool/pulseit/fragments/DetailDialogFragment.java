@@ -64,7 +64,7 @@ public class DetailDialogFragment extends DialogFragment {
         dialog_date_tv.setText(DateFormatter.forUiWithTime(_pulse.date));
         dialog_description.setText(_pulse.description);
 
-        ZoneCalculator zoneCalculator = new ZoneCalculator(_pulse.pulse,_pulse.settings.age,_pulse.settings.weight, _pulse.settings.gender);
+        ZoneCalculator zoneCalculator = new ZoneCalculator(_pulse.pulse, _pulse.settings.age, _pulse.settings.weight, _pulse.settings.gender);
         Zone zone = zoneCalculator.calculateZone();
         dialog_zones_tv.setText(zone.getValue());
 
@@ -87,8 +87,6 @@ public class DetailDialogFragment extends DialogFragment {
 
         chart.invalidate();
     }
-
-
 
 
 }

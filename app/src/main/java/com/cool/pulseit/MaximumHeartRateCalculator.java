@@ -8,10 +8,10 @@ public class MaximumHeartRateCalculator {
     private int _weight;
     private Enum<Gender> _gender;
 
-    public MaximumHeartRateCalculator(int age, int weight, Enum<Gender> gender){
+    public MaximumHeartRateCalculator(int age, int weight, Enum<Gender> gender) {
         _age = age;
-        _weight= weight;
-        _gender=gender;
+        _weight = weight;
+        _gender = gender;
     }
 
     public int calculateMaximumHeartRate() {

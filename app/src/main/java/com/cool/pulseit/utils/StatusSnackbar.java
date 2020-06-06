@@ -7,7 +7,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public final class StatusSnackbar {
 
-    private StatusSnackbar(){};
+    private StatusSnackbar() {
+    }
 
     public static void show(Activity mainActivity, String message) {
         Snackbar s = Snackbar.make(mainActivity.findViewById(R.id.bottom_navigation), message, Snackbar.LENGTH_SHORT);

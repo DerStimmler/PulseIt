@@ -20,7 +20,7 @@ public class AnalyticsCalculator {
         _context = context;
     }
 
-    public Result<Zone> calculateCommonZone(Date from, Date to){
+    public Result<Zone> calculateCommonZone(Date from, Date to) {
         Result<List<Pulse>> result = filterRelevantPulses(from, to);
 
         if (!result.isOk()) {
@@ -29,7 +29,7 @@ public class AnalyticsCalculator {
 
         List<Zone> zones = new ArrayList<>();
 
-        for(Pulse pulse : result.getValue()){
+        for (Pulse pulse : result.getValue()) {
             ZoneCalculator zoneCalculator = new ZoneCalculator(pulse);
             zones.add(zoneCalculator.calculateZone());
         }
