@@ -38,56 +38,52 @@
                 android:focusable="false"
                 android:inputType="date" />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/analytics_max_pulse"
+                    <com.cool.pulseit.CircularTextView
+                        android:id="@+id/analytics_circularTextView_max_pulse"
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
-                </TableRow>
+                        android:text="TextView"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/analytics_min_pulse"
+                    <com.cool.pulseit.CircularTextView
+                        android:id="@+id/analytics_circularTextView_avg_pulse"
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
-                </TableRow>
+                        android:text="TextView"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/analytics_common_zone"
+                    <com.cool.pulseit.CircularTextView
+                        android:id="@+id/analytics_circularTextView_min_pulse"
+                        android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
-                </TableRow>
+                        android:text="TextView"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            </LinearLayout>
 
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:id="@+id/analytics_zone_chart"
-                        android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        android:layout_weight="1">
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/analytics_zone_chart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_weight="1">
 
-                    </com.github.mikephil.charting.charts.PieChart>
-                </TableRow>
-            </TableLayout>
+            </com.github.mikephil.charting.charts.PieChart>
 
         </LinearLayout>
 
