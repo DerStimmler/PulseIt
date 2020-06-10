@@ -1,6 +1,7 @@
 package com.cool.pulseit;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    boolean doubleBackToExitPressedOnce = false;
+
     public void openFragment(final Fragment fragment) {
         final FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         final int count = fragmentManager.getBackStackEntryCount();
         transaction.addToBackStack(null);
         transaction.commit();
+        doubleBackToExitPressedOnce = false;
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -76,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.popBackStack();
                     fragmentManager.removeOnBackStackChangedListener(this);
                     bottomNavigation.getMenu().getItem((0)).setChecked(true);
-                    Toast.makeText(MainActivity.this, R.string.main_message_ui_double_back_to_close, Toast.LENGTH_SHORT).show();
+                    if(doubleBackToExitPressedOnce == false){
+                        doubleBackToExitPressedOnce = true;
+                        Toast.makeText(MainActivity.this, R.string.main_message_ui_double_back_to_close, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

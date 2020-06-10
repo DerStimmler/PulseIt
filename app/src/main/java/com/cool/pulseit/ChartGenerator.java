@@ -42,6 +42,8 @@ public class ChartGenerator {
 
         chart.setData(bardata);
         setStandardChartOptions(chart);
+        int count = maxPulse / 10;
+        chart.getAxisLeft().setLabelCount(count);
 
         return chart;
     }
@@ -60,6 +62,8 @@ public class ChartGenerator {
         chart.setData(bardata);
         setStandardChartOptions(chart);
         chart.getAxisLeft().setValueFormatter(new PercentFormatter());
+        chart.getAxisLeft().setAxisMaximum(110f);
+        chart.getAxisLeft().setLabelCount(11);
 
         return chart;
     }
@@ -75,38 +79,44 @@ public class ChartGenerator {
     private void addLimitLines(BarChart chart, List<BarEntry> entries, Pulse pulse) {
         LimitLine ll;
         float x = entries.get(0).getYVals()[0];
-        ll = new LimitLine(x);
+        ll = new LimitLine(x, String.valueOf((int)(x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[1] + x);
+        ll = new LimitLine(entries.get(0).getYVals()[1] + x, String.valueOf((int)(entries.get(0).getYVals()[1] + x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(entries.get(0).getYVals()[1] / 2 + x, Zone.VERYLIGHT.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[1];
-        ll = new LimitLine(entries.get(0).getYVals()[2] + x);
+        ll = new LimitLine(entries.get(0).getYVals()[2] + x, String.valueOf((int)(entries.get(0).getYVals()[2] + x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(entries.get(0).getYVals()[2] / 2 + x, Zone.LIGHT.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[2];
-        ll = new LimitLine(entries.get(0).getYVals()[3] + x);
+        ll = new LimitLine(entries.get(0).getYVals()[3] + x, String.valueOf((int)(entries.get(0).getYVals()[3] + x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(entries.get(0).getYVals()[3] / 2 + x, Zone.MODERATE.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[3];
-        ll = new LimitLine(entries.get(0).getYVals()[4] + x);
+        ll = new LimitLine(entries.get(0).getYVals()[4] + x, String.valueOf((int)(entries.get(0).getYVals()[4] + x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(entries.get(0).getYVals()[4] / 2 + x, Zone.HARD.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[4];
-        ll = new LimitLine(entries.get(0).getYVals()[5] + x);
+        ll = new LimitLine(entries.get(0).getYVals()[5] + x, String.valueOf((int)(entries.get(0).getYVals()[5] + x)));
+        ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(entries.get(0).getYVals()[5] / 2 + x, Zone.VERYHARD.getValue());
@@ -115,6 +125,8 @@ public class ChartGenerator {
         x += entries.get(0).getYVals()[5];
         if (pulse != null) {
             ll = new LimitLine(pulse.pulse, "Eigener Puls");
+            ll.setLineColor(Color.RED);
+            ll.setTextColor(Color.RED);
             chart.getAxisLeft().addLimitLine(ll);
         }
     }
