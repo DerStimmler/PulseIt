@@ -6,33 +6,130 @@ import android.graphics.Color;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.utils.ArrayHelper;
 import com.cool.pulseit.utils.Zone;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChartGenerator {
 
-    private int[] _colors;
     private Context _context;
-    private String[] _stackLabels;
 
     public ChartGenerator(Context context) {
         _context = context;
-        _colors = getColours();
-        _stackLabels = getStackLabels();
+    }
+
+    public PieChart generateZonesPieChart(PieChart chart, List<Pulse> pulses){
+
+        List<PieEntry> entries = getPieEntries(pulses);
+        PieDataSet dataSet = getPieDataset(entries);
+        PieData data = getPieData(dataSet, chart);
+
+        setStandardPieChartOptions(chart);
+
+        chart.setData(data);
+
+        return chart;
+    }
+
+    private PieData getPieData(PieDataSet dataSet, PieChart chart) {
+        PieData data = new PieData(dataSet);
+        data.setValueFormatter(new PercentFormatter(chart));
+
+        return data;
+    }
+
+    private PieDataSet getPieDataset(List<PieEntry> entries) {
+        PieDataSet dataSet = new PieDataSet(entries, "Label");
+        dataSet.setColors(getPieChartColours(entries));
+        dataSet.setValueTextColor(Color.BLACK);
+
+        return dataSet;
+    }
+
+    private int[] getBarChartColours(){
+        Map<Zone, Integer> colorMap = getColours();
+
+        List<Integer> colors = new ArrayList<>();
+
+        colors.add(colorMap.get(Zone.NONE));
+        colors.add(colorMap.get(Zone.VERYLIGHT));
+        colors.add(colorMap.get(Zone.LIGHT));
+        colors.add(colorMap.get(Zone.MODERATE));
+        colors.add(colorMap.get(Zone.HARD));
+        colors.add(colorMap.get(Zone.VERYHARD));
+
+        return ArrayHelper.toArray(colors);
+    }
+
+    private int[] getPieChartColours(List<PieEntry> entries) {
+        Map<Zone, Integer> colorMap = getColours();
+
+        List<Integer> colors = new ArrayList<>();
+
+        for(PieEntry entry :entries){
+            colors.add(colorMap.get(Zone.toEnum(entry.getLabel())));
+        }
+
+        return ArrayHelper.toArray(colors);
+    }
+
+    private Map<Zone,List<Pulse>> getPieMap(List<Pulse> pulses){
+        Map<Zone, List<Pulse>> map = new HashMap<>();
+
+        for(Pulse pulse : pulses) {
+            ZoneCalculator zoneCalculator = new ZoneCalculator(pulse);
+            Zone z = zoneCalculator.calculateZone();
+
+            List<Pulse> temp = new ArrayList<>();
+
+            if(map.get(z) == null){
+
+                temp.add(pulse);
+                map.put(z, temp);
+                continue;
+            }
+
+            temp.addAll(map.get(z));
+            temp.add(pulse);
+
+            map.put(z, temp);
+        }
+
+        return map;
+    }
+
+    private List<PieEntry> getPieEntries(List<Pulse> pulses) {
+
+        Map<Zone, List<Pulse>> map = getPieMap(pulses);
+
+        List<PieEntry> entries = new ArrayList<>();
+
+        for(Zone zone : map.keySet()){
+            PieEntry entry = new PieEntry(100f /pulses.size() * map.get(zone).size(),zone.getValue());
+            entries.add(entry);
+        }
+
+        return entries;
     }
 
     public BarChart classifyPulseChart(BarChart chart, Pulse pulse, int maxPulse) {
 
-        List<BarEntry> entries = getEntries(maxPulse);
+        List<BarEntry> entries = getBarEntries(maxPulse);
 
         BarDataSet dataSet = createBarDataSet(entries);
 
@@ -41,7 +138,7 @@ public class ChartGenerator {
         addLimitLines(chart, entries, pulse);
 
         chart.setData(bardata);
-        setStandardChartOptions(chart);
+        setStandardBarChartOptions(chart);
         int count = maxPulse / 10;
         chart.getAxisLeft().setLabelCount(count);
 
@@ -60,7 +157,7 @@ public class ChartGenerator {
         addLimitLines(chart, entries, null);
 
         chart.setData(bardata);
-        setStandardChartOptions(chart);
+        setStandardBarChartOptions(chart);
         chart.getAxisLeft().setValueFormatter(new PercentFormatter());
         chart.getAxisLeft().setAxisMaximum(110f);
         chart.getAxisLeft().setLabelCount(11);
@@ -72,13 +169,24 @@ public class ChartGenerator {
         return new String[]{Zone.VERYLIGHT.getValue(), Zone.LIGHT.getValue(), Zone.MODERATE.getValue(), Zone.HARD.getValue(), Zone.VERYHARD.getValue()};
     }
 
-    private int[] getColours() {
-        return new int[]{Color.TRANSPARENT, ResourcesCompat.getColor(_context.getResources(), R.color.grey, null), ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null), ResourcesCompat.getColor(_context.getResources(), R.color.green, null), ResourcesCompat.getColor(_context.getResources(), R.color.orange, null), ResourcesCompat.getColor(_context.getResources(), R.color.red, null)};
+    private Map<Zone,Integer> getColours() {
+        Map<Zone,Integer> map = new HashMap<>();
+        map.put(Zone.NONE,ResourcesCompat.getColor(_context.getResources(), R.color.lightblue, null));
+        map.put(Zone.VERYLIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.grey, null));
+        map.put(Zone.LIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null));
+        map.put(Zone.MODERATE, ResourcesCompat.getColor(_context.getResources(), R.color.green, null));
+        map.put(Zone.HARD, ResourcesCompat.getColor(_context.getResources(), R.color.orange, null));
+        map.put(Zone.VERYHARD, ResourcesCompat.getColor(_context.getResources(), R.color.red, null));
+
+        return map;
     }
 
     private void addLimitLines(BarChart chart, List<BarEntry> entries, Pulse pulse) {
         LimitLine ll;
         float x = entries.get(0).getYVals()[0];
+        ll = new LimitLine(x / 2, Zone.NONE.getValue());
+        ll.setLineColor(Color.TRANSPARENT);
+        chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(x, String.valueOf((int)(x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
@@ -138,7 +246,7 @@ public class ChartGenerator {
         return bardata;
     }
 
-    private void setStandardChartOptions(BarChart chart) {
+    private void setStandardBarChartOptions(BarChart chart) {
         chart.getXAxis().setAxisMaximum(0.2f);
         chart.getXAxis().setAxisMinimum(1f);
         chart.getXAxis().setLabelCount(0, true);
@@ -160,7 +268,12 @@ public class ChartGenerator {
         chart.setFitBars(true);
     }
 
-    private List<BarEntry> getEntries(int maxPulse) {
+    private void setStandardPieChartOptions(PieChart chart){
+        chart.getDescription().setEnabled(false);
+        chart.setUsePercentValues(true);
+    }
+
+    private List<BarEntry> getBarEntries(int maxPulse) {
 
         float[] yValues = new float[]{
                 maxPulse * 0.5f - maxPulse * 0.0f,
@@ -179,8 +292,8 @@ public class ChartGenerator {
 
     private BarDataSet createBarDataSet(List<BarEntry> entries) {
         BarDataSet dataSet = new BarDataSet(entries, "Label");
-        dataSet.setColors(_colors);
-        dataSet.setStackLabels(_stackLabels);
+        dataSet.setColors(getBarChartColours());
+        dataSet.setStackLabels(getStackLabels());
         dataSet.setValueTextColor(Color.TRANSPARENT);
 
         return dataSet;

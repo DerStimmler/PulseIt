@@ -20,16 +20,11 @@ public class AnalyticsCalculator {
         _context = context;
     }
 
-    public Result<Zone> calculateCommonZone(Date from, Date to) {
-        Result<List<Pulse>> result = filterRelevantPulses(from, to);
-
-        if (!result.isOk()) {
-            return new Result<Zone>(false, result.getMessage());
-        }
+    public Result<Zone> calculateCommonZone() {
 
         List<Zone> zones = new ArrayList<>();
 
-        for (Pulse pulse : result.getValue()) {
+        for (Pulse pulse : _pulses) {
             ZoneCalculator zoneCalculator = new ZoneCalculator(pulse);
             zones.add(zoneCalculator.calculateZone());
         }
@@ -39,16 +34,11 @@ public class AnalyticsCalculator {
         return new Result<Zone>(true, commonZone);
     }
 
-    public Result<Integer> calculateMaxPulse(Date from, Date to) {
-        Result<List<Pulse>> result = filterRelevantPulses(from, to);
-
-        if (!result.isOk()) {
-            return new Result<Integer>(false, result.getMessage());
-        }
+    public Result<Integer> calculateMaxPulse() {
 
         int maxPulse = Integer.MIN_VALUE;
 
-        for (Pulse pulse : result.getValue()) {
+        for (Pulse pulse : _pulses) {
             if (pulse.pulse > maxPulse) {
                 maxPulse = pulse.pulse;
             }
@@ -57,16 +47,11 @@ public class AnalyticsCalculator {
         return new Result<Integer>(true, maxPulse);
     }
 
-    public Result<Integer> calculateMinPulse(Date from, Date to) {
-        Result<List<Pulse>> result = filterRelevantPulses(from, to);
-
-        if (!result.isOk()) {
-            return new Result<Integer>(false, result.getMessage());
-        }
+    public Result<Integer> calculateMinPulse() {
 
         int minPulse = Integer.MAX_VALUE;
 
-        for (Pulse pulse : result.getValue()) {
+        for (Pulse pulse : _pulses) {
             if (pulse.pulse < minPulse) {
                 minPulse = pulse.pulse;
             }
@@ -75,26 +60,5 @@ public class AnalyticsCalculator {
         return new Result<Integer>(true, minPulse);
     }
 
-    private Result<List<Pulse>> filterRelevantPulses(Date from, Date to) {
-        List<Pulse> filteredPulses = new ArrayList<>(_pulses);
-        for (Pulse pulse : _pulses) {
-            if (pulse.date.before(from) || pulse.date.after(to)) {
-                filteredPulses.remove(pulse);
-            }
-        }
 
-        Result<List<Pulse>> result = new Result<>();
-
-        if (filteredPulses.isEmpty()) {
-            result.setOk(false);
-            result.setMessage(_context.getString(R.string.analytics_calculator_exception_ui_no_pulse_entries_in_date_range));
-
-            return result;
-        }
-
-        result.setOk(true);
-        result.setValue(filteredPulses);
-
-        return result;
-    }
 }

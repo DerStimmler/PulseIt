@@ -77,7 +77,16 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/analytics_zone_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_weight="1">
+
+                    </com.github.mikephil.charting.charts.PieChart>
+                </TableRow>
             </TableLayout>
 
         </LinearLayout>

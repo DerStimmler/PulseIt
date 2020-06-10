@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.AnalyticsCalculator;
+import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
@@ -17,6 +18,7 @@ import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.cool.pulseit.utils.Zone;
+import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
@@ -37,6 +39,7 @@ public class AnalyticsFragment extends Fragment {
     private TextView _maxPulse;
     private TextView _minPulse;
     private TextView _commonZone;
+    private PieChart _zonesChart;
 
     public AnalyticsFragment() {
         // Required empty public constructor
@@ -128,7 +131,7 @@ public class AnalyticsFragment extends Fragment {
 
         DatabaseManager dbm = new DatabaseManager(getContext());
 
-        Result<List<Pulse>> pulsesResult = dbm.getPulses();
+        Result<List<Pulse>> pulsesResult = dbm.getPulses(from,to);
 
         if (!pulsesResult.isOk()) {
             StatusSnackbar.show(getActivity(), pulsesResult.getMessage());
@@ -137,28 +140,36 @@ public class AnalyticsFragment extends Fragment {
 
         AnalyticsCalculator analyticsCalculator = new AnalyticsCalculator(pulsesResult.getValue(), getContext());
 
-        Result<Zone> zoneResult = analyticsCalculator.calculateCommonZone(from, to);
+        Result<Zone> zoneResult = analyticsCalculator.calculateCommonZone();
         if (!zoneResult.isOk()) {
             StatusSnackbar.show(getActivity(), zoneResult.getMessage());
             return;
         }
         _commonZone.setText(zoneResult.getValue().toString());
 
-        Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse(from, to);
+        Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse();
         if (!minPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), minPulseResult.getMessage());
             return;
         }
         _minPulse.setText(String.valueOf(minPulseResult.getValue()));
 
-        Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse(from, to);
+        Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse();
         if (!maxPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), maxPulseResult.getMessage());
             return;
         }
         _maxPulse.setText(String.valueOf(maxPulseResult.getValue()));
 
+        generateChart(pulsesResult.getValue());
+
         setDatePicker(from, to);
+    }
+
+    private void generateChart(List<Pulse> pulses) {
+        ChartGenerator cg = new ChartGenerator(getContext());
+        _zonesChart = cg.generateZonesPieChart(_zonesChart, pulses);
+        _zonesChart.invalidate();
     }
 
     private void initDatePicker() {
@@ -179,5 +190,6 @@ public class AnalyticsFragment extends Fragment {
         _maxPulse = _mainActivity.findViewById(R.id.analytics_max_pulse);
         _minPulse = _mainActivity.findViewById(R.id.analytics_min_pulse);
         _commonZone = _mainActivity.findViewById(R.id.analytics_common_zone);
+        _zonesChart = _mainActivity.findViewById(R.id.analytics_zone_chart);
     }
 }

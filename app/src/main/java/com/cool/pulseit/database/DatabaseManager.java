@@ -62,6 +62,41 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
+    public Result<List<Pulse>> getPulses(Date from, Date to){
+            Result<List<Pulse>> result = new Result<>();
+
+            Result<List<Pulse>> allPulses = getPulses();
+
+            if(!allPulses.isOk()) {
+                result.setOk(false);
+                result.setMessage(allPulses.getMessage());
+                return result;
+            }
+
+            List<Pulse> filteredPulses = new ArrayList<>();
+            filteredPulses.addAll(allPulses.getValue());
+
+            for (Pulse pulse : allPulses.getValue()) {
+                if (pulse.date.before(from) || pulse.date.after(to)) {
+                    filteredPulses.remove(pulse);
+                }
+            }
+
+
+
+            if (filteredPulses.isEmpty()) {
+                result.setOk(false);
+                result.setMessage(_context.getString(R.string.analytics_calculator_exception_ui_no_pulse_entries_in_date_range));
+
+                return result;
+            }
+
+            result.setOk(true);
+            result.setValue(filteredPulses);
+
+            return result;
+        }
+
     public Result<List<Pulse>> getPulses() {
         SQLiteDatabase db = getReadableDatabase();
 
