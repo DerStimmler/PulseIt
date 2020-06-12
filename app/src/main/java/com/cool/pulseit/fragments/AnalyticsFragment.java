@@ -161,19 +161,18 @@ public class AnalyticsFragment extends Fragment {
         }
 
         Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse();
-        _circularTextView_avgPulse.setText(zoneResult.getValue().toString());
+        _circularTextView_avgPulse.setText(zoneResult.getValue().toString()+ "\nAVG");
         if (!minPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), minPulseResult.getMessage());
             return;
         }
-        _circularTextView_minPulse.setText(String.valueOf(minPulseResult.getValue()));
-
+        _circularTextView_minPulse.setText(String.valueOf(minPulseResult.getValue())+ "\nMIN");
         Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse();
         if (!maxPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), maxPulseResult.getMessage());
             return;
         }
-        _circularTextView_maxPulse.setText(String.valueOf(maxPulseResult.getValue()));
+        _circularTextView_maxPulse.setText(String.valueOf(maxPulseResult.getValue()) + "\nMAX");
 
         generateChart(pulsesResult.getValue());
 
