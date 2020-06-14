@@ -1,19 +1,29 @@
 package com.cool.pulseit.fragments;
 
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.AnalyticsCalculator;
 import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.R;
+import com.cool.pulseit.Share;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
@@ -63,8 +73,24 @@ public class AnalyticsFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.share_menu, menu);
+        MenuItem shareItem = menu.findItem(R.id.action_share);
+        shareItem.getIcon().setTint(Color.WHITE);
+        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                View x = _mainActivity.findViewById(R.id.analytics_layout);
+                Share.shareView(_mainActivity.getContext(), x);
+                return false;
+            }
+        });
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
