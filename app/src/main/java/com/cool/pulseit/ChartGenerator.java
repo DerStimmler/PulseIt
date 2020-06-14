@@ -49,6 +49,7 @@ public class ChartGenerator {
     private PieData getPieData(PieDataSet dataSet, PieChart chart) {
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter(chart));
+        data.setValueTextSize(18f);
 
         return data;
     }
@@ -271,6 +272,11 @@ public class ChartGenerator {
     private void setStandardPieChartOptions(PieChart chart){
         chart.getDescription().setEnabled(false);
         chart.setUsePercentValues(true);
+        chart.getLegend().setEnabled(false);
+        chart.setEntryLabelColor(Color.BLACK);
+        chart.setExtraLeftOffset(20f);
+        chart.setExtraRightOffset(20f);
+        chart.setExtraBottomOffset(20f);
     }
 
     private List<BarEntry> getBarEntries(int maxPulse) {
