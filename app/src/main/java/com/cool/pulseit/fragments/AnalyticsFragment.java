@@ -1,14 +1,14 @@
 package com.cool.pulseit.fragments;
 
-import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.cool.pulseit.AnalyticsCalculator;
@@ -39,9 +39,12 @@ public class AnalyticsFragment extends Fragment {
     private View _mainActivity;
     private EditText _datePicker;
     private PieChart _zonesChart;
-    private com.cool.pulseit.CircularTextView _circularTextView_maxPulse;
-    private com.cool.pulseit.CircularTextView _circularTextView_avgPulse;
-    private com.cool.pulseit.CircularTextView _circularTextView_minPulse;
+    private TextView _circular_max_text;
+    private TextView _circular_min_text;
+    private TextView _circular_avg_text;
+    private FrameLayout _circular_max;
+    private FrameLayout _circular_min;
+    private FrameLayout _circular_avg;
 
     public AnalyticsFragment() {
         // Required empty public constructor
@@ -74,20 +77,36 @@ public class AnalyticsFragment extends Fragment {
         getElements();
         setEventListener();
         initDatePicker();
+        initCirculars();
 
-        //TODO: Farben über Colors ziehen
-        _circularTextView_maxPulse.setStrokeWidth(2);
-        _circularTextView_maxPulse.setStrokeColor("#ff0000");
-        _circularTextView_maxPulse.setSolidColor("#FFFFFF");
-        //TODO: Farben über Colors ziehen
-        _circularTextView_minPulse.setStrokeWidth(2);
-        _circularTextView_minPulse.setStrokeColor("#00FFFF");
-        _circularTextView_minPulse.setSolidColor("#FFFFFF");
-        //TODO: Farben über Colors ziehen
-        _circularTextView_avgPulse.setStrokeWidth(2);
-        _circularTextView_avgPulse.setStrokeColor("#a4c639");
-        _circularTextView_avgPulse.setSolidColor("#FFFFFF");
+        _mainActivity.post(new Runnable() {
+            @Override
+            public void run() {
+                adjustCircularsHeights();
+            }
+        });
+
         return _mainActivity;
+    }
+
+    private void initCirculars() {
+        ((GradientDrawable) _circular_avg.getBackground()).setStroke(10,getResources().getColor(R.color.avg));
+        ((GradientDrawable) _circular_min.getBackground()).setStroke(10,getResources().getColor(R.color.min));
+        ((GradientDrawable) _circular_max.getBackground()).setStroke(10,getResources().getColor(R.color.max));
+    }
+
+    private void adjustCircularsHeights(){
+        int width = _circular_avg.getWidth();
+
+        if(width < _circular_min.getWidth())
+            width = _circular_min.getWidth();
+
+        if(width < _circular_max.getWidth())
+            width = _circular_max.getWidth();
+
+        _circular_avg.setMinimumHeight(width);
+        _circular_min.setMinimumHeight(width);
+        _circular_max.setMinimumHeight(width);
     }
 
     private void setEventListener() {
@@ -154,29 +173,31 @@ public class AnalyticsFragment extends Fragment {
 
         AnalyticsCalculator analyticsCalculator = new AnalyticsCalculator(pulsesResult.getValue(), getContext());
 
-        Result<Zone> zoneResult = analyticsCalculator.calculateCommonZone();
-        if (!zoneResult.isOk()) {
-            StatusSnackbar.show(getActivity(), zoneResult.getMessage());
+        Result<Integer> avgPulseResult = analyticsCalculator.calculateAveragePulse();
+        if (!avgPulseResult.isOk()) {
+            StatusSnackbar.show(getActivity(), avgPulseResult.getMessage());
             return;
         }
+        _circular_avg_text.setText(avgPulseResult.getValue().toString());
 
         Result<Integer> minPulseResult = analyticsCalculator.calculateMinPulse();
-        _circularTextView_avgPulse.setText(zoneResult.getValue().toString()+ "\nAVG");
         if (!minPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), minPulseResult.getMessage());
             return;
         }
-        _circularTextView_minPulse.setText(String.valueOf(minPulseResult.getValue())+ "\nMIN");
+        _circular_min_text.setText(String.valueOf(minPulseResult.getValue()));
+
         Result<Integer> maxPulseResult = analyticsCalculator.calculateMaxPulse();
         if (!maxPulseResult.isOk()) {
             StatusSnackbar.show(getActivity(), maxPulseResult.getMessage());
             return;
         }
-        _circularTextView_maxPulse.setText(String.valueOf(maxPulseResult.getValue()) + "\nMAX");
+        _circular_max_text.setText(String.valueOf(maxPulseResult.getValue()));
 
         generateChart(pulsesResult.getValue());
 
         setDatePicker(from, to);
+        adjustCircularsHeights();
     }
 
     private void generateChart(List<Pulse> pulses) {
@@ -201,8 +222,11 @@ public class AnalyticsFragment extends Fragment {
     private void getElements() {
         _datePicker = _mainActivity.findViewById(R.id.analytics_date);
         _zonesChart = _mainActivity.findViewById(R.id.analytics_zone_chart);
-        _circularTextView_maxPulse = _mainActivity.findViewById(R.id.analytics_circularTextView_max_pulse);
-        _circularTextView_minPulse = _mainActivity.findViewById(R.id.analytics_circularTextView_min_pulse);
-        _circularTextView_avgPulse = _mainActivity.findViewById(R.id.analytics_circularTextView_avg_pulse);
+        _circular_max_text = _mainActivity.findViewById(R.id.analytics_circular_max_text);
+        _circular_max = _mainActivity.findViewById(R.id.analytics_circular_max);
+        _circular_min_text = _mainActivity.findViewById(R.id.analytics_circular_min_text);
+        _circular_min = _mainActivity.findViewById(R.id.analytics_circular_min);
+        _circular_avg_text = _mainActivity.findViewById(R.id.analytics_circular_avg_text);
+        _circular_avg = _mainActivity.findViewById(R.id.analytics_circular_avg);
     }
 }

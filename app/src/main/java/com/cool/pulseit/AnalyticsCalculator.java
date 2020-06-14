@@ -60,5 +60,17 @@ public class AnalyticsCalculator {
         return new Result<Integer>(true, minPulse);
     }
 
+    public Result<Integer> calculateAveragePulse(){
+        int totalPulse = 0;
+
+        for(Pulse pulse : _pulses){
+            totalPulse += pulse.pulse;
+        }
+
+        int averagePulse = totalPulse / _pulses.size();
+
+        return new Result<Integer>(true, averagePulse);
+    }
+
 
 }
