@@ -19,7 +19,6 @@ import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
-import com.cool.pulseit.utils.Zone;
 import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -90,18 +89,18 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void initCirculars() {
-        ((GradientDrawable) _circular_avg.getBackground()).setStroke(10,getResources().getColor(R.color.avg));
-        ((GradientDrawable) _circular_min.getBackground()).setStroke(10,getResources().getColor(R.color.min));
-        ((GradientDrawable) _circular_max.getBackground()).setStroke(10,getResources().getColor(R.color.max));
+        ((GradientDrawable) _circular_avg.getBackground()).setStroke(10, getResources().getColor(R.color.avg));
+        ((GradientDrawable) _circular_min.getBackground()).setStroke(10, getResources().getColor(R.color.min));
+        ((GradientDrawable) _circular_max.getBackground()).setStroke(10, getResources().getColor(R.color.max));
     }
 
-    private void adjustCircularsHeights(){
+    private void adjustCircularsHeights() {
         int width = _circular_avg.getWidth();
 
-        if(width < _circular_min.getWidth())
+        if (width < _circular_min.getWidth())
             width = _circular_min.getWidth();
 
-        if(width < _circular_max.getWidth())
+        if (width < _circular_max.getWidth())
             width = _circular_max.getWidth();
 
         _circular_avg.setMinimumHeight(width);
@@ -164,7 +163,7 @@ public class AnalyticsFragment extends Fragment {
 
         DatabaseManager dbm = new DatabaseManager(getContext());
 
-        Result<List<Pulse>> pulsesResult = dbm.getPulses(from,to);
+        Result<List<Pulse>> pulsesResult = dbm.getPulses(from, to);
 
         if (!pulsesResult.isOk()) {
             StatusSnackbar.show(getActivity(), pulsesResult.getMessage());

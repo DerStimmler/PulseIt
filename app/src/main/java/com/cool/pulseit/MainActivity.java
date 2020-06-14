@@ -1,7 +1,6 @@
 package com.cool.pulseit;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -22,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
+    boolean doubleBackToExitPressedOnce = false;
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -63,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    boolean doubleBackToExitPressedOnce = false;
-
     public void openFragment(final Fragment fragment) {
         final FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.popBackStack();
                     fragmentManager.removeOnBackStackChangedListener(this);
                     bottomNavigation.getMenu().getItem((0)).setChecked(true);
-                    if(doubleBackToExitPressedOnce == false){
+                    if (doubleBackToExitPressedOnce == false) {
                         doubleBackToExitPressedOnce = true;
                         Toast.makeText(MainActivity.this, R.string.main_message_ui_double_back_to_close, Toast.LENGTH_SHORT).show();
                     }

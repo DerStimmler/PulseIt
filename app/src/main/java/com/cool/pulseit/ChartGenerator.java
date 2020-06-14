@@ -33,7 +33,7 @@ public class ChartGenerator {
         _context = context;
     }
 
-    public PieChart generateZonesPieChart(PieChart chart, List<Pulse> pulses){
+    public PieChart generateZonesPieChart(PieChart chart, List<Pulse> pulses) {
 
         List<PieEntry> entries = getPieEntries(pulses);
         PieDataSet dataSet = getPieDataset(entries);
@@ -62,7 +62,7 @@ public class ChartGenerator {
         return dataSet;
     }
 
-    private int[] getBarChartColours(){
+    private int[] getBarChartColours() {
         Map<Zone, Integer> colorMap = getColours();
 
         List<Integer> colors = new ArrayList<>();
@@ -82,23 +82,23 @@ public class ChartGenerator {
 
         List<Integer> colors = new ArrayList<>();
 
-        for(PieEntry entry :entries){
+        for (PieEntry entry : entries) {
             colors.add(colorMap.get(Zone.toEnum(entry.getLabel())));
         }
 
         return ArrayHelper.toArray(colors);
     }
 
-    private Map<Zone,List<Pulse>> getPieMap(List<Pulse> pulses){
+    private Map<Zone, List<Pulse>> getPieMap(List<Pulse> pulses) {
         Map<Zone, List<Pulse>> map = new HashMap<>();
 
-        for(Pulse pulse : pulses) {
+        for (Pulse pulse : pulses) {
             ZoneCalculator zoneCalculator = new ZoneCalculator(pulse);
             Zone z = zoneCalculator.calculateZone();
 
             List<Pulse> temp = new ArrayList<>();
 
-            if(map.get(z) == null){
+            if (map.get(z) == null) {
 
                 temp.add(pulse);
                 map.put(z, temp);
@@ -120,8 +120,8 @@ public class ChartGenerator {
 
         List<PieEntry> entries = new ArrayList<>();
 
-        for(Zone zone : map.keySet()){
-            PieEntry entry = new PieEntry(100f /pulses.size() * map.get(zone).size(),zone.getValue());
+        for (Zone zone : map.keySet()) {
+            PieEntry entry = new PieEntry(100f / pulses.size() * map.get(zone).size(), zone.getValue());
             entries.add(entry);
         }
 
@@ -170,9 +170,9 @@ public class ChartGenerator {
         return new String[]{Zone.VERYLIGHT.getValue(), Zone.LIGHT.getValue(), Zone.MODERATE.getValue(), Zone.HARD.getValue(), Zone.VERYHARD.getValue()};
     }
 
-    private Map<Zone,Integer> getColours() {
-        Map<Zone,Integer> map = new HashMap<>();
-        map.put(Zone.NONE,ResourcesCompat.getColor(_context.getResources(), R.color.lightblue, null));
+    private Map<Zone, Integer> getColours() {
+        Map<Zone, Integer> map = new HashMap<>();
+        map.put(Zone.NONE, ResourcesCompat.getColor(_context.getResources(), R.color.lightblue, null));
         map.put(Zone.VERYLIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.grey, null));
         map.put(Zone.LIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null));
         map.put(Zone.MODERATE, ResourcesCompat.getColor(_context.getResources(), R.color.green, null));
@@ -188,11 +188,11 @@ public class ChartGenerator {
         ll = new LimitLine(x / 2, Zone.NONE.getValue());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(x, String.valueOf((int)(x)));
+        ll = new LimitLine(x, String.valueOf((int) (x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[1] + x, String.valueOf((int)(entries.get(0).getYVals()[1] + x)));
+        ll = new LimitLine(entries.get(0).getYVals()[1] + x, String.valueOf((int) (entries.get(0).getYVals()[1] + x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
@@ -200,7 +200,7 @@ public class ChartGenerator {
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[1];
-        ll = new LimitLine(entries.get(0).getYVals()[2] + x, String.valueOf((int)(entries.get(0).getYVals()[2] + x)));
+        ll = new LimitLine(entries.get(0).getYVals()[2] + x, String.valueOf((int) (entries.get(0).getYVals()[2] + x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
@@ -208,7 +208,7 @@ public class ChartGenerator {
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[2];
-        ll = new LimitLine(entries.get(0).getYVals()[3] + x, String.valueOf((int)(entries.get(0).getYVals()[3] + x)));
+        ll = new LimitLine(entries.get(0).getYVals()[3] + x, String.valueOf((int) (entries.get(0).getYVals()[3] + x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
@@ -216,7 +216,7 @@ public class ChartGenerator {
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[3];
-        ll = new LimitLine(entries.get(0).getYVals()[4] + x, String.valueOf((int)(entries.get(0).getYVals()[4] + x)));
+        ll = new LimitLine(entries.get(0).getYVals()[4] + x, String.valueOf((int) (entries.get(0).getYVals()[4] + x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
@@ -224,7 +224,7 @@ public class ChartGenerator {
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[4];
-        ll = new LimitLine(entries.get(0).getYVals()[5] + x, String.valueOf((int)(entries.get(0).getYVals()[5] + x)));
+        ll = new LimitLine(entries.get(0).getYVals()[5] + x, String.valueOf((int) (entries.get(0).getYVals()[5] + x)));
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
@@ -269,7 +269,7 @@ public class ChartGenerator {
         chart.setFitBars(true);
     }
 
-    private void setStandardPieChartOptions(PieChart chart){
+    private void setStandardPieChartOptions(PieChart chart) {
         chart.getDescription().setEnabled(false);
         chart.setUsePercentValues(true);
         chart.getLegend().setEnabled(false);

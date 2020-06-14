@@ -8,7 +8,6 @@ import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.Zone;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AnalyticsCalculator {
@@ -60,10 +59,10 @@ public class AnalyticsCalculator {
         return new Result<Integer>(true, minPulse);
     }
 
-    public Result<Integer> calculateAveragePulse(){
+    public Result<Integer> calculateAveragePulse() {
         int totalPulse = 0;
 
-        for(Pulse pulse : _pulses){
+        for (Pulse pulse : _pulses) {
             totalPulse += pulse.pulse;
         }
 
