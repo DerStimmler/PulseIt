@@ -2,7 +2,12 @@ package com.cool.pulseit;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.entities.Pulse;
@@ -277,6 +282,13 @@ public class ChartGenerator {
         chart.setExtraLeftOffset(20f);
         chart.setExtraRightOffset(20f);
         chart.setExtraBottomOffset(20f);
+
+        SpannableString zoneIcon = new SpannableString("XXX");
+        Drawable d = ContextCompat.getDrawable(_context, R.drawable.ic_fitness_center_black_24dp);
+        d.setBounds(0,0,d.getIntrinsicWidth() + 80, d.getIntrinsicHeight() + 80);
+        ImageSpan span = new ImageSpan(d,ImageSpan.ALIGN_BASELINE);
+        zoneIcon.setSpan(span, 0 , 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        chart.setCenterText(zoneIcon);
     }
 
     private List<BarEntry> getBarEntries(int maxPulse) {
