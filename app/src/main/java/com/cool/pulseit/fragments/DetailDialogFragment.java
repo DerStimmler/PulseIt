@@ -42,6 +42,14 @@ public class DetailDialogFragment extends DialogFragment {
         return _view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+    }
+
     private void setEventListener() {
         ImageView shareIcon = _view.findViewById(R.id.detail_dialog_share_icon);
         shareIcon.setOnClickListener(new View.OnClickListener() {
