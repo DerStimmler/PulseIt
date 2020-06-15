@@ -83,7 +83,6 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         _mainActivity = inflater.inflate(R.layout.fragment_history, container, false);
-
         DatabaseManager dbm = new DatabaseManager(_mainActivity.getContext());
 
         Result<List<Pulse>> result = dbm.getPulses();

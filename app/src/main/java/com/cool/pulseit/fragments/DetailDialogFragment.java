@@ -35,6 +35,7 @@ public class DetailDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.detail_dialog, container, false);
         getDialog().setTitle("Details");
+        setRetainInstance(true);
 
         init();
         setEventListener();
