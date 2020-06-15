@@ -150,6 +150,7 @@
                     android:adjustViewBounds="true"
                     android:background="@drawable/ic_favorite"
                     android:backgroundTint="@color/red"
+                    android:foregroundGravity="center"
                     android:padding="60dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_touch_app" />

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -68,6 +69,8 @@ public class AddPulseFragment extends Fragment {
         getViewElements();
         initializePulseNumberPicker();
         initializeEventListeners();
+
+        _tapButton.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.pulse));
 
         return _mainActivity;
     }
