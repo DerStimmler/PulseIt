@@ -64,15 +64,14 @@
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginBottom="10dp">
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_pulse"
-                            android:layout_width="24dp"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_cardiogram" />
 
@@ -81,28 +80,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
                             android:text="Pulse"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:paddingLeft="10dp"></TextView>
+                            android:textStyle="bold"></TextView>
 
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginBottom="10dp">
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_calendar_today" />
 
@@ -111,27 +109,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
                             android:text="Datum"
                             android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:paddingLeft="10dp"></TextView>
+                            android:textSize="18sp"></TextView>
 
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginBottom="10dp">
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_zones"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_fitness_center_black_24dp" />
 
@@ -140,25 +137,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
                             android:text="Zone"
                             android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:paddingLeft="10dp"></TextView>
+                            android:textSize="18sp"></TextView>
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp">
+                        android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/detail_dialog_icon_description"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_description" />
 
@@ -167,12 +163,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
                             android:text="Beschreibung"
                             android:textColor="@android:color/black"
-                            android:textSize="18sp"
-                            android:paddingLeft="10dp"/>
+                            android:textSize="18sp" />
                     </TableRow>
 
                 </TableLayout>
@@ -209,7 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_wc_black_24dp" />
 
@@ -235,7 +231,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
@@ -254,10 +250,10 @@
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_weight"
-                            android:layout_width="24dp"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_column="2"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
                             app:srcCompat="@drawable/ic_business" />
 
