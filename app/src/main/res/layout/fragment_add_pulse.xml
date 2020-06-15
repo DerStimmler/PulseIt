@@ -34,72 +34,112 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
+
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/addPulse_heading"
-                    tools:layout_editor_absoluteX="16dp">
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="4dp"
+                    app:contentPadding="7dp">
 
-                    <TextView
-                        android:id="@+id/addPulse_label_pulse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="20dp"
-                        android:text="@string/add_pulse_label_pulse" />
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <NumberPicker
-                        android:id="@+id/addPulse_input_pulse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:visibility="visible" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="20dp">
 
-                    <TextView
-                        android:id="@+id/addPulse_label_unit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/addPulse_label_unit"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                            <ImageView
+                                android:id="@+id/imageView5"
+                                android:layout_width="0dp"
+                                android:layout_height="24dp"
+                                android:layout_column="0"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:foregroundGravity="center"
+                                android:src="@drawable/ic_cardiogram"
+                                app:srcCompat="@drawable/ic_cardiogram"
+                                tools:srcCompat="@drawable/ic_cardiogram" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="20dp"
-                    android:paddingEnd="20dp"
-                    android:weightSum="5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                            <TextView
+                                android:id="@+id/addPulse_label_pulse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="0"
+                                android:text="@string/add_pulse_label_pulse" />
 
-                    <TextView
-                        android:id="@+id/add_pulse_label_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/add_pulse_label_description" />
+                            <NumberPicker
+                                android:id="@+id/addPulse_input_pulse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="2"
+                                android:layout_weight="2"
+                                android:visibility="visible" />
 
-                    <EditText
-                        android:id="@+id/add_pulse_input_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="4"
-                        android:ems="10"
-                        android:gravity="center_vertical"
-                        android:inputType="textMultiLine" />
+                            <TextView
+                                android:id="@+id/addPulse_label_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="2"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:maxLines="1"
+                                android:text="@string/addPulse_label_unit"
+                                android:textSize="30sp"
+                                android:textStyle="bold" />
 
-                </LinearLayout>
+                        </TableRow>
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/listDivider" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="20dp">
+
+                            <ImageView
+                                android:id="@+id/imageView4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_column="0"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:foregroundGravity="center"
+                                android:src="@drawable/ic_description" />
+
+                            <TextView
+                                android:id="@+id/add_pulse_label_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="1"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="0"
+                                android:text="@string/add_pulse_label_description" />
+
+                            <EditText
+                                android:id="@+id/add_pulse_input_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_column="2"
+                                android:layout_weight="3"
+                                android:gravity="center_vertical"
+                                android:inputType="textMultiLine" />
+                        </TableRow>
+
+                    </TableLayout>
+                </androidx.cardview.widget.CardView>
 
                 <ImageButton
                     android:id="@+id/add_pulse_button_tap"
