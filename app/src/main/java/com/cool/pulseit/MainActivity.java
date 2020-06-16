@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static String getResourceString(int stringId){
-        return _context.getResources().getString(stringId);
+        return _context.getString(stringId);
     }
 
     public static int getResourceColor(int colorId){
-        return _context.getResources().getColor(colorId);
+        return _context.getColor(colorId);
     }
 }

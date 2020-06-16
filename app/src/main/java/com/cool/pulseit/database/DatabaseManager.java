@@ -1,9 +1,11 @@
 package com.cool.pulseit.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.cool.pulseit.R;
@@ -13,6 +15,7 @@ import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,10 +42,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Result saveSettings(Settings settings) {
         SQLiteDatabase db = getReadableDatabase();
 
+        String sql = "INSERT INTO settings (weight,age,gender,date) VALUES(?,?,?,?)";
+
         Result result = new Result();
 
         try {
-            db.execSQL(String.format("INSERT INTO settings (weight,age,gender,date) VALUES(%s,%s,\"%s\",\"%s\");", settings.weight, settings.age, settings.gender, DateFormatter.toDb(settings.date)));
+            SQLiteStatement statement = db.compileStatement(sql);
+            statement.bindLong(1, settings.weight);
+            statement.bindLong(2, settings.age);
+            statement.bindString(3, settings.gender.toString());
+            statement.bindString(4, DateFormatter.toDb(settings.date));
+            statement.executeInsert();
 
             result.setOk(true);
             result.setMessage(_context.getString(R.string.database_message_ui_saved));
@@ -81,7 +91,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 filteredPulses.remove(pulse);
             }
         }
-
 
         if (filteredPulses.isEmpty()) {
             result.setOk(false);
@@ -147,10 +156,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Result savePulse(Pulse pulse) {
         SQLiteDatabase db = getReadableDatabase();
 
+        String sql = "INSERT INTO pulses (pulse, date, description, settings_id) VALUES (?,?,?,?)";
+
         Result result = new Result();
 
         try {
-            db.execSQL(String.format("INSERT INTO pulses (pulse, date, description, settings_id) VALUES (%s,\"%s\",\"%s\",%s);", pulse.pulse, DateFormatter.toDb(pulse.date), pulse.description, pulse.settings.getId()));
+            SQLiteStatement statement = db.compileStatement(sql);
+            statement.bindLong(1,pulse.pulse);
+            statement.bindString(2,DateFormatter.toDb(pulse.date));
+            statement.bindString(3,pulse.description);
+            statement.bindLong(4,pulse.settings.getId());
+            statement.executeInsert();
 
             result.setOk(true);
             result.setMessage(_context.getString(R.string.database_message_ui_saved));
@@ -174,6 +190,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         try {
             Cursor cursor = db.rawQuery("SELECT * FROM settings ORDER BY date DESC LIMIT 1;", null);
+
             int resultRows = cursor.getCount();
             if (resultRows == 0) {
                 result.setOk(false);
@@ -207,10 +224,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Result deletePulse(Pulse pulse) {
         SQLiteDatabase db = getReadableDatabase();
 
+        String sql = "DELETE FROM pulses WHERE id=?";
+
         Result result = new Result();
 
         try {
-            db.execSQL(String.format("DELETE FROM pulses WHERE id=\'%s\';", String.valueOf(pulse.getId())));
+            SQLiteStatement statement = db.compileStatement(sql);
+            statement.bindLong(1,pulse.getId());
+            statement.executeUpdateDelete();
 
             result.setOk(true);
             result.setMessage(_context.getString(R.string.database_message_ui_deleted));
