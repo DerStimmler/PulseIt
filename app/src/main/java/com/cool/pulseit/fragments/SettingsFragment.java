@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.NumberPicker;
-import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -23,10 +20,6 @@ import com.google.android.material.tabs.TabLayout;
 public class SettingsFragment extends Fragment {
 
     private View _view;
-    private NumberPicker _weightNumberPicker;
-    private NumberPicker _ageNumberPicker;
-    private Spinner _genderSpinner;
-    private Button _saveButton;
     private ViewPager _viewPager;
     private TabLayout _tabLayout;
 

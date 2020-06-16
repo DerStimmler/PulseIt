@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -17,7 +16,6 @@ import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.Date;
 
@@ -34,13 +32,6 @@ public class SettingsInputFragment extends Fragment {
     private NumberPicker _ageNumberPicker;
     private Spinner _genderSpinner;
     private Button _saveButton;
-    private TextView _weightNumberView;
-    private TextView _ageNumberView;
-    private TextView _genderView;
-    private TextView _resultView;
-    private View _resultActivity;
-    private TabLayout _tabLayout;
-    private View _resultTab;
 
     public SettingsInputFragment() {
         // Required empty public constructor
