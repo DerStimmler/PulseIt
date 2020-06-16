@@ -67,4 +67,10 @@
     <string name="analytics_circular_max_unit">MAX</string>
     <string name="analytics_circular_avg_unit">AVG</string>
     <string name="analytics_circular_min_unit">MIN</string>
+    <string name="zone_none">keine Zone</string>
+    <string name="zone_verylight">Gesundheitszone</string>
+    <string name="zone_light">Fettverbrennungszone</string>
+    <string name="zone_moderate">aerobe Zone</string>
+    <string name="zone_hard">anaerobe Zone</string>
+    <string name="zone_veryhard">Warnzone</string>
 </resources>
