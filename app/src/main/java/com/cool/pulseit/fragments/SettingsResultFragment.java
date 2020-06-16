@@ -13,7 +13,7 @@ import com.cool.pulseit.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
-import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.enums.Gender;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.github.mikephil.charting.charts.BarChart;

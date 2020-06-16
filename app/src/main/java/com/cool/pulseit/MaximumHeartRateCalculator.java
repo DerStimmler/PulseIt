@@ -1,6 +1,6 @@
 package com.cool.pulseit;
 
-import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.enums.Gender;
 
 public class MaximumHeartRateCalculator {
 

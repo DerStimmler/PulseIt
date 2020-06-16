@@ -1,4 +1,4 @@
-package com.cool.pulseit.utils;
+package com.cool.pulseit.enums;
 
 import android.util.Log;
 

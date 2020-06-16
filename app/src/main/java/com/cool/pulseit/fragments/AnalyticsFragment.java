@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.cool.pulseit.AnalyticsCalculator;
 import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.R;
-import com.cool.pulseit.Share;
+import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;

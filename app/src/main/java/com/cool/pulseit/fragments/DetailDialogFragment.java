@@ -14,11 +14,11 @@ import androidx.fragment.app.DialogFragment;
 import com.cool.pulseit.ChartGenerator;
 import com.cool.pulseit.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
-import com.cool.pulseit.Share;
+import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.ZoneCalculator;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
-import com.cool.pulseit.utils.Zone;
+import com.cool.pulseit.enums.Zone;
 import com.github.mikephil.charting.charts.BarChart;
 
 public class DetailDialogFragment extends DialogFragment {

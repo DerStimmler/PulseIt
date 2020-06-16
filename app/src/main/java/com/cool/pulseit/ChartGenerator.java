@@ -12,7 +12,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.ArrayHelper;
-import com.cool.pulseit.utils.Zone;
+import com.cool.pulseit.enums.Zone;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.LimitLine;

@@ -1,6 +1,5 @@
 package com.cool.pulseit.database;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,10 +11,9 @@ import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.utils.DateFormatter;
-import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.enums.Gender;
 import com.cool.pulseit.utils.Result;
 
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

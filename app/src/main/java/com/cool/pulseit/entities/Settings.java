@@ -1,6 +1,6 @@
 package com.cool.pulseit.entities;
 
-import com.cool.pulseit.utils.Gender;
+import com.cool.pulseit.enums.Gender;
 
 import java.util.Date;
 

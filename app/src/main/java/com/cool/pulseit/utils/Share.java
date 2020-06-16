@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.FileProvider;
+
+import com.cool.pulseit.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

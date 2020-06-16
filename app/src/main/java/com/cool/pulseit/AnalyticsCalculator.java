@@ -5,7 +5,7 @@ import android.content.Context;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.ListHelper;
 import com.cool.pulseit.utils.Result;
-import com.cool.pulseit.utils.Zone;
+import com.cool.pulseit.enums.Zone;
 
 import java.util.ArrayList;
 import java.util.List;

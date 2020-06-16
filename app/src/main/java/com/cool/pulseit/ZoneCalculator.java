@@ -1,8 +1,8 @@
 package com.cool.pulseit;
 
 import com.cool.pulseit.entities.Pulse;
-import com.cool.pulseit.utils.Gender;
-import com.cool.pulseit.utils.Zone;
+import com.cool.pulseit.enums.Gender;
+import com.cool.pulseit.enums.Zone;
 
 
 public class ZoneCalculator {
