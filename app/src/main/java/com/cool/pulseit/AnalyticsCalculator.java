@@ -12,11 +12,10 @@ import java.util.List;
 
 public class AnalyticsCalculator {
     private final List<Pulse> _pulses;
-    private final Context _context;
+    private final Context _context = MainActivity.getContext();
 
-    public AnalyticsCalculator(List<Pulse> pulses, Context context) {
+    public AnalyticsCalculator(List<Pulse> pulses) {
         _pulses = pulses;
-        _context = context;
     }
 
     public Result<Zone> calculateCommonZone() {

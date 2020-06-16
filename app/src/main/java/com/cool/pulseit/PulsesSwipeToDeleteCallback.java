@@ -14,14 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PulsesSwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
+    private final Context _context = MainActivity.getContext();
     private ColorDrawable _background;
     private Drawable _deleteIcon;
     private PulsesAdapter _adapter;
 
-    public PulsesSwipeToDeleteCallback(PulsesAdapter adapter, Context context) {
+    public PulsesSwipeToDeleteCallback(PulsesAdapter adapter) {
         super(0, ItemTouchHelper.LEFT);
         _adapter = adapter;
-        _deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete);
+        _deleteIcon = ContextCompat.getDrawable(_context, R.drawable.ic_delete);
         _background = new ColorDrawable(Color.RED);
     }
 

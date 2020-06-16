@@ -28,7 +28,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
 
     private List<Pulse> _pulses;
     private List<Pulse> _filteredPulses;
-    private Context _context;
+    private Context _context = MainActivity.getContext();
     private View _view;
 
     public PulsesAdapter(List<Pulse> pulses) {
@@ -39,7 +39,6 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     @NonNull
     @Override
     public PulsesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        _context = parent.getContext();
         _view = parent.getRootView();
         final LayoutInflater inflater = LayoutInflater.from(_context);
 

@@ -15,14 +15,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Share {
-    public static void shareView(Context context, View view) {
+    private static Context _context = MainActivity.getContext();
+
+    public static void shareView(View view) {
 
         Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
         view.draw(canvas);
 
-        File cachePath = new File(context.getCacheDir(), "images");
+        File cachePath = new File(_context.getCacheDir(), "images");
         cachePath.mkdirs();
         try {
             FileOutputStream stream = new FileOutputStream(cachePath + "/image.jpg");
@@ -33,15 +35,15 @@ public class Share {
         }
 
         File image = new File(cachePath, "image.jpg");
-        Uri contentUri = FileProvider.getUriForFile(context, "com.cool.pulseit.fileprovider", image);
+        Uri contentUri = FileProvider.getUriForFile(_context, "com.cool.pulseit.fileprovider", image);
 
         if (contentUri != null) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntent.setDataAndType(contentUri, context.getContentResolver().getType(contentUri));
+            shareIntent.setDataAndType(contentUri, _context.getContentResolver().getType(contentUri));
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            context.startActivity(Intent.createChooser(shareIntent, "Share via..."));
+            _context.startActivity(Intent.createChooser(shareIntent, "Share via..."));
         }
     }
 }

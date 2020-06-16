@@ -56,7 +56,7 @@ public class DetailDialogFragment extends DialogFragment {
         shareIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Share.shareView(_view.getContext(), _view.findViewById(R.id.detail_dialog_framelayout));
+                Share.shareView(_view.findViewById(R.id.detail_dialog_framelayout));
             }
         });
     }
@@ -90,7 +90,7 @@ public class DetailDialogFragment extends DialogFragment {
         BarChart chart = _view.findViewById(R.id.detail_dialog_chart);
         MaximumHeartRateCalculator mhrCalculator = new MaximumHeartRateCalculator(_pulse.settings.age, _pulse.settings.weight, _pulse.settings.gender);
         int mhr = mhrCalculator.calculateMaximumHeartRate();
-        ChartGenerator cg = new ChartGenerator(getContext());
+        ChartGenerator cg = new ChartGenerator();
 
         chart = cg.classifyPulseChart(chart, _pulse, mhr);
 

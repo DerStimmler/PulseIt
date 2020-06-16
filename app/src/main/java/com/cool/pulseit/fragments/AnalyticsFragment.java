@@ -77,7 +77,7 @@ public class AnalyticsFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 View x = _view.findViewById(R.id.analytics_layout);
-                Share.shareView(_view.getContext(), x);
+                Share.shareView(x);
                 return false;
             }
         });
@@ -192,7 +192,7 @@ public class AnalyticsFragment extends Fragment {
             return;
         }
 
-        AnalyticsCalculator analyticsCalculator = new AnalyticsCalculator(pulsesResult.getValue(), getContext());
+        AnalyticsCalculator analyticsCalculator = new AnalyticsCalculator(pulsesResult.getValue());
 
         Result<Integer> avgPulseResult = analyticsCalculator.calculateAveragePulse();
         if (!avgPulseResult.isOk()) {
@@ -222,7 +222,7 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void generateChart(List<Pulse> pulses) {
-        ChartGenerator cg = new ChartGenerator(getContext());
+        ChartGenerator cg = new ChartGenerator();
         _zonesChart = cg.generateZonesPieChart(_zonesChart, pulses);
         _zonesChart.invalidate();
     }

@@ -12,12 +12,11 @@ import java.util.List;
 public class HeartRateCalculator {
     List<Long> _deltas;
     Timestamp _previousTime;
-    Context _context;
+    Context _context = MainActivity.getContext();
 
-    public HeartRateCalculator(Context context) {
+    public HeartRateCalculator() {
         _deltas = new ArrayList<Long>();
         _previousTime = new Timestamp(System.currentTimeMillis());
-        _context = context;
     }
 
     public void tap() {

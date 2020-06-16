@@ -86,7 +86,7 @@ public class SettingsResultFragment extends Fragment {
         int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
         _resultView.setText(String.valueOf(maximumHeartRate));
 
-        ChartGenerator cg = new ChartGenerator(getContext());
+        ChartGenerator cg = new ChartGenerator();
 
         _chart = cg.classifyPulseChart(_chart, null, maximumHeartRate);
 

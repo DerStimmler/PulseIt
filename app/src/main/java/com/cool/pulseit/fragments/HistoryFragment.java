@@ -98,7 +98,7 @@ public class HistoryFragment extends Fragment {
             _recyclerView.setAdapter(_adapter);
             _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-            PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(_adapter, getContext());
+            PulsesSwipeToDeleteCallback pulsesSwipeToDeleteCallback = new PulsesSwipeToDeleteCallback(_adapter);
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(pulsesSwipeToDeleteCallback);
             itemTouchHelper.attachToRecyclerView(_recyclerView);
         }

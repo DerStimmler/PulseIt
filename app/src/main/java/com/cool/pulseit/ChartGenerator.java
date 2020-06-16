@@ -32,11 +32,7 @@ import java.util.Map;
 
 public class ChartGenerator {
 
-    private Context _context;
-
-    public ChartGenerator(Context context) {
-        _context = context;
-    }
+    private Context _context = MainActivity.getContext();
 
     public PieChart generateZonesPieChart(PieChart chart, List<Pulse> pulses) {
 
