@@ -25,8 +25,10 @@
             android:scrollbarStyle="insideOverlay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/info_header">
+            app:layout_constraintTop_toBottomOf="@+id/info_header"
+            app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
                 android:id="@+id/info_relativeLayout"
@@ -39,36 +41,38 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="2.5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="2dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
 
-                <TextView
-                    android:id="@+id/info_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/info_formulaDescription"
-                    android:textSize="13sp" />
+                    <TextView
+                        android:id="@+id/info_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/info_formulaDescription"
+                        android:textSize="13sp" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="2.5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="2dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
 
                     <LinearLayout
                         android:id="@+id/info_relativeLayout_card_formula"
@@ -78,63 +82,63 @@
                         android:layout_marginEnd="10dp"
                         android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/info_header_formula"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/info_header_formula"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/info_header_formula"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/info_header_formula"
+                            android:textColor="@color/grey"
+                            android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/info_legend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_legend"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_legend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_legend"
+                            android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/info_formulaMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_formulaMale"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_formulaMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_formulaMale"
+                            android:textSize="13sp" />
 
-                <io.github.kexanie.library.MathView
-                    android:id="@+id/info_formula_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
+                        <io.github.kexanie.library.MathView
+                            android:id="@+id/info_formula_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
 
 
-                <TextView
-                    android:id="@+id/info_formulaFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/info_formulaFemale"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_formulaFemale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="@string/info_formulaFemale"
+                            android:textSize="13sp" />
 
-                <io.github.kexanie.library.MathView
-                    android:id="@+id/info_formula_two"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
+                        <io.github.kexanie.library.MathView
+                            android:id="@+id/info_formula_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="2.5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="2dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
 
                     <LinearLayout
                         android:id="@+id/info_relativeLayout_card_range"
@@ -144,156 +148,158 @@
                         android:layout_marginEnd="10dp"
                         android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/info_header_range"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/info_header_range"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
+                        <TextView
+                            android:id="@+id/info_header_range"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/info_header_range"
+                            android:textColor="@color/grey"
+                            android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/info_parameter_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_parameter_age"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_parameter_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_parameter_age"
+                            android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/info_parameter_weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_parameter_weight"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_parameter_weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_parameter_weight"
+                            android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/info_parameter_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_parameter_gender"
-                    android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_parameter_gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_parameter_gender"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="2.5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="2.5dp"
-                android:elevation="2dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="4dp">
-
-            <LinearLayout
-                android:id="@+id/info_relativeLayout_card_interpretation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/info_header_interpretation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/info_header_interpretation"
-                    android:textColor="@color/grey"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation_gesundheitszone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation_gesundheitszone"
-                    android:textColor="@color/grey"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation_fettverbrennungszone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation_fettverbrennungszone"
-                    android:textColor="@color/turquoise"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation_aerobe_Zone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation_aerobe_Zone"
-                    android:textColor="@color/green"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation_anaerobe_Zone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation_anaerobe_Zone"
-                    android:textColor="@color/orange"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/info_interpretation_rote_Zone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/info_interpretation_rote_Zone"
-                    android:textColor="@color/red"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="2.5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="2dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="4dp">
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/info_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:layout_weight="1" />
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
+
+                    <LinearLayout
+                        android:id="@+id/info_relativeLayout_card_interpretation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/info_header_interpretation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/info_header_interpretation"
+                            android:textColor="@color/grey"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_gesundheitszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_gesundheitszone"
+                            android:textColor="@color/grey"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_fettverbrennungszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_fettverbrennungszone"
+                            android:textColor="@color/turquoise"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_aerobe_Zone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_aerobe_Zone"
+                            android:textColor="@color/green"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_anaerobe_Zone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_anaerobe_Zone"
+                            android:textColor="@color/orange"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_rote_Zone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_rote_Zone"
+                            android:textColor="@color/red"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="2.5dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="2dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/info_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_weight="1" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="2.5dp"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="2dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="4dp"
+                    app:contentPadding="7dp">
 
                     <LinearLayout
                         android:id="@+id/info_relativeLayout_card_interpretation_detail"
@@ -303,37 +309,39 @@
                         android:layout_marginEnd="10dp"
                         android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/info_interpretation_header_detail_gesundheitszone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="@string/zone_verylight"
-                        android:textColor="@color/grey"
-                        android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_interpretation_header_detail_gesundheitszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zone_verylight"
+                            android:textColor="@color/grey"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/info_interpretation_detail_gesundheitszone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="@string/info_interpretation_detail_gesundheitszone"
-                        android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/info_interpretation_detail_gesundheitszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_detail_gesundheitszone"
+                            android:textSize="13sp" />
 
-                <View
-                    android:id="@+id/divider1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?android:attr/listDivider" />
+                        <View
+                            android:id="@+id/divider1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:id="@+id/info_interpretation_header_detail_fettverbrennungszone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
                             android:text="@string/zone_light"
                             android:textColor="@color/turquoise"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/info_interpretation_detail_fettverbrennungszone"
@@ -347,16 +355,18 @@
                             android:id="@+id/divider2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:id="@+id/info_interpretation_header_detail_aerobeZone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
                             android:text="@string/zone_moderate"
                             android:textColor="@color/green"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/info_interpretation_detail_aerobeZone"
@@ -370,16 +380,18 @@
                             android:id="@+id/divider3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:id="@+id/info_interpretation_header_detail_anaerobeZone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
                             android:text="@string/zone_hard"
                             android:textColor="@color/orange"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/info_interpretation_detail_anaerobeZone"
@@ -393,16 +405,18 @@
                             android:id="@+id/divider4"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
                             android:background="?android:attr/listDivider" />
 
                         <TextView
                             android:id="@+id/info_interpretation_header_detail_warnzone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
                             android:text="@string/zone_veryhard"
                             android:textColor="@color/red"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/info_interpretation_detail_warnzone"
