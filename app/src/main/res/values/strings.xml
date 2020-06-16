@@ -73,4 +73,6 @@
     <string name="zone_moderate">aerobe Zone</string>
     <string name="zone_hard">anaerobe Zone</string>
     <string name="zone_veryhard">Warnzone</string>
+    <string name="gender_male">männlich</string>
+    <string name="gender_female">weiblich</string>
 </resources>

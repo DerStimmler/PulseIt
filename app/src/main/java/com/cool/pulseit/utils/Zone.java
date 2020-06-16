@@ -1,51 +1,50 @@
 package com.cool.pulseit.utils;
 
+import android.util.Log;
+
+import com.cool.pulseit.MainActivity;
+import com.cool.pulseit.R;
+
 public enum Zone {
-    NONE("keine Zone"),
-    VERYLIGHT("Gesundheitszone"),
-    LIGHT("Fettverbrennungszone"),
-    MODERATE("aerobe Zone"),
-    HARD("anaerobe Zone"),
-    VERYHARD("Warnzone");
-
-    private String value;
-
-    Zone(final String value) {
-        this.value = value;
-    }
+    NONE,
+    VERYLIGHT,
+    LIGHT,
+    MODERATE,
+    HARD,
+    VERYHARD;
 
     public static Zone toEnum(String zonesString) {
-        switch (zonesString) {
-            case "keine Zone":
-            case "NONE":
-                return Zone.NONE;
-            case "Gesundheitszone":
-            case "VERYLIGHT":
-                return Zone.VERYLIGHT;
-            case "Fettverbrennungszone":
-            case "LIGHT":
-                return Zone.LIGHT;
-            case "aerobe Zone":
-            case "MODERATE":
-                return Zone.MODERATE;
-            case "anaerobe Zone":
-            case "HARD":
-                return Zone.HARD;
-            case "Warnzone":
-            case "VERYHARD":
-                return Zone.VERYHARD;
-            default:
-                throw new IllegalArgumentException(String.format("Can't convert %s to ZonesEnum", zonesString));
-        }
-    }
 
-    public String getValue() {
-        return value;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_none)))
+            return Zone.NONE;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_verylight)))
+            return Zone.VERYLIGHT;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_light)))
+            return Zone.LIGHT;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_moderate)))
+            return Zone.MODERATE;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_hard)))
+            return Zone.HARD;
+        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_veryhard)))
+            return Zone.VERYHARD;
+
+        Log.e("Zone", String.format("Can't convert %s to ZoneEnum", zonesString));
+        throw new IllegalArgumentException(String.format("Can't convert %s to ZoneEnum", zonesString));
     }
 
     @Override
     public String toString() {
-        return this.getValue();
-    }
+        if(this == Zone.NONE)
+            return MainActivity.getResourceString(R.string.zone_none);
+        if(this == Zone.VERYLIGHT)
+            return MainActivity.getResourceString(R.string.zone_verylight);
+        if(this == Zone.LIGHT)
+            return MainActivity.getResourceString(R.string.zone_light);
+        if(this == Zone.MODERATE)
+            return MainActivity.getResourceString(R.string.zone_moderate);
+        if(this == Zone.HARD)
+            return MainActivity.getResourceString(R.string.zone_hard);
 
+        return MainActivity.getResourceString(R.string.zone_veryhard);
+    }
 }

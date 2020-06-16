@@ -1,5 +1,6 @@
 package com.cool.pulseit;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.cool.pulseit.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static Context _context;
 
     BottomNavigationView bottomNavigation;
     boolean doubleBackToExitPressedOnce = false;
@@ -47,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        _context = this;
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
@@ -89,5 +94,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void openDialogFragment(DialogFragment fragment) {
         fragment.show(getSupportFragmentManager(), "dialog");
+    }
+
+    public static Context getContext(){
+        return _context;
+    }
+
+    public static String getResourceString(int stringId){
+        return _context.getResources().getString(stringId);
+    }
+
+    public static int getResourceColor(int colorId){
+        return _context.getResources().getColor(colorId);
     }
 }

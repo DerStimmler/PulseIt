@@ -1,34 +1,29 @@
 package com.cool.pulseit.utils;
 
+import android.util.Log;
+
+import com.cool.pulseit.MainActivity;
+import com.cool.pulseit.R;
+
 public enum Gender {
-    MALE("männlich"),
-    FEMALE("weiblich");
-
-    private String value;
-
-    Gender(final String value) {
-        this.value = value;
-    }
+    MALE,
+    FEMALE;
 
     public static Gender toEnum(String genderString) {
-        switch (genderString) {
-            case "männlich":
-            case "MALE":
-                return Gender.MALE;
-            case "weiblich":
-            case "FEMALE":
-                return Gender.FEMALE;
-            default:
-                throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum", genderString));
-        }
-    }
+        if(genderString.equals(MainActivity.getResourceString(R.string.gender_male)))
+            return Gender.MALE;
+        if(genderString.equals(MainActivity.getResourceString(R.string.gender_female)))
+            return Gender.FEMALE;
 
-    public String getValue() {
-        return value;
+        Log.e("Gender", String.format("Can't convert %s to GenderEnum", genderString));
+        throw new IllegalArgumentException(String.format("Can't convert %s to GenderEnum", genderString));
     }
 
     @Override
     public String toString() {
-        return this.getValue();
+        if(this == Gender.MALE)
+            return MainActivity.getResourceString(R.string.gender_male);
+
+        return MainActivity.getResourceString(R.string.gender_female);
     }
 }

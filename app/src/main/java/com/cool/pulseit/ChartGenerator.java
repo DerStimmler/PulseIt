@@ -126,7 +126,7 @@ public class ChartGenerator {
         List<PieEntry> entries = new ArrayList<>();
 
         for (Zone zone : map.keySet()) {
-            PieEntry entry = new PieEntry(100f / pulses.size() * map.get(zone).size(), zone.getValue());
+            PieEntry entry = new PieEntry(100f / pulses.size() * map.get(zone).size(), zone.toString());
             entries.add(entry);
         }
 
@@ -172,7 +172,7 @@ public class ChartGenerator {
     }
 
     private String[] getStackLabels() {
-        return new String[]{Zone.VERYLIGHT.getValue(), Zone.LIGHT.getValue(), Zone.MODERATE.getValue(), Zone.HARD.getValue(), Zone.VERYHARD.getValue()};
+        return new String[]{Zone.VERYLIGHT.toString(), Zone.LIGHT.toString(), Zone.MODERATE.toString(), Zone.HARD.toString(), Zone.VERYHARD.toString()};
     }
 
     private Map<Zone, Integer> getColours() {
@@ -190,7 +190,7 @@ public class ChartGenerator {
     private void addLimitLines(BarChart chart, List<BarEntry> entries, Pulse pulse) {
         LimitLine ll;
         float x = entries.get(0).getYVals()[0];
-        ll = new LimitLine(x / 2, Zone.NONE.getValue());
+        ll = new LimitLine(x / 2, Zone.NONE.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         ll = new LimitLine(x, String.valueOf((int) (x)));
@@ -201,7 +201,7 @@ public class ChartGenerator {
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[1] / 2 + x, Zone.VERYLIGHT.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[1] / 2 + x, Zone.VERYLIGHT.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[1];
@@ -209,7 +209,7 @@ public class ChartGenerator {
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[2] / 2 + x, Zone.LIGHT.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[2] / 2 + x, Zone.LIGHT.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[2];
@@ -217,7 +217,7 @@ public class ChartGenerator {
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[3] / 2 + x, Zone.MODERATE.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[3] / 2 + x, Zone.MODERATE.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[3];
@@ -225,7 +225,7 @@ public class ChartGenerator {
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[4] / 2 + x, Zone.HARD.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[4] / 2 + x, Zone.HARD.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[4];
@@ -233,7 +233,7 @@ public class ChartGenerator {
         ll.setTextColor(Color.LTGRAY);
         ll.setLineColor(Color.LTGRAY);
         chart.getAxisLeft().addLimitLine(ll);
-        ll = new LimitLine(entries.get(0).getYVals()[5] / 2 + x, Zone.VERYHARD.getValue());
+        ll = new LimitLine(entries.get(0).getYVals()[5] / 2 + x, Zone.VERYHARD.toString());
         ll.setLineColor(Color.TRANSPARENT);
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[5];

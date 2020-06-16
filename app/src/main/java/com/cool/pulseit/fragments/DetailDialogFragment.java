@@ -75,7 +75,7 @@ public class DetailDialogFragment extends DialogFragment {
 
         ZoneCalculator zoneCalculator = new ZoneCalculator(_pulse.pulse, _pulse.settings.age, _pulse.settings.weight, _pulse.settings.gender);
         Zone zone = zoneCalculator.calculateZone();
-        dialog_zones_tv.setText(zone.getValue());
+        dialog_zones_tv.setText(zone.toString());
 
         //Dastellung zweiter Card -> Settings
         TextView dialog_gender_tv = _view.findViewById(R.id.detail_dialog_settings_gender);
