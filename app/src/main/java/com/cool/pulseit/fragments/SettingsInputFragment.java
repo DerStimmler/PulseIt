@@ -17,6 +17,7 @@ import com.cool.pulseit.utils.Gender;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -64,10 +65,25 @@ public class SettingsInputFragment extends Fragment {
 
         initializeWeightNumberPicker();
         initializeAgeNumberPicker();
+        initializeGenderSpinner();
 
         initializeEventListeners();
 
         return _view;
+    }
+
+    private void initializeGenderSpinner() {
+        String[] genders = getContext().getResources().getStringArray(R.array.gender_array);
+
+        DatabaseManager dbm = new DatabaseManager(this.getContext());
+        Result<Settings> result = dbm.getLatestSettings();
+
+        if (!result.isOk()) {
+            _genderSpinner.setSelection(0);
+        } else {
+            int index = Arrays.asList(genders).indexOf(result.getValue().gender.toString());
+            _genderSpinner.setSelection(index);
+        }
     }
 
     private void initializeEventListeners() {

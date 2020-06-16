@@ -184,6 +184,9 @@ public class ChartGenerator {
     }
 
     private void addLimitLines(BarChart chart, List<BarEntry> entries, Pulse pulse) {
+        
+        chart.getAxisLeft().removeAllLimitLines();
+
         LimitLine ll;
         float x = entries.get(0).getYVals()[0];
         ll = new LimitLine(x / 2, Zone.NONE.toString());

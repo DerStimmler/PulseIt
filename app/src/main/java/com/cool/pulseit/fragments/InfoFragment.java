@@ -67,7 +67,6 @@ public class InfoFragment extends Fragment {
 
         ChartGenerator cg = new ChartGenerator();
         _chart = cg.generateInfoChart(_chart);
-
         _chart.invalidate();
     }
 

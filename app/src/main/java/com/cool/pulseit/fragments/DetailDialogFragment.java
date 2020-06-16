@@ -93,7 +93,6 @@ public class DetailDialogFragment extends DialogFragment {
         ChartGenerator cg = new ChartGenerator();
 
         chart = cg.classifyPulseChart(chart, _pulse, mhr);
-
         chart.invalidate();
     }
 

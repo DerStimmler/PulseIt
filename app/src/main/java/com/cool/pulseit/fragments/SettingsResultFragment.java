@@ -57,6 +57,7 @@ public class SettingsResultFragment extends Fragment {
                              Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.fragment_settings_result, container, false);
         getViewElements();
+
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
 
@@ -86,10 +87,10 @@ public class SettingsResultFragment extends Fragment {
         int maximumHeartRate = maximumHeartRateCalculator.calculateMaximumHeartRate();
         _resultView.setText(String.valueOf(maximumHeartRate));
 
+
         ChartGenerator cg = new ChartGenerator();
 
         _chart = cg.classifyPulseChart(_chart, null, maximumHeartRate);
-
         _chart.invalidate();
     }
 }
