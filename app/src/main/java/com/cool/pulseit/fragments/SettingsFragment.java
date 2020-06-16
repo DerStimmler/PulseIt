@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class SettingsFragment extends Fragment {
 
-    private View _mainActivity;
+    private View _view;
     private NumberPicker _weightNumberPicker;
     private NumberPicker _ageNumberPicker;
     private Spinner _genderSpinner;
@@ -56,10 +56,10 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _mainActivity = inflater.inflate(R.layout.fragment_settings, container, false);
+        _view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        _tabLayout = _mainActivity.findViewById(R.id.settings_tablayout);
-        _viewPager = _mainActivity.findViewById(R.id.settings_viewpager);
+        _tabLayout = _view.findViewById(R.id.settings_tablayout);
+        _viewPager = _view.findViewById(R.id.settings_viewpager);
 
         SettingsTabAdapter tabAdapter = new SettingsTabAdapter(getFragmentManager());
         SettingsResultFragment settingsResultFragment = SettingsResultFragment.newInstance();
@@ -70,6 +70,6 @@ public class SettingsFragment extends Fragment {
         _viewPager.setAdapter(tabAdapter);
         _tabLayout.setupWithViewPager(_viewPager);
 
-        return _mainActivity;
+        return _view;
     }
 }

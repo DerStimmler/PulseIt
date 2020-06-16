@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class HistoryFragment extends Fragment {
 
-    private View _mainActivity;
+    private View _view;
     private RecyclerView _recyclerView;
     private List<Pulse> _pulses;
     private PulsesAdapter _adapter;
@@ -82,8 +82,8 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _mainActivity = inflater.inflate(R.layout.fragment_history, container, false);
-        DatabaseManager dbm = new DatabaseManager(_mainActivity.getContext());
+        _view = inflater.inflate(R.layout.fragment_history, container, false);
+        DatabaseManager dbm = new DatabaseManager(_view.getContext());
 
         Result<List<Pulse>> result = dbm.getPulses();
 
@@ -94,7 +94,7 @@ public class HistoryFragment extends Fragment {
 
             _adapter = new PulsesAdapter(_pulses);
 
-            _recyclerView = _mainActivity.findViewById(R.id.history_recyclerview);
+            _recyclerView = _view.findViewById(R.id.history_recyclerview);
             _recyclerView.setAdapter(_adapter);
             _recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
@@ -103,6 +103,6 @@ public class HistoryFragment extends Fragment {
             itemTouchHelper.attachToRecyclerView(_recyclerView);
         }
 
-        return _mainActivity;
+        return _view;
     }
 }

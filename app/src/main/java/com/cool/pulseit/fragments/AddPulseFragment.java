@@ -29,7 +29,7 @@ import java.util.Date;
  */
 public class AddPulseFragment extends Fragment {
 
-    private View _mainActivity;
+    private View _view;
     private ImageButton _tapButton;
     private NumberPicker _pulseNumberPicker;
     private Button _saveButton;
@@ -62,7 +62,7 @@ public class AddPulseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        _mainActivity = inflater.inflate(R.layout.fragment_add_pulse, container, false);
+        _view = inflater.inflate(R.layout.fragment_add_pulse, container, false);
 
         _heartRateCalculator = new HeartRateCalculator(getActivity());
 
@@ -72,7 +72,7 @@ public class AddPulseFragment extends Fragment {
 
         _tapButton.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.pulse));
 
-        return _mainActivity;
+        return _view;
     }
 
     private void initializeEventListeners() {
@@ -129,9 +129,9 @@ public class AddPulseFragment extends Fragment {
     }
 
     private void getViewElements() {
-        _tapButton = _mainActivity.findViewById(R.id.add_pulse_button_tap);
-        _pulseNumberPicker = _mainActivity.findViewById(R.id.addPulse_input_pulse);
-        _saveButton = _mainActivity.findViewById(R.id.add_pulse_button_save);
-        _descriptionText = _mainActivity.findViewById(R.id.add_pulse_input_description);
+        _tapButton = _view.findViewById(R.id.add_pulse_button_tap);
+        _pulseNumberPicker = _view.findViewById(R.id.addPulse_input_pulse);
+        _saveButton = _view.findViewById(R.id.add_pulse_button_save);
+        _descriptionText = _view.findViewById(R.id.add_pulse_input_description);
     }
 }

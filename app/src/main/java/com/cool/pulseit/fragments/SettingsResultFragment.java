@@ -25,7 +25,7 @@ import com.github.mikephil.charting.charts.BarChart;
  */
 public class SettingsResultFragment extends Fragment {
 
-    private View _mainActivity;
+    private View _view;
     private TextView _weightNumberView;
     private TextView _ageNumberView;
     private TextView _genderView;
@@ -55,27 +55,27 @@ public class SettingsResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _mainActivity = inflater.inflate(R.layout.fragment_settings_result, container, false);
+        _view = inflater.inflate(R.layout.fragment_settings_result, container, false);
         getViewElements();
         DatabaseManager dbm = new DatabaseManager(this.getContext());
         Result<Settings> result = dbm.getLatestSettings();
 
         if (!result.isOk()) {
             StatusSnackbar.show(getActivity(), result.getMessage());
-            return _mainActivity;
+            return _view;
         }
 
         updateValues(result.getValue().age, result.getValue().weight, result.getValue().gender);
 
-        return _mainActivity;
+        return _view;
     }
 
     private void getViewElements() {
-        _weightNumberView = _mainActivity.findViewById(R.id.settings_result_weight);
-        _ageNumberView = _mainActivity.findViewById(R.id.settings_result_age);
-        _genderView = _mainActivity.findViewById(R.id.settings_result_gender);
-        _resultView = _mainActivity.findViewById(R.id.settings_result_result);
-        _chart = _mainActivity.findViewById(R.id.settings_result_chart);
+        _weightNumberView = _view.findViewById(R.id.settings_result_weight);
+        _ageNumberView = _view.findViewById(R.id.settings_result_age);
+        _genderView = _view.findViewById(R.id.settings_result_gender);
+        _resultView = _view.findViewById(R.id.settings_result_result);
+        _chart = _view.findViewById(R.id.settings_result_chart);
     }
 
     public void updateValues(int age, int weight, Gender gender) {

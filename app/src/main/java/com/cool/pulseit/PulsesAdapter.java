@@ -29,7 +29,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     private List<Pulse> _pulses;
     private List<Pulse> _filteredPulses;
     private Context _context;
-    private View _mainActivity;
+    private View _view;
 
     public PulsesAdapter(List<Pulse> pulses) {
         _pulses = new ArrayList<>(pulses);
@@ -40,7 +40,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     @Override
     public PulsesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         _context = parent.getContext();
-        _mainActivity = parent.getRootView();
+        _view = parent.getRootView();
         final LayoutInflater inflater = LayoutInflater.from(_context);
 
         View historyView = inflater.inflate(R.layout.history_item, parent, false);

@@ -45,7 +45,7 @@ import java.util.List;
  */
 public class AnalyticsFragment extends Fragment {
 
-    private View _mainActivity;
+    private View _view;
     private EditText _datePicker;
     private PieChart _zonesChart;
     private TextView _circular_max_text;
@@ -80,8 +80,8 @@ public class AnalyticsFragment extends Fragment {
         shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                View x = _mainActivity.findViewById(R.id.analytics_layout);
-                Share.shareView(_mainActivity.getContext(), x);
+                View x = _view.findViewById(R.id.analytics_layout);
+                Share.shareView(_view.getContext(), x);
                 return false;
             }
         });
@@ -97,21 +97,21 @@ public class AnalyticsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        _mainActivity = inflater.inflate(R.layout.fragment_analytics, container, false);
+        _view = inflater.inflate(R.layout.fragment_analytics, container, false);
 
         getElements();
         setEventListener();
         initDatePicker();
         initCirculars();
 
-        _mainActivity.post(new Runnable() {
+        _view.post(new Runnable() {
             @Override
             public void run() {
                 adjustCircularsHeights();
             }
         });
 
-        return _mainActivity;
+        return _view;
     }
 
     private void initCirculars() {
@@ -245,13 +245,13 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void getElements() {
-        _datePicker = _mainActivity.findViewById(R.id.analytics_date);
-        _zonesChart = _mainActivity.findViewById(R.id.analytics_zone_chart);
-        _circular_max_text = _mainActivity.findViewById(R.id.analytics_circular_max_text);
-        _circular_max = _mainActivity.findViewById(R.id.analytics_circular_max);
-        _circular_min_text = _mainActivity.findViewById(R.id.analytics_circular_min_text);
-        _circular_min = _mainActivity.findViewById(R.id.analytics_circular_min);
-        _circular_avg_text = _mainActivity.findViewById(R.id.analytics_circular_avg_text);
-        _circular_avg = _mainActivity.findViewById(R.id.analytics_circular_avg);
+        _datePicker = _view.findViewById(R.id.analytics_date);
+        _zonesChart = _view.findViewById(R.id.analytics_zone_chart);
+        _circular_max_text = _view.findViewById(R.id.analytics_circular_max_text);
+        _circular_max = _view.findViewById(R.id.analytics_circular_max);
+        _circular_min_text = _view.findViewById(R.id.analytics_circular_min_text);
+        _circular_min = _view.findViewById(R.id.analytics_circular_min);
+        _circular_avg_text = _view.findViewById(R.id.analytics_circular_avg_text);
+        _circular_avg = _view.findViewById(R.id.analytics_circular_avg);
     }
 }

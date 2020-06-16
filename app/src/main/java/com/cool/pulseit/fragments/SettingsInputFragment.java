@@ -29,7 +29,7 @@ import java.util.Date;
 public class SettingsInputFragment extends Fragment {
     private static SettingsResultFragment _settingsResultFragment;
 
-    private View _mainActivity;
+    private View _view;
     private NumberPicker _weightNumberPicker;
     private NumberPicker _ageNumberPicker;
     private Spinner _genderSpinner;
@@ -67,7 +67,7 @@ public class SettingsInputFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _mainActivity = inflater.inflate(R.layout.fragment_settings_input, container, false);
+        _view = inflater.inflate(R.layout.fragment_settings_input, container, false);
 
         getViewElements();
 
@@ -76,7 +76,7 @@ public class SettingsInputFragment extends Fragment {
 
         initializeEventListeners();
 
-        return _mainActivity;
+        return _view;
     }
 
     private void initializeEventListeners() {
@@ -89,10 +89,10 @@ public class SettingsInputFragment extends Fragment {
     }
 
     private void getViewElements() {
-        _weightNumberPicker = _mainActivity.findViewById(R.id.settings_input_weight);
-        _ageNumberPicker = _mainActivity.findViewById(R.id.settings_input_age);
-        _genderSpinner = _mainActivity.findViewById(R.id.settings_spinner_gender);
-        _saveButton = _mainActivity.findViewById(R.id.settings_button_save);
+        _weightNumberPicker = _view.findViewById(R.id.settings_input_weight);
+        _ageNumberPicker = _view.findViewById(R.id.settings_input_age);
+        _genderSpinner = _view.findViewById(R.id.settings_spinner_gender);
+        _saveButton = _view.findViewById(R.id.settings_button_save);
     }
 
     private void initializeWeightNumberPicker() {

@@ -19,7 +19,7 @@ import io.github.kexanie.library.MathView;
  * create an instance of this fragment.
  */
 public class InfoFragment extends Fragment {
-    private View _mainActivity;
+    private View _view;
     private MathView _info_formula_one;
     private MathView _info_formula_two;
     private BarChart _chart;
@@ -49,18 +49,18 @@ public class InfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        _mainActivity = inflater.inflate(R.layout.fragment_info, container, false);
-        _info_formula_one = _mainActivity.findViewById(R.id.info_formula_one);
+        _view = inflater.inflate(R.layout.fragment_info, container, false);
+        _info_formula_one = _view.findViewById(R.id.info_formula_one);
         _info_formula_one.setText(getString(R.string.info_formula_male));
 
-        _info_formula_two = _mainActivity.findViewById(R.id.info_formula_two);
+        _info_formula_two = _view.findViewById(R.id.info_formula_two);
         _info_formula_two.setText(getString(R.string.info_formula_female));
 
-        _chart = _mainActivity.findViewById(R.id.info_chart);
+        _chart = _view.findViewById(R.id.info_chart);
 
         initChart();
 
-        return _mainActivity;
+        return _view;
     }
 
     private void initChart() {
