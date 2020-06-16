@@ -295,12 +295,20 @@
                     app:cardCornerRadius="4dp"
                     app:cardElevation="4dp">
 
+                    <LinearLayout
+                        android:id="@+id/info_relativeLayout_card_interpretation_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/info_interpretation_header_detail_gesundheitszone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="@string/info_interpretation_gesundheitszone"
+                        android:text="@string/zone_verylight"
                         android:textColor="@color/grey"
                         android:textSize="13sp" />
 
@@ -309,8 +317,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="@string/info_interpretation_gesundheitszone"
-                        android:textColor="@color/grey"
+                        android:text="@string/info_interpretation_detail_gesundheitszone"
                         android:textSize="13sp" />
 
                 <View
@@ -318,6 +325,94 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_header_detail_fettverbrennungszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/zone_light"
+                            android:textColor="@color/turquoise"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_detail_fettverbrennungszone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_detail_fettverbrennungszone"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:id="@+id/divider2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_header_detail_aerobeZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/zone_moderate"
+                            android:textColor="@color/green"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_detail_aerobeZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_detail_aerobe_Zone"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:id="@+id/divider3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_header_detail_anaerobeZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/zone_hard"
+                            android:textColor="@color/orange"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_detail_anaerobeZone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_detail_anaerobe_Zone"
+                            android:textSize="13sp" />
+
+                        <View
+                            android:id="@+id/divider4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_header_detail_warnzone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/zone_veryhard"
+                            android:textColor="@color/red"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/info_interpretation_detail_warnzone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/info_interpretation_detail_rote_Zone"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
