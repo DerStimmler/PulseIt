@@ -52,19 +52,19 @@
     <!--analytics-->
     <string name="analytics_heading">Analyse</string>
     <!--database-->
-    <string name="database_message_log_error_delete_pulse">Error while deleting pulse</string>
-    <string name="database_message_ui_error_delete_pulse">Fehler beim Löschen des Pulses</string>
+    <string name="database_message_log_error_delete_pulse">Error while deleting pulse entry</string>
+    <string name="database_message_ui_error_delete_pulse">Fehler beim Löschen des Pulseintrags</string>
     <string name="database_message_ui_deleted">Gelöscht</string>
-    <string name="database_message_ui_error_get_settings">Fehler beim Abruf der Settings</string>
-    <string name="database_message_log_error_get_settings">Error while retrieving Settings</string>
-    <string name="database_message_ui_error_no_settings_found">Keine Settings Einträge gefunden</string>
-    <string name="database_message_ui_error_save_pulse">Fehler beim Speichern des Pulses</string>
-    <string name="database_message_log_error_save_pulse">Error while saving pulse</string>
+    <string name="database_message_ui_error_get_settings">Fehler beim Abruf der Einstellungen</string>
+    <string name="database_message_log_error_get_settings">Error while retrieving settings</string>
+    <string name="database_message_ui_error_no_settings_found">Keine Einstellungen gefunden</string>
+    <string name="database_message_ui_error_save_pulse">Fehler beim Speichern des Pulseintrags</string>
+    <string name="database_message_log_error_save_pulse">Error while saving pulse entry</string>
     <string name="database_message_ui_saved">Gespeichert</string>
-    <string name="database_message_ui_error_get_pulses">Fehler beim Abrufen der Pulses</string>
-    <string name="database_message_log_error_get_pulses">Error while getting pulses</string>
-    <string name="database_message_ui_error_no_pulses_found">Keine Pulses gefunden</string>
-    <string name="database_message_ui_error_save_settings">Fehler beim Speichern der Settings</string>
+    <string name="database_message_ui_error_get_pulses">Fehler beim Abrufen der Pulseinträge</string>
+    <string name="database_message_log_error_get_pulses">Error while getting pulse entries</string>
+    <string name="database_message_ui_error_no_pulses_found">Keine Pulseinträge gefunden</string>
+    <string name="database_message_ui_error_save_settings">Fehler beim Speichern der Einstellungen</string>
     <string name="database_message_log_error_save_settings">Error while saving settings</string>
     <string name="database_message_log_error_create_tables">Error while creating database tables</string>
     <string name="add_pulse_label_description">Beschreibung:</string>
