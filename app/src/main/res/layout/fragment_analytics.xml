@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="TextView"
+                            android:text="@string/no_value"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -131,7 +131,7 @@
                             android:layout_height="wrap_content"
                             android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="TextView"
+                            android:text="@string/no_value"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -181,7 +181,7 @@
                             android:layout_height="wrap_content"
                             android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="TextView"
+                            android:text="@string/no_value"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 

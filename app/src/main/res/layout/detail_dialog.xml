@@ -83,7 +83,7 @@
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
-                            android:text="Pulse"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"></TextView>
@@ -112,7 +112,7 @@
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
-                            android:text="Datum"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"></TextView>
 
@@ -140,7 +140,7 @@
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
-                            android:text="Zone"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"></TextView>
                     </TableRow>
@@ -166,7 +166,7 @@
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
-                            android:text="Beschreibung"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp" />
                     </TableRow>
@@ -217,7 +217,7 @@
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
-                            android:text="Geschlecht"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"></TextView>
                     </TableRow>
@@ -242,7 +242,7 @@
                             android:layout_column="1"
                             android:layout_weight="2"
                             android:gravity="center_vertical"
-                            android:text="Alter"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp">
 
@@ -264,7 +264,7 @@
                             android:layout_column="3"
                             android:layout_weight="2"
                             android:gravity="center_vertical"
-                            android:text="Gewicht"
+                            android:text="@string/no_value"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"></TextView>
 

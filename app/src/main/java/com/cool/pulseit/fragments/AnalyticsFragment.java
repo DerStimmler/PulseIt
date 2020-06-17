@@ -233,6 +233,8 @@ public class AnalyticsFragment extends Fragment {
         Date from = new Date(c.getTimeInMillis());
         Date to = new Date();
 
+        setDatePicker(from,to);
+
         updateValues(from, to);
     }
 

@@ -80,4 +80,5 @@
     <string name="zone_veryhard">Warnzone</string>
     <string name="gender_male">männlich</string>
     <string name="gender_female">weiblich</string>
+    <string name="no_value">-</string>
 </resources>
