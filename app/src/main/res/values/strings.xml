@@ -50,6 +50,7 @@
     <string name="add_pulse_label_description">Beschreibung:</string>
     <!--history-->
     <string name="history_heading">Verlauf</string>
+    <string name="history_detail_own_pulse_label">Eigener Puls</string>
     <!--analytics-->
     <string name="analytics_heading">Analyse</string>
     <string name="analytics_calculator_exception_ui_no_pulse_entries_in_date_range">Keine Pulseinträge im ausgewählten Zeitraum verfügbar</string>
@@ -82,8 +83,10 @@
     <!--gender-->
     <string name="gender_male">männlich</string>
     <string name="gender_female">weiblich</string>
-    
+
     <string name="no_value">-</string>
     <string name="delete_undo">Wiederherstellen</string>
     <string name="error_delete_undo">Wiederherstellung fehlgeschlagen</string>
+    <string name="pulse_search_menu">Search</string>
+    <string name="share_menu">Share</string>
 </resources>

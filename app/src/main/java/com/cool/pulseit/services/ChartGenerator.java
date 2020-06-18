@@ -239,7 +239,7 @@ public class ChartGenerator {
         chart.getAxisLeft().addLimitLine(ll);
         x += entries.get(0).getYVals()[5];
         if (pulse != null) {
-            ll = new LimitLine(pulse.pulse, "Eigener Puls");
+            ll = new LimitLine(pulse.pulse, _context.getString(R.string.history_detail_own_pulse_label));
             ll.setLineColor(Color.RED);
             ll.setTextColor(Color.RED);
             chart.getAxisLeft().addLimitLine(ll);
