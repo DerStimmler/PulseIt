@@ -69,7 +69,7 @@ public class AddPulseFragment extends Fragment {
         initializePulseNumberPicker();
         initializeEventListeners();
 
-        _tapButton.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.pulse));
+        _tapButton.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.pulse));
 
         return _view;
     }

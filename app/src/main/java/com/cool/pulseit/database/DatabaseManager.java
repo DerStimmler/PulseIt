@@ -10,8 +10,8 @@ import android.util.Log;
 import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.entities.Settings;
-import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.enums.Gender;
+import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 
 import java.util.ArrayList;
@@ -160,10 +160,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         try {
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindLong(1,pulse.pulse);
-            statement.bindString(2,DateFormatter.toDb(pulse.date));
-            statement.bindString(3,pulse.description);
-            statement.bindLong(4,pulse.settings.getId());
+            statement.bindLong(1, pulse.pulse);
+            statement.bindString(2, DateFormatter.toDb(pulse.date));
+            statement.bindString(3, pulse.description);
+            statement.bindLong(4, pulse.settings.getId());
             statement.executeInsert();
 
             result.setOk(true);
@@ -228,7 +228,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         try {
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindLong(1,pulse.getId());
+            statement.bindLong(1, pulse.getId());
             statement.executeUpdateDelete();
 
             result.setOk(true);

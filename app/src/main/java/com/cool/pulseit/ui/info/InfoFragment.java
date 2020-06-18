@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.R;
+import com.cool.pulseit.services.ChartGenerator;
 import com.github.mikephil.charting.charts.BarChart;
 
 import io.github.kexanie.library.MathView;

@@ -14,10 +14,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;

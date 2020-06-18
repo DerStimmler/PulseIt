@@ -11,14 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.cool.pulseit.R;
+import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.enums.Zone;
 import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.services.MaximumHeartRateCalculator;
-import com.cool.pulseit.R;
-import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.services.ZoneCalculator;
-import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.DateFormatter;
-import com.cool.pulseit.enums.Zone;
+import com.cool.pulseit.utils.Share;
 import com.github.mikephil.charting.charts.BarChart;
 
 public class DetailDialogFragment extends DialogFragment {

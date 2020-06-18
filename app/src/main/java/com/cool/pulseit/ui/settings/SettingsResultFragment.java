@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.services.ChartGenerator;
-import com.cool.pulseit.services.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;
 import com.cool.pulseit.enums.Gender;
+import com.cool.pulseit.services.ChartGenerator;
+import com.cool.pulseit.services.MaximumHeartRateCalculator;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.github.mikephil.charting.charts.BarChart;

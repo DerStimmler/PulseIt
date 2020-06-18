@@ -2,8 +2,8 @@ package com.cool.pulseit.enums;
 
 import android.util.Log;
 
-import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.R;
+import com.cool.pulseit.ui.main.MainActivity;
 
 public enum Zone {
     NONE,
@@ -15,17 +15,17 @@ public enum Zone {
 
     public static Zone toEnum(String zonesString) {
 
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_none)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_none)))
             return Zone.NONE;
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_verylight)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_verylight)))
             return Zone.VERYLIGHT;
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_light)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_light)))
             return Zone.LIGHT;
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_moderate)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_moderate)))
             return Zone.MODERATE;
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_hard)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_hard)))
             return Zone.HARD;
-        if(zonesString.equals(MainActivity.getResourceString(R.string.zone_veryhard)))
+        if (zonesString.equals(MainActivity.getResourceString(R.string.zone_veryhard)))
             return Zone.VERYHARD;
 
         Log.e("Zone", String.format("Can't convert %s to ZoneEnum", zonesString));
@@ -34,15 +34,15 @@ public enum Zone {
 
     @Override
     public String toString() {
-        if(this == Zone.NONE)
+        if (this == Zone.NONE)
             return MainActivity.getResourceString(R.string.zone_none);
-        if(this == Zone.VERYLIGHT)
+        if (this == Zone.VERYLIGHT)
             return MainActivity.getResourceString(R.string.zone_verylight);
-        if(this == Zone.LIGHT)
+        if (this == Zone.LIGHT)
             return MainActivity.getResourceString(R.string.zone_light);
-        if(this == Zone.MODERATE)
+        if (this == Zone.MODERATE)
             return MainActivity.getResourceString(R.string.zone_moderate);
-        if(this == Zone.HARD)
+        if (this == Zone.HARD)
             return MainActivity.getResourceString(R.string.zone_hard);
 
         return MainActivity.getResourceString(R.string.zone_veryhard);

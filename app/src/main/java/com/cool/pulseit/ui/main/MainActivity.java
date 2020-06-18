@@ -51,6 +51,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+    public static Context getContext() {
+        return _context;
+    }
+
+    public static String getResourceString(int stringId) {
+        return _context.getString(stringId);
+    }
+
+    public static int getResourceColor(int colorId) {
+        return _context.getColor(colorId);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,17 +106,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void openDialogFragment(DialogFragment fragment) {
         fragment.show(getSupportFragmentManager(), "dialog");
-    }
-
-    public static Context getContext(){
-        return _context;
-    }
-
-    public static String getResourceString(int stringId){
-        return _context.getString(stringId);
-    }
-
-    public static int getResourceColor(int colorId){
-        return _context.getColor(colorId);
     }
 }

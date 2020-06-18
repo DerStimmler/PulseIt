@@ -2,12 +2,12 @@ package com.cool.pulseit.ui.analytics;
 
 import android.content.Context;
 
-import com.cool.pulseit.ui.main.MainActivity;
-import com.cool.pulseit.services.ZoneCalculator;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.enums.Zone;
+import com.cool.pulseit.services.ZoneCalculator;
+import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.ListHelper;
 import com.cool.pulseit.utils.Result;
-import com.cool.pulseit.enums.Zone;
 
 import java.util.ArrayList;
 import java.util.List;

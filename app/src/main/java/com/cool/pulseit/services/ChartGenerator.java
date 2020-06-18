@@ -12,9 +12,9 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.enums.Zone;
 import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.ArrayHelper;
-import com.cool.pulseit.enums.Zone;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.LimitLine;
@@ -186,7 +186,7 @@ public class ChartGenerator {
     }
 
     private void addLimitLines(BarChart chart, List<BarEntry> entries, Pulse pulse) {
-        
+
         chart.getAxisLeft().removeAllLimitLines();
 
         LimitLine ll;
@@ -286,9 +286,9 @@ public class ChartGenerator {
 
         SpannableString zoneIcon = new SpannableString("XXX");
         Drawable d = ContextCompat.getDrawable(_context, R.drawable.ic_fitness_center_black_24dp);
-        d.setBounds(0,0,d.getIntrinsicWidth() + 80, d.getIntrinsicHeight() + 80);
-        ImageSpan span = new ImageSpan(d,ImageSpan.ALIGN_BASELINE);
-        zoneIcon.setSpan(span, 0 , 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        d.setBounds(0, 0, d.getIntrinsicWidth() + 80, d.getIntrinsicHeight() + 80);
+        ImageSpan span = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
+        zoneIcon.setSpan(span, 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         chart.setCenterText(zoneIcon);
     }
 

@@ -16,13 +16,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.R;
-import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
+import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -232,7 +232,7 @@ public class AnalyticsFragment extends Fragment {
         Date from = new Date(c.getTimeInMillis());
         Date to = new Date();
 
-        setDatePicker(from,to);
+        setDatePicker(from, to);
 
         updateValues(from, to);
     }
