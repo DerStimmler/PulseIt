@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HeartRateCalculator {
-    List<Long> _deltas;
-    Timestamp _previousTime;
-    Context _context = MainActivity.getContext();
+    private List<Long> _deltas;
+    private Timestamp _previousTime;
+    private Context _context = MainActivity.getContext();
 
     public HeartRateCalculator() {
-        _deltas = new ArrayList<Long>();
+        _deltas = new ArrayList<>();
         _previousTime = new Timestamp(System.currentTimeMillis());
     }
 
@@ -39,9 +39,11 @@ public class HeartRateCalculator {
     private void vibrate() {
         Vibrator v = (Vibrator) _context.getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            assert v != null;
             v.vibrate(VibrationEffect.createOneShot(80, VibrationEffect.EFFECT_TICK));
         } else {
             //deprecated in API 26
+            assert v != null;
             v.vibrate(80);
         }
     }
@@ -64,7 +66,6 @@ public class HeartRateCalculator {
 
         Long avg = sum / _deltas.size();
 
-        int x = (int) (60 / (avg / 1000.0));
-        return x;
+        return (int) (60 / (avg / 1000.0));
     }
 }

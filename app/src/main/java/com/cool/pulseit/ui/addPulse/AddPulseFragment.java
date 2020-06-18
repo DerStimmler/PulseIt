@@ -20,6 +20,7 @@ import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class AddPulseFragment extends Fragment {
 
@@ -94,7 +95,7 @@ public class AddPulseFragment extends Fragment {
         Result<Settings> result = dbm.getLatestSettings();
 
         if (!result.isOk()) {
-            StatusSnackbar.show(getActivity(), result.getMessage());
+            StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
             return;
         }
 
@@ -103,11 +104,11 @@ public class AddPulseFragment extends Fragment {
         result = dbm.savePulse(pulse);
 
         if (!result.isOk()) {
-            StatusSnackbar.show(getActivity(), result.getMessage());
+            StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
             return;
         }
 
-        StatusSnackbar.show(getActivity(), result.getMessage());
+        StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
     }
 
     private void initializePulseNumberPicker() {
