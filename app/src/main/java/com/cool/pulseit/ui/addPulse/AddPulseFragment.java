@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.addPulse;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import android.widget.NumberPicker;
 
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.HeartRateCalculator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;

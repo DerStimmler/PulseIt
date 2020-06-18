@@ -1,10 +1,12 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.history;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cool.pulseit.R;
 
 public class PulsesViewHolder extends RecyclerView.ViewHolder {
 

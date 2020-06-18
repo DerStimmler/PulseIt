@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cool.pulseit.R;
-import com.cool.pulseit.SettingsTabAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 /**

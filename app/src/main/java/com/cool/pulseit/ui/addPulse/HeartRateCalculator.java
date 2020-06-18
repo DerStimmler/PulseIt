@@ -1,9 +1,11 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.addPulse;
 
 import android.content.Context;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+
+import com.cool.pulseit.ui.main.MainActivity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

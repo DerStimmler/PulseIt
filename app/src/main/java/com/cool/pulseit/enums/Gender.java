@@ -2,7 +2,7 @@ package com.cool.pulseit.enums;
 
 import android.util.Log;
 
-import com.cool.pulseit.MainActivity;
+import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.R;
 
 public enum Gender {

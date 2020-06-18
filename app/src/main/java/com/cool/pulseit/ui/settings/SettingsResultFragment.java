@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.ChartGenerator;
-import com.cool.pulseit.MaximumHeartRateCalculator;
+import com.cool.pulseit.services.ChartGenerator;
+import com.cool.pulseit.services.MaximumHeartRateCalculator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Settings;

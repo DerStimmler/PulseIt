@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.services;
 
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.enums.Gender;

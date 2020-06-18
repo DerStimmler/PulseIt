@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.services;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,7 +10,9 @@ import android.text.style.ImageSpan;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
+import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.ArrayHelper;
 import com.cool.pulseit.enums.Zone;
 import com.github.mikephil.charting.charts.BarChart;

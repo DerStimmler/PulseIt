@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.analytics;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -16,8 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.AnalyticsCalculator;
-import com.cool.pulseit.ChartGenerator;
+import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.R;
 import com.cool.pulseit.utils.Share;
 import com.cool.pulseit.database.DatabaseManager;

@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.info;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.cool.pulseit.ChartGenerator;
+import com.cool.pulseit.services.ChartGenerator;
 import com.cool.pulseit.R;
 import com.github.mikephil.charting.charts.BarChart;
 

@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,11 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.cool.pulseit.fragments.AddPulseFragment;
-import com.cool.pulseit.fragments.AnalyticsFragment;
-import com.cool.pulseit.fragments.HistoryFragment;
-import com.cool.pulseit.fragments.InfoFragment;
-import com.cool.pulseit.fragments.SettingsFragment;
+import com.cool.pulseit.R;
+import com.cool.pulseit.ui.addPulse.AddPulseFragment;
+import com.cool.pulseit.ui.analytics.AnalyticsFragment;
+import com.cool.pulseit.ui.history.HistoryFragment;
+import com.cool.pulseit.ui.info.InfoFragment;
+import com.cool.pulseit.ui.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

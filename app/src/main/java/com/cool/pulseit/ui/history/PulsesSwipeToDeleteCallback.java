@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.history;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cool.pulseit.ui.main.MainActivity;
+import com.cool.pulseit.R;
 
 public class PulsesSwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 

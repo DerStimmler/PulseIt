@@ -10,7 +10,7 @@ import android.view.View;
 
 import androidx.core.content.FileProvider;
 
-import com.cool.pulseit.MainActivity;
+import com.cool.pulseit.ui.main.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

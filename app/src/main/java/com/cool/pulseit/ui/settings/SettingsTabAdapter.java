@@ -1,4 +1,4 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.settings;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

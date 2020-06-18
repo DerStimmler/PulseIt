@@ -1,4 +1,4 @@
-package com.cool.pulseit.fragments;
+package com.cool.pulseit.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

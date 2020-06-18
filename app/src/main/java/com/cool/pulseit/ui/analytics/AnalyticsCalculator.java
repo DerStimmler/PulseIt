@@ -1,7 +1,9 @@
-package com.cool.pulseit;
+package com.cool.pulseit.ui.analytics;
 
 import android.content.Context;
 
+import com.cool.pulseit.ui.main.MainActivity;
+import com.cool.pulseit.services.ZoneCalculator;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.ListHelper;
 import com.cool.pulseit.utils.Result;
