@@ -156,7 +156,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Result result = new Result();
         String sql;
         try {
-            if (pulse.date == null) {
+            if (pulse.getId() == -1) {
                 sql = "INSERT INTO pulses (pulse, date, description, settings_id) VALUES (?,?,?,?)";
 
                 SQLiteStatement statement = db.compileStatement(sql);

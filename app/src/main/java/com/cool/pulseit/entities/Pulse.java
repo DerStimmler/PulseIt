@@ -7,7 +7,7 @@ public class Pulse {
     public int pulse;
     public Settings settings;
     public String description;
-    private int id;
+    private int id = -1;
 
     public Pulse(int id, Date date, int pulse, String description, Settings settings) {
         this.id = id;

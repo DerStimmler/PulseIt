@@ -33,7 +33,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     private Context _context = MainActivity.getContext();
     private View _view;
     private Pulse _recentlyDeleted;
-    private int _recentlyDeletedPosition;
+    private int _recentlyDeletedPositionFiltered;
+    private int _recentlyDeletedPositionAll;
 
     public PulsesAdapter(List<Pulse> pulses) {
         _pulses = new ArrayList<>(pulses);
@@ -91,12 +92,14 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
             StatusSnackbar.show((Activity) _context, result.getMessage());
             return;
         }
-
-        _filteredPulses.remove(position);
-        _pulses.remove(position);
-        notifyItemRemoved(position);
+        _recentlyDeletedPositionFiltered = position;
+        _recentlyDeletedPositionAll = _pulses.indexOf(pulse);
         _recentlyDeleted = pulse;
-        _recentlyDeletedPosition = position;
+
+        _filteredPulses.remove(pulse);
+        _pulses.remove(pulse);
+        notifyItemRemoved(position);
+
 
         Snackbar snackbar = Snackbar.make(((Activity) _context).findViewById(R.id.bottom_navigation), result.getMessage(), Snackbar.LENGTH_SHORT);
         snackbar.setAnchorView(((Activity) _context).findViewById(R.id.bottom_navigation));
@@ -110,8 +113,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     }
 
     private void undoDelete() {
-        _filteredPulses.add(_recentlyDeletedPosition, _recentlyDeleted);
-        _pulses.add(_recentlyDeletedPosition, _recentlyDeleted);
+        _filteredPulses.add(_recentlyDeletedPositionFiltered, _recentlyDeleted);
+        _pulses.add(_recentlyDeletedPositionAll, _recentlyDeleted);
 
         DatabaseManager dbm = new DatabaseManager(_context);
         Result result = dbm.savePulse(_recentlyDeleted);
@@ -122,7 +125,7 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
             return;
         }
 
-        notifyItemInserted(_recentlyDeletedPosition);
+        notifyItemInserted(_recentlyDeletedPositionFiltered);
     }
 
 
