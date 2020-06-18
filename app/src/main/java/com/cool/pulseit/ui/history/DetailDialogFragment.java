@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,12 +22,14 @@ import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Share;
 import com.github.mikephil.charting.charts.BarChart;
 
+import java.util.Objects;
+
 public class DetailDialogFragment extends DialogFragment {
 
     private final Pulse _pulse;
     private View _view;
 
-    public DetailDialogFragment(Pulse pulse) {
+    DetailDialogFragment(Pulse pulse) {
         _pulse = pulse;
     }
 
@@ -34,7 +37,7 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.detail_dialog, container, false);
-        getDialog().setTitle("Details");
+        Objects.requireNonNull(getDialog()).setTitle("Details");
         setRetainInstance(true);
 
         init();
@@ -46,9 +49,9 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        WindowManager.LayoutParams params = Objects.requireNonNull(Objects.requireNonNull(getDialog()).getWindow()).getAttributes();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+        Objects.requireNonNull(getDialog().getWindow()).setAttributes(params);
     }
 
     private void setEventListener() {
