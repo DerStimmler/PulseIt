@@ -47,10 +47,15 @@
     <string name="add_pulse_button_tap">Tap</string>
     <string name="add_pulse_button_save">Speichern</string>
     <string name="addPulse_label_unit">BPM</string>
+    <string name="add_pulse_label_description">Beschreibung:</string>
     <!--history-->
     <string name="history_heading">Verlauf</string>
     <!--analytics-->
     <string name="analytics_heading">Analyse</string>
+    <string name="analytics_calculator_exception_ui_no_pulse_entries_in_date_range">Keine Pulseinträge im ausgewählten Zeitraum verfügbar</string>
+    <string name="analytics_circular_max_unit">MAX</string>
+    <string name="analytics_circular_avg_unit">AVG</string>
+    <string name="analytics_circular_min_unit">MIN</string>
     <!--database-->
     <string name="database_message_log_error_delete_pulse">Error while deleting pulse entry</string>
     <string name="database_message_ui_error_delete_pulse">Fehler beim Löschen des Pulseintrags</string>
@@ -67,19 +72,17 @@
     <string name="database_message_ui_error_save_settings">Fehler beim Speichern der Einstellungen</string>
     <string name="database_message_log_error_save_settings">Error while saving settings</string>
     <string name="database_message_log_error_create_tables">Error while creating database tables</string>
-    <string name="add_pulse_label_description">Beschreibung:</string>
-    <string name="analytics_calculator_exception_ui_no_pulse_entries_in_date_range">Keine Pulseinträge im ausgewählten Zeitraum verfügbar</string>
-    <string name="analytics_circular_max_unit">MAX</string>
-    <string name="analytics_circular_avg_unit">AVG</string>
-    <string name="analytics_circular_min_unit">MIN</string>
+    <!--zones-->
     <string name="zone_none">keine Zone</string>
     <string name="zone_verylight">Gesundheitszone</string>
     <string name="zone_light">Fettverbrennungszone</string>
     <string name="zone_moderate">aerobe Zone</string>
     <string name="zone_hard">anaerobe Zone</string>
     <string name="zone_veryhard">Warnzone</string>
+    <!--gender-->
     <string name="gender_male">männlich</string>
     <string name="gender_female">weiblich</string>
+    
     <string name="no_value">-</string>
     <string name="delete_undo">Wiederherstellen</string>
     <string name="error_delete_undo">Wiederherstellung fehlgeschlagen</string>
