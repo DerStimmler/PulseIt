@@ -21,6 +21,8 @@ import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -88,7 +90,15 @@ public class HistoryFragment extends Fragment {
         if (!result.isOk()) {
             StatusSnackbar.show(getActivity(), result.getMessage());
         } else {
+
             _pulses = result.getValue();
+
+            Collections.sort(_pulses, new Comparator<Pulse>() {
+                @Override
+                public int compare(Pulse o1, Pulse o2) {
+                    return o2.date.compareTo(o1.date);
+                }
+            });
 
             _adapter = new PulsesAdapter(_pulses);
 

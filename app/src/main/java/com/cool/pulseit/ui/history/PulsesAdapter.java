@@ -21,6 +21,7 @@ import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
     private List<Pulse> _filteredPulses;
     private Context _context = MainActivity.getContext();
     private View _view;
+    private Pulse _recentlyDeleted;
+    private int _recentlyDeletedPosition;
 
     public PulsesAdapter(List<Pulse> pulses) {
         _pulses = new ArrayList<>(pulses);
@@ -89,11 +92,37 @@ public class PulsesAdapter extends RecyclerView.Adapter<PulsesViewHolder> implem
             return;
         }
 
-        _filteredPulses.remove(pulse);
-        _pulses.remove(pulse);
+        _filteredPulses.remove(position);
+        _pulses.remove(position);
         notifyItemRemoved(position);
+        _recentlyDeleted = pulse;
+        _recentlyDeletedPosition = position;
 
-        StatusSnackbar.show((Activity) _context, result.getMessage());
+        Snackbar snackbar = Snackbar.make(((Activity) _context).findViewById(R.id.bottom_navigation), result.getMessage(), Snackbar.LENGTH_SHORT);
+        snackbar.setAnchorView(((Activity) _context).findViewById(R.id.bottom_navigation));
+        snackbar.setAction(MainActivity.getResourceString(R.string.delete_undo), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                undoDelete();
+            }
+        });
+        snackbar.show();
+    }
+
+    private void undoDelete() {
+        _filteredPulses.add(_recentlyDeletedPosition, _recentlyDeleted);
+        _pulses.add(_recentlyDeletedPosition, _recentlyDeleted);
+
+        DatabaseManager dbm = new DatabaseManager(_context);
+        Result result = dbm.savePulse(_recentlyDeleted);
+
+
+        if (!result.isOk()) {
+            StatusSnackbar.show((Activity) _context, MainActivity.getResourceString(R.string.error_delete_undo));
+            return;
+        }
+
+        notifyItemInserted(_recentlyDeletedPosition);
     }
 
 

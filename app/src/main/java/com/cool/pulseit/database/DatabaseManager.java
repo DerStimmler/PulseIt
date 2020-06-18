@@ -153,18 +153,29 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public Result savePulse(Pulse pulse) {
         SQLiteDatabase db = getReadableDatabase();
-
-        String sql = "INSERT INTO pulses (pulse, date, description, settings_id) VALUES (?,?,?,?)";
-
         Result result = new Result();
-
+        String sql;
         try {
-            SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindLong(1, pulse.pulse);
-            statement.bindString(2, DateFormatter.toDb(pulse.date));
-            statement.bindString(3, pulse.description);
-            statement.bindLong(4, pulse.settings.getId());
-            statement.executeInsert();
+            if (pulse.date == null) {
+                sql = "INSERT INTO pulses (pulse, date, description, settings_id) VALUES (?,?,?,?)";
+
+                SQLiteStatement statement = db.compileStatement(sql);
+                statement.bindLong(1, pulse.pulse);
+                statement.bindString(2, DateFormatter.toDb(pulse.date));
+                statement.bindString(3, pulse.description);
+                statement.bindLong(4, pulse.settings.getId());
+                statement.executeInsert();
+            } else {
+                sql = "INSERT INTO pulses (id, pulse, date, description, settings_id) VALUES (?,?,?,?,?)";
+
+                SQLiteStatement statement = db.compileStatement(sql);
+                statement.bindLong(1, pulse.getId());
+                statement.bindLong(2, pulse.pulse);
+                statement.bindString(3, DateFormatter.toDb(pulse.date));
+                statement.bindString(4, pulse.description);
+                statement.bindLong(5, pulse.settings.getId());
+                statement.executeInsert();
+            }
 
             result.setOk(true);
             result.setMessage(_context.getString(R.string.database_message_ui_saved));
