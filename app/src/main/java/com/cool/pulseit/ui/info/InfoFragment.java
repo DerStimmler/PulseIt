@@ -13,11 +13,6 @@ import com.github.mikephil.charting.charts.BarChart;
 
 import io.github.kexanie.library.MathView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class InfoFragment extends Fragment {
     private View _view;
     private MathView _info_formula_one;
@@ -28,12 +23,6 @@ public class InfoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment InfoFragment.
-     */
     public static InfoFragment newInstance() {
         InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();

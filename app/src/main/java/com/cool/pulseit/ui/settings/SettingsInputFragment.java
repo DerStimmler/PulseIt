@@ -20,11 +20,6 @@ import com.cool.pulseit.utils.StatusSnackbar;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingsInputFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingsInputFragment extends Fragment {
     private static SettingsResultFragment _settingsResultFragment;
 
@@ -38,12 +33,6 @@ public class SettingsInputFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment SettingsInputFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static SettingsInputFragment newInstance(SettingsResultFragment settingsResultFragment) {
         SettingsInputFragment fragment = new SettingsInputFragment();

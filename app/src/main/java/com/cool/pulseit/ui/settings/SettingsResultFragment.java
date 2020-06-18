@@ -18,11 +18,6 @@ import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 import com.github.mikephil.charting.charts.BarChart;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingsResultFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingsResultFragment extends Fragment {
 
     private View _view;
@@ -36,12 +31,6 @@ public class SettingsResultFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment SettingsResultFragment.
-     */
     public static SettingsResultFragment newInstance() {
         SettingsResultFragment fragment = new SettingsResultFragment();
         return fragment;

@@ -25,11 +25,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HistoryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HistoryFragment extends Fragment {
 
     private View _view;
@@ -41,12 +36,6 @@ public class HistoryFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment HistoryFragment.
-     */
     public static HistoryFragment newInstance() {
         HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
