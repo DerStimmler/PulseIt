@@ -109,7 +109,7 @@
                         <io.github.kexanie.library.MathView
                             android:id="@+id/info_formula_one"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
+                            android:layout_height="wrap_content" />
 
 
                         <TextView
@@ -123,7 +123,7 @@
                         <io.github.kexanie.library.MathView
                             android:id="@+id/info_formula_two"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></io.github.kexanie.library.MathView>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
