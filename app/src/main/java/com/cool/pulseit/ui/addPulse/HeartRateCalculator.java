@@ -39,11 +39,9 @@ public class HeartRateCalculator {
     private void vibrate() {
         Vibrator v = (Vibrator) _context.getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            assert v != null;
             v.vibrate(VibrationEffect.createOneShot(80, VibrationEffect.EFFECT_TICK));
         } else {
             //deprecated in API 26
-            assert v != null;
             v.vibrate(80);
         }
     }

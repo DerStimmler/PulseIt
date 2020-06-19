@@ -95,7 +95,7 @@ public class AddPulseFragment extends Fragment {
         Result<Settings> result = dbm.getLatestSettings();
 
         if (!result.isOk()) {
-            StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
+            StatusSnackbar.show(getActivity(), result.getMessage());
             return;
         }
 
@@ -104,11 +104,11 @@ public class AddPulseFragment extends Fragment {
         result = dbm.savePulse(pulse);
 
         if (!result.isOk()) {
-            StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
+            StatusSnackbar.show(getActivity(), result.getMessage());
             return;
         }
 
-        StatusSnackbar.show(Objects.requireNonNull(getActivity()), result.getMessage());
+        StatusSnackbar.show(getActivity(), result.getMessage());
     }
 
     private void initializePulseNumberPicker() {

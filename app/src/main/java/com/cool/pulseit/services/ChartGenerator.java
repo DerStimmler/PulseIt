@@ -110,7 +110,7 @@ public class ChartGenerator {
                 continue;
             }
 
-            temp.addAll(Objects.requireNonNull(map.get(z)));
+            temp.addAll(map.get(z));
             temp.add(pulse);
 
             map.put(z, temp);
@@ -126,7 +126,7 @@ public class ChartGenerator {
         List<PieEntry> entries = new ArrayList<>();
 
         for (Zone zone : map.keySet()) {
-            PieEntry entry = new PieEntry(100f / pulses.size() * Objects.requireNonNull(map.get(zone)).size(), zone.toString());
+            PieEntry entry = new PieEntry(100f / pulses.size() * map.get(zone).size(), zone.toString());
             entries.add(entry);
         }
 
@@ -287,7 +287,6 @@ public class ChartGenerator {
 
         SpannableString zoneIcon = new SpannableString("XXX");
         Drawable d = ContextCompat.getDrawable(_context, R.drawable.ic_fitness_center_black_24dp);
-        assert d != null;
         d.setBounds(0, 0, d.getIntrinsicWidth() + 80, d.getIntrinsicHeight() + 80);
         ImageSpan span = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
         zoneIcon.setSpan(span, 0, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);

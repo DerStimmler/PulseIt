@@ -37,7 +37,7 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         _view = inflater.inflate(R.layout.detail_dialog, container, false);
-        Objects.requireNonNull(getDialog()).setTitle("Details");
+        getDialog().setTitle("Details");
         setRetainInstance(true);
 
         init();
@@ -49,9 +49,9 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        WindowManager.LayoutParams params = Objects.requireNonNull(Objects.requireNonNull(getDialog()).getWindow()).getAttributes();
+        WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        Objects.requireNonNull(getDialog().getWindow()).setAttributes(params);
+       getDialog().getWindow().setAttributes(params);
     }
 
     private void setEventListener() {
