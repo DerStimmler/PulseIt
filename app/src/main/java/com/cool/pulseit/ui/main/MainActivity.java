@@ -104,7 +104,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void openDialogFragment(DialogFragment fragment) {
-        fragment.show(getSupportFragmentManager(), "dialog");
-    }
 }
