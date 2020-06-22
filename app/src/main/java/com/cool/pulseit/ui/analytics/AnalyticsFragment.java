@@ -20,6 +20,7 @@ import com.cool.pulseit.R;
 import com.cool.pulseit.database.DatabaseManager;
 import com.cool.pulseit.entities.Pulse;
 import com.cool.pulseit.services.ChartGenerator;
+import com.cool.pulseit.ui.main.MainActivity;
 import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.Share;
@@ -99,9 +100,9 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void initCirculars() {
-        ((GradientDrawable) _circular_avg.getBackground()).setStroke(10, getResources().getColor(R.color.avg));
-        ((GradientDrawable) _circular_min.getBackground()).setStroke(10, getResources().getColor(R.color.min));
-        ((GradientDrawable) _circular_max.getBackground()).setStroke(10, getResources().getColor(R.color.max));
+        ((GradientDrawable) _circular_avg.getBackground()).setStroke(10, MainActivity.getResourceColor(R.color.avg));
+        ((GradientDrawable) _circular_min.getBackground()).setStroke(10, MainActivity.getResourceColor(R.color.min));
+        ((GradientDrawable) _circular_max.getBackground()).setStroke(10, MainActivity.getResourceColor(R.color.max));
     }
 
     private void adjustCircularsHeights() {

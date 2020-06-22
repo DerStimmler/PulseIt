@@ -8,7 +8,6 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.cool.pulseit.R;
 import com.cool.pulseit.entities.Pulse;
@@ -176,12 +175,12 @@ public class ChartGenerator {
 
     private Map<Zone, Integer> getColours() {
         Map<Zone, Integer> map = new HashMap<>();
-        map.put(Zone.NONE, ResourcesCompat.getColor(_context.getResources(), R.color.lightblue, null));
-        map.put(Zone.VERYLIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.grey, null));
-        map.put(Zone.LIGHT, ResourcesCompat.getColor(_context.getResources(), R.color.turquoise, null));
-        map.put(Zone.MODERATE, ResourcesCompat.getColor(_context.getResources(), R.color.green, null));
-        map.put(Zone.HARD, ResourcesCompat.getColor(_context.getResources(), R.color.orange, null));
-        map.put(Zone.VERYHARD, ResourcesCompat.getColor(_context.getResources(), R.color.red, null));
+        map.put(Zone.NONE, MainActivity.getResourceColor(R.color.lightblue));
+        map.put(Zone.VERYLIGHT, MainActivity.getResourceColor(R.color.grey));
+        map.put(Zone.LIGHT, MainActivity.getResourceColor(R.color.turquoise));
+        map.put(Zone.MODERATE, MainActivity.getResourceColor(R.color.green));
+        map.put(Zone.HARD, MainActivity.getResourceColor(R.color.orange));
+        map.put(Zone.VERYHARD, MainActivity.getResourceColor(R.color.red));
 
         return map;
     }
