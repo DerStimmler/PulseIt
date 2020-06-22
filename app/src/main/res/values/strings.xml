@@ -15,6 +15,21 @@
     <string name="info_legend">x = Maximalpuls; \na = Lebensalter; \ng = Körpergewicht;</string>
     <string name="info_formulaMale">Männlich:</string>
     <string name="info_formulaFemale">Weiblich:</string>
+    <string name="info_header_overview">App-Übersicht</string>
+    <string name="info_header_overview_header_settings">Einstellungen</string>
+    <string name="info_header_overview_settings">In den Einstellungen werden die zur Berechnung der Formel benötigten Werte erhoben. Die Einstellungen sind in zwei Teile gegliedert.</string>
+    <string name="info_overview_header_input">Eingabe</string>
+    <string name="info_overview_input">Auf der Eingabeseite kann das Alter, Gewicht und Geschlecht des benutzers eingegeben und gespeichert werden.</string>
+    <string name="info_overview_header_output">Ausgabe</string>
+    <string name="info_overview_output">Auf der Ausgabeseite sind die aktuellen Einstellungen einsehbar und der berechnete Maximalpuls wird angezeigt. Aus ihm werden die verschiedenen Trainingszonen abgeleitet und in einem Diagramm dargestellt.</string>
+    <string name="info_overview_header_addPulse">Puls hinzufügen</string>
+    <string name="info_overview_addPulse">In dieser Ansicht kann ein neuer Pulseintrag gespeichert werden. Der Wert entweder manuell angegeben werden oder wird automatisch berechnet, indem der Benutzer im Rhytmus des eigenen Herzschlags auf das Herzsymbol tappt. Zusätzlich kann eine Beschreibung angegeben werden, welche dabei hilft den Eintrag später leichter wiederzufinden oder zuzuordnen.</string>
+    <string name="info_overview_header_history">Verlauf</string>
+    <string name="info_overview_history">Im Verlauf befindet sich eine Übersicht aller gespeicherten Pulseinträge nach Datum sortiert. Über das Lupensymbol kann nach dem Beschreibungstext eines Eintrags gesucht werden. Zum Löschen eines Eintrags kann dieser nach links gewischt werden. Der Löschvorgang kann im Anschluss kurzzeitig rückgängig gemacht werden.</string>
+    <string name="info_overview_header_details">Details</string>
+    <string name="info_overview_details">Wird ein Eintrag angetippt öffnet sich eine Detailansicht in der die zum Puls zugehörigen Einstellungen und Einteilung in die Trainingszonen angezeigt werden. Per Tap auf das Teilen-Symbol kann die Detailansicht als Bild in anderen Apps geteilt werden.</string>
+    <string name="info_overview_header_analyse">Analyse</string>
+    <string name="info_overview_analyse">In der Analyseansicht werden der Minimal-, Maximal- und Durchschnittspuls in einem ausgewählten Zeitraum berechnet. Zudem ist die Verteilung der Pulseinträge auf die verschiedenen Trainingszonen in einem Tortendiagramm erkennbar. Per Tap auf das Teilen-Symbol kann die Analyseansicht als Bild in anderen Apps geteilt werden.</string>
     <string name="info_header_range">Wertebereich der Parameter</string>
     <string name="info_parameter_age">Das Lebensalter muss GRÖßER 0 und in ganzzahligen Jahren angegeben sein.</string>
     <string name="info_parameter_weight">Das Körpergewicht muss GRÖßER 0 und in Kilogramm angegeben sein.</string>

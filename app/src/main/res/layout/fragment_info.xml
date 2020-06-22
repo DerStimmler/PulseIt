@@ -127,6 +127,183 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2.5dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="2dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:contentPadding="7dp">
+
+            <LinearLayout
+                android:id="@+id/info_relativeLayout_card_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/info_header_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_header_overview"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_header_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_header_overview_header_settings"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_header_overview_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_header_overview_settings"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/info_overview_header_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_overview_header_input"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_input"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/info_overview_header_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_overview_header_output"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_output"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_output"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/divider_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                android:id="@+id/info_overview_header_addPulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info_overview_header_addPulse"
+                android:textColor="@color/grey"
+                android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_addPulse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_addPulse"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/divider_overview_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/info_overview_header_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_overview_header_history"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/infon_overview_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_history"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/divider_overview_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                android:id="@+id/info_overview_header_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info_overview_header_details"
+                android:textColor="@color/grey"
+                android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_details"
+                    android:textSize="13sp" />
+
+                <View
+                    android:id="@+id/divider_overview_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/info_overview_header_analyse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_overview_header_analyse"
+                    android:textColor="@color/grey"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/info_overview_analyse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_overview_analyse"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
