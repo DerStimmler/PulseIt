@@ -39,15 +39,15 @@
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="20dp">
+                        android:layout_margin="7dp">
 
                         <ImageView
                             android:id="@+id/imageView"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0"
                             android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
@@ -57,6 +57,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="1"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
                             android:layout_weight="0"
                             android:gravity="center_vertical"
                             android:text="@string/settings_label_age" />
@@ -67,6 +68,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="2"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:visibility="visible" />
@@ -81,15 +83,15 @@
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="20dp">
+                        android:layout_margin="7dp">
 
                         <ImageView
                             android:id="@+id/imageView2"
-                            android:layout_width="0dp"
-                            android:layout_height="24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0"
                             android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_business" />
 
@@ -99,6 +101,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="1"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
                             android:gravity="center_vertical"
                             android:text="@string/settings_label_weight" />
 
@@ -108,6 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="2"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:visibility="visible" />
@@ -122,15 +126,15 @@
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="20dp">
+                        android:layout_margin="7dp">
 
                         <ImageView
                             android:id="@+id/imageView3"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0"
                             android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_wc_black_24dp" />
 
@@ -140,6 +144,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="1"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
                             android:gravity="center_vertical"
                             android:text="@string/settings_label_gender" />
 
@@ -149,6 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_column="2"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:entries="@array/gender_array"
                             android:gravity="center_vertical" />

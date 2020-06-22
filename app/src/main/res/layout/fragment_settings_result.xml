@@ -60,9 +60,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
                                 android:text="@string/no_value"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp" />
@@ -87,9 +86,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
                                 android:text="@string/no_value"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp">
@@ -105,8 +103,8 @@
 
                             <ImageView
                                 android:id="@+id/settings_result_icon_weight"
-                                android:layout_width="24dp"
-                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_business" />
 
@@ -115,9 +113,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
                                 android:text="@string/no_value"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp" />
@@ -133,8 +130,8 @@
 
                             <ImageView
                                 android:id="@+id/settings_result_icon_result"
-                                android:layout_width="24dp"
-                                android:layout_height="match_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 app:srcCompat="@drawable/ic_cardiogram" />
 
@@ -143,9 +140,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
                                 android:layout_weight="1"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
                                 android:text="@string/no_value"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp" />

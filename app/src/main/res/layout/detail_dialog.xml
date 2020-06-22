@@ -67,11 +67,12 @@
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_pulse"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_cardiogram" />
 
                         <TextView
@@ -79,6 +80,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
@@ -96,11 +98,12 @@
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_date"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_calendar_today" />
 
                         <TextView
@@ -108,6 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
@@ -124,11 +128,12 @@
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_zones"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_fitness_center_black_24dp" />
 
                         <TextView
@@ -136,6 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
@@ -150,11 +156,12 @@
 
                         <ImageView
                             android:id="@+id/detail_dialog_icon_description"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_description" />
 
                         <TextView
@@ -162,6 +169,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
@@ -205,7 +213,8 @@
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_wc_black_24dp" />
 
                         <TextView
@@ -213,6 +222,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_span="3"
                             android:layout_weight="5"
                             android:gravity="center_vertical"
@@ -231,7 +241,8 @@
                             android:layout_height="wrap_content"
                             android:layout_column="0"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
                         <TextView
@@ -239,6 +250,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="1"
+                            android:layout_marginStart="10dp"
                             android:layout_weight="2"
                             android:gravity="center_vertical"
                             android:text="@string/no_value"
@@ -249,11 +261,12 @@
 
                         <ImageView
                             android:id="@+id/dialog_history_icon_weight"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_column="2"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="0"
+                            android:foregroundGravity="center"
                             app:srcCompat="@drawable/ic_business" />
 
                         <TextView
@@ -261,6 +274,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="3"
+                            android:layout_marginStart="10dp"
                             android:layout_weight="2"
                             android:gravity="center_vertical"
                             android:text="@string/no_value"

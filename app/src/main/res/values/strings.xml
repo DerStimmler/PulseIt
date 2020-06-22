@@ -83,7 +83,7 @@
     <!--gender-->
     <string name="gender_male">männlich</string>
     <string name="gender_female">weiblich</string>
-
+    <!--general-->
     <string name="no_value">-</string>
     <string name="delete_undo">Wiederherstellen</string>
     <string name="error_delete_undo">Wiederherstellung fehlgeschlagen</string>
