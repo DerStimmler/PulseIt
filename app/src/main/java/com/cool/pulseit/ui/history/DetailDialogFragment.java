@@ -22,8 +22,6 @@ import com.cool.pulseit.utils.DateFormatter;
 import com.cool.pulseit.utils.Share;
 import com.github.mikephil.charting.charts.BarChart;
 
-import java.util.Objects;
-
 public class DetailDialogFragment extends DialogFragment {
 
     private final Pulse _pulse;
@@ -51,7 +49,7 @@ public class DetailDialogFragment extends DialogFragment {
         super.onResume();
         WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-       getDialog().getWindow().setAttributes(params);
+        getDialog().getWindow().setAttributes(params);
     }
 
     private void setEventListener() {

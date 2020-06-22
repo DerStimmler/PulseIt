@@ -84,9 +84,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
-                    android:text="@string/no_value"
-                    android:layout_marginStart="10dp" />
+                    android:text="@string/no_value" />
 
             </LinearLayout>
         </LinearLayout>

@@ -35,7 +35,6 @@
                 android:orientation="vertical">
 
 
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -100,6 +99,7 @@
                                 android:textStyle="bold" />
 
                         </TableRow>
+
                         <View
                             android:id="@+id/divider"
                             android:layout_width="match_parent"

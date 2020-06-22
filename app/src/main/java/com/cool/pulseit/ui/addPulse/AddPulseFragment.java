@@ -20,7 +20,6 @@ import com.cool.pulseit.utils.Result;
 import com.cool.pulseit.utils.StatusSnackbar;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class AddPulseFragment extends Fragment {
 
