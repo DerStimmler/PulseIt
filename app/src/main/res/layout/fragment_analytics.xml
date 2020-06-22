@@ -20,195 +20,203 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/analytics_linear"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
+            android:scrollbarStyle="insideOverlay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settings_heading">
 
-            <EditText
-                android:id="@+id/analytics_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="15dp"
-                android:drawableStart="@drawable/ic_calendar_today"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:focusable="false"
-                android:inputType="date" />
-
             <LinearLayout
+                android:id="@+id/analytics_linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <FrameLayout
-                    android:id="@+id/analytics_circular_min"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/circle_background"
-                    android:padding="10dp">
+                <EditText
+                    android:id="@+id/analytics_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="15dp"
+                    android:drawableStart="@drawable/ic_calendar_today"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="date" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
-                        <ImageView
-                            android:id="@+id/analytics_circular_min_icon"
+                    <FrameLayout
+                        android:id="@+id/analytics_circular_min"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_background"
+                        android:padding="10dp">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:rotation="90"
-                            android:scaleX="0.7"
-                            android:scaleY="0.7"
-                            android:src="@drawable/ic_forward" />
-
-                        <TextView
-                            android:id="@+id/analytics_circular_min_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="@string/no_value"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/analytics_circular_min_unit"
+                            <ImageView
+                                android:id="@+id/analytics_circular_min_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:rotation="90"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:src="@drawable/ic_forward" />
+
+                            <TextView
+                                android:id="@+id/analytics_circular_min_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:foregroundGravity="center"
+                                android:gravity="center"
+                                android:text="@string/no_value"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/analytics_circular_min_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:text="@string/analytics_circular_min_unit"
+                                android:textColor="@color/min"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/analytics_circular_avg"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_background"
+                        android:padding="10dp">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:text="@string/analytics_circular_min_unit"
-                            android:textColor="@color/min"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/analytics_circular_avg"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/circle_background"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/analytics_circular_avg_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:scaleX="0.7"
-                            android:scaleY="0.7"
-                            android:src="@drawable/ic_forward" />
-
-                        <TextView
-                            android:id="@+id/analytics_circular_avg_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="@string/no_value"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/analytics_circular_avg_unit"
+                            <ImageView
+                                android:id="@+id/analytics_circular_avg_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:src="@drawable/ic_forward" />
+
+                            <TextView
+                                android:id="@+id/analytics_circular_avg_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:foregroundGravity="center"
+                                android:gravity="center"
+                                android:text="@string/no_value"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/analytics_circular_avg_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:text="@string/analytics_circular_avg_unit"
+                                android:textColor="@color/avg"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/analytics_circular_max"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circle_background"
+                        android:padding="10dp">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:text="@string/analytics_circular_avg_unit"
-                            android:textColor="@color/avg"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/analytics_circular_max"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/circle_background"
-                    android:padding="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/analytics_circular_max_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:rotation="-90"
-                            android:scaleX="0.7"
-                            android:scaleY="0.7"
-                            android:src="@drawable/ic_forward" />
-
-                        <TextView
-                            android:id="@+id/analytics_circular_max_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:foregroundGravity="center"
                             android:gravity="center"
-                            android:text="@string/no_value"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/analytics_circular_max_unit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:foregroundGravity="center"
-                            android:text="@string/analytics_circular_max_unit"
-                            android:textColor="@color/max"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/analytics_circular_max_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:rotation="-90"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:src="@drawable/ic_forward" />
 
-                </FrameLayout>
+                            <TextView
+                                android:id="@+id/analytics_circular_max_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:foregroundGravity="center"
+                                android:gravity="center"
+                                android:text="@string/no_value"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/analytics_circular_max_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:foregroundGravity="center"
+                                android:text="@string/analytics_circular_max_unit"
+                                android:textColor="@color/max"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/analytics_zone_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1">
+
+                </com.github.mikephil.charting.charts.PieChart>
+
             </LinearLayout>
-
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/analytics_zone_chart"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_weight="1">
-
-            </com.github.mikephil.charting.charts.PieChart>
-
-        </LinearLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
