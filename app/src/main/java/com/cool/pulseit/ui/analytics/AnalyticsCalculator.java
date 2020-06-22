@@ -1,37 +1,15 @@
 package com.cool.pulseit.ui.analytics;
 
-import android.content.Context;
-
 import com.cool.pulseit.entities.Pulse;
-import com.cool.pulseit.enums.Zone;
-import com.cool.pulseit.services.ZoneCalculator;
-import com.cool.pulseit.ui.main.MainActivity;
-import com.cool.pulseit.utils.ListHelper;
 import com.cool.pulseit.utils.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnalyticsCalculator {
     private final List<Pulse> _pulses;
-    private final Context _context = MainActivity.getContext();
 
     public AnalyticsCalculator(List<Pulse> pulses) {
         _pulses = pulses;
-    }
-
-    public Result<Zone> calculateCommonZone() {
-
-        List<Zone> zones = new ArrayList<>();
-
-        for (Pulse pulse : _pulses) {
-            ZoneCalculator zoneCalculator = new ZoneCalculator(pulse);
-            zones.add(zoneCalculator.calculateZone());
-        }
-
-        Zone commonZone = ListHelper.mostCommon(zones);
-
-        return new Result<Zone>(true, commonZone);
     }
 
     public Result<Integer> calculateMaxPulse() {
