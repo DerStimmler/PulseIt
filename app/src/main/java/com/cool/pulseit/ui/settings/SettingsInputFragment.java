@@ -32,8 +32,7 @@ public class SettingsInputFragment extends Fragment {
     public SettingsInputFragment() {
         // Required empty public constructor
     }
-
-    // TODO: Rename and change types and number of parameters
+    
     public static SettingsInputFragment newInstance(SettingsResultFragment settingsResultFragment) {
         SettingsInputFragment fragment = new SettingsInputFragment();
         _settingsResultFragment = settingsResultFragment;
