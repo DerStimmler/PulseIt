@@ -108,3 +108,9 @@ In the analysis view, the minimum, maximum and average pulse are calculated in a
 ### Info
 
 The info view contains information on the formula used, the permissible input values and explanations for the different training zones. It also contains this small app overview.
+
+## Others
+
+- This App uses the library [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) to display charts
+- The icons are from [Material Design](https://material.io/resources/icons/)
+- further icons are from
