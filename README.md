@@ -59,7 +59,7 @@ Die Infoansicht enthält informationen zur verwendeten Formel, den zulässigen E
 
 - Die App verwendet die Bibliothek [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) zur Darstellung der Diagramme
 - Die Symbole stammen von der [Material Design](https://material.io/resources/icons/) Seite
-- weitere Icons stammen von flaticon vom Autor Freepik
+- weitere Symbole stammen von flaticon vom Autor Freepik
 - deutsch ist die einzige aktuell unterstützte Sprache
 - Die App verwendet die Bibliothek [MathView](https://github.com/jianzhongli/MathView) zur Darstellung von mathematischen Formeln
 
