@@ -1,9 +1,11 @@
 package com.cool.pulseit.ui.info;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -46,6 +48,9 @@ public class InfoFragment extends Fragment {
         _info_formula_two.setText(getString(R.string.info_formula_female));
 
         _chart = _view.findViewById(R.id.info_chart);
+
+        TextView info_others = _view.findViewById(R.id.info_others);
+        info_others.setMovementMethod(LinkMovementMethod.getInstance());
 
         initChart();
 

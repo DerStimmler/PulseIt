@@ -615,6 +615,45 @@
 
                 </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2.5dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="2dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:contentPadding="7dp">
+
+            <LinearLayout
+                android:id="@+id/info_relativeLayout_card_others"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/info_others_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/info_others_header"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/info_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/info_others"
+                    android:textSize="13sp" />
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             </LinearLayout>
 
         </ScrollView>
