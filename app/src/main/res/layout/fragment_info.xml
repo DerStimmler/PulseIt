@@ -611,6 +611,14 @@
                             android:text="@string/info_interpretation_detail_rote_Zone"
                             android:textSize="13sp" />
 
+                        <TextView
+                            android:id="@+id/info_interpretation_source"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/info_interpreation_source"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

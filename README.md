@@ -62,6 +62,7 @@ Die Infoansicht enthält informationen zur verwendeten Formel, den zulässigen E
 - weitere Symbole stammen von flaticon vom Autor [Freepik](https://www.flaticon.com/authors/freepik)
 - deutsch ist die einzige aktuell unterstützte Sprache
 - Die App verwendet die Bibliothek [MathView](https://github.com/jianzhongli/MathView) zur Darstellung von mathematischen Formeln
+- Die Interpretationen der verschiedenen Trainingszonen stammen von [Lauftechnik.de](https://lauftechnik.de/52-Die-5-Herzfrequenzzonen-den-optimalen-Trainingspuls-berechnen.htm)
 
 ---
 
@@ -129,3 +130,4 @@ The info view contains information on the formula used, the permissible input va
 - further icons are from flaticon by the author [Freepik](https://www.flaticon.com/authors/freepik)
 - at the moment the only supportet language is german
 - This App uses the library [MathView](https://github.com/jianzhongli/MathView) to display mathematical formulas
+- The interpretations of the different training zones are from [Lauftechnik.de](https://lauftechnik.de/52-Die-5-Herzfrequenzzonen-den-optimalen-Trainingspuls-berechnen.htm)

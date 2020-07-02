@@ -49,12 +49,19 @@ public class InfoFragment extends Fragment {
 
         _chart = _view.findViewById(R.id.info_chart);
 
-        TextView info_others = _view.findViewById(R.id.info_others);
-        info_others.setMovementMethod(LinkMovementMethod.getInstance());
+        makeLinksClickable();
 
         initChart();
 
         return _view;
+    }
+
+    private void makeLinksClickable() {
+        TextView info_others = _view.findViewById(R.id.info_others);
+        info_others.setMovementMethod(LinkMovementMethod.getInstance());
+
+        TextView info_interpretaion_source = _view.findViewById(R.id.info_interpretation_source);
+        info_interpretaion_source.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void initChart() {
